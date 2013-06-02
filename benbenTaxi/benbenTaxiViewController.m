@@ -8,22 +8,8 @@
 
 #import "benbenTaxiViewController.h"
 
-@interface benbenTaxiViewController ()
-
-@end
 
 @implementation benbenTaxiViewController
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+@synthesize appNameDisplay = _appNameDisplay;
+@synthesize myMap = _myMap;
 @end
