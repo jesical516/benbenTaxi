@@ -19,6 +19,10 @@
 		3AB50B27175B2F880079772E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AB50B25175B2F880079772E /* MainStoryboard.storyboard */; };
 		3AB50B2A175B2F880079772E /* benbenTaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB50B29175B2F880079772E /* benbenTaxiViewController.m */; };
 		3AB50B7F175B41170079772E /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B7E175B41160079772E /* libbaidumapapi.a */; };
+		3AB50B81175B45780079772E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B80175B45780079772E /* CoreLocation.framework */; };
+		3AB50B83175B45850079772E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B82175B45850079772E /* QuartzCore.framework */; };
+		3AB50B85175B45990079772E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B84175B45990079772E /* OpenGLES.framework */; };
+		3AB50B87175B45A80079772E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B86175B45A80079772E /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +72,10 @@
 		3AB50B7C175B41160079772E /* BMKUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKUserLocation.h; sourceTree = "<group>"; };
 		3AB50B7D175B41160079772E /* BMKVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKVersion.h; sourceTree = "<group>"; };
 		3AB50B7E175B41160079772E /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaidumapapi.a; sourceTree = "<group>"; };
+		3AB50B80175B45780079772E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3AB50B82175B45850079772E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3AB50B84175B45990079772E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		3AB50B86175B45A80079772E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AB50B87175B45A80079772E /* SystemConfiguration.framework in Frameworks */,
+				3AB50B85175B45990079772E /* OpenGLES.framework in Frameworks */,
+				3AB50B83175B45850079772E /* QuartzCore.framework in Frameworks */,
+				3AB50B81175B45780079772E /* CoreLocation.framework in Frameworks */,
 				3AB50B0E175B2F880079772E /* UIKit.framework in Frameworks */,
 				3AB50B10175B2F880079772E /* Foundation.framework in Frameworks */,
 				3AB50B12175B2F880079772E /* CoreGraphics.framework in Frameworks */,
@@ -107,6 +119,10 @@
 		3AB50B0C175B2F880079772E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AB50B86175B45A80079772E /* SystemConfiguration.framework */,
+				3AB50B84175B45990079772E /* OpenGLES.framework */,
+				3AB50B82175B45850079772E /* QuartzCore.framework */,
+				3AB50B80175B45780079772E /* CoreLocation.framework */,
 				3AB50B0D175B2F880079772E /* UIKit.framework */,
 				3AB50B0F175B2F880079772E /* Foundation.framework */,
 				3AB50B11175B2F880079772E /* CoreGraphics.framework */,
