@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BMapKit.h"
 
-@interface benbenTaxiAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+#import <UIKit/UIKit.h>
+#import "BMapKit.h"
 
+@interface benbenTaxiAppDelegate : UIResponder <UIApplicationDelegate> {
+    BMKMapManager* _mapManager;
+    UIWindow *window;
+}
 @end

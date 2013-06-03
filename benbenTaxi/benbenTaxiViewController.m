@@ -7,9 +7,27 @@
 //
 
 #import "benbenTaxiViewController.h"
+#import "BMapKit.h"
+#import "BMKMapView.h"
 
+@interface benbenTaxiViewController ()
+
+@end
 
 @implementation benbenTaxiViewController
-@synthesize appNameDisplay = _appNameDisplay;
-@synthesize myMap = _myMap;
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    BMKMapView* mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
+    self.view = mapView;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 @end

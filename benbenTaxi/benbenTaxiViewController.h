@@ -10,6 +10,5 @@
 #import "BMapKit.h"
 
 @interface benbenTaxiViewController : UIViewController
-@property IBOutlet BMKMapView *myMap;
-@property (weak, nonatomic) IBOutlet UILabel *appNameDisplay;
+
 @end

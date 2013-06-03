@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/app/wise/wmap/!svn/ver/53964/trunk/client/platform/mapsdk/iphone/IphoneMapSdkDemo/libs/Release-iphonesimulator
+END
+.DS_Store
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/app/wise/wmap/!svn/ver/49144/trunk/client/platform/mapsdk/iphone/IphoneMapSdkDemo/libs/Release-iphonesimulator/.DS_Store
+END
+libMapPlatform.a
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/app/wise/wmap/!svn/ver/53964/trunk/client/platform/mapsdk/iphone/IphoneMapSdkDemo/libs/Release-iphonesimulator/libMapPlatform.a
+END
