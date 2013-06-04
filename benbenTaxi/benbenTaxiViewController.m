@@ -11,23 +11,22 @@
 #import "BMKMapView.h"
 
 @interface benbenTaxiViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleDisplay;
 
 @end
 
 @implementation benbenTaxiViewController
 
-
+@synthesize titleDisplay = _titleDisplay;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    BMKMapView* mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
-    self.view = mapView;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
 
 @end
