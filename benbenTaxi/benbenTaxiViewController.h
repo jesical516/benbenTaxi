@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BMapKit.h"
 
-@interface benbenTaxiViewController : UIViewController
-
-
+@interface benbenTaxiViewController :  UIViewController <BMKMapViewDelegate> {
+    IBOutlet UILabel *titleDisplay;
+    IBOutlet BMKMapView *myMap;
+}
 @end
