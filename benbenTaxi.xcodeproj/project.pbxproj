@@ -382,7 +382,9 @@
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "benbenTaxi/benbenTaxi-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = "\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"";
 				INFOPLIST_FILE = "benbenTaxi/benbenTaxi-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -405,7 +407,9 @@
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "benbenTaxi/benbenTaxi-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = "\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"";
 				INFOPLIST_FILE = "benbenTaxi/benbenTaxi-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

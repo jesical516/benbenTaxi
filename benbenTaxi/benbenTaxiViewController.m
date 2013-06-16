@@ -10,8 +10,6 @@
 #import "BMapKit.h"
 #import "BMKMapView.h"
 
-//extern NSString *CTSettingCopyMyPhoneNumber();
-
 @implementation benbenTaxiViewController
 
 - (void)viewDidLoad
@@ -25,17 +23,9 @@
     myMap.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
 }
 
-
-/*
-+(NSString *)myNumber{
-    return CTSettingCopyMyPhoneNumber();
-}
-*/
-
 -(void)viewWillDisappear:(BOOL)animated {
     [myMap viewWillDisappear];
     myMap.delegate = nil; // 不用时，置nil
-    //NSLog(@"myNumber=%@",[benbenTaxiViewController myNumber]);
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,4 +75,5 @@
     [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
     myMap.showsUserLocation = NO;
 }
+
 @end
