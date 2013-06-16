@@ -40,7 +40,6 @@
 - (void)mapViewDidStopLocatingUser:(BMKMapView *)mapView
 {
     NSLog(@"Here");
-    
 }
 
 /**
