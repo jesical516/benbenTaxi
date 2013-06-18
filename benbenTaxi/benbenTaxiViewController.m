@@ -9,6 +9,7 @@
 #import "benbenTaxiViewController.h"
 #import "BMapKit.h"
 #import "BMKMapView.h"
+#import "JSONKit.h"
 
 @implementation benbenTaxiViewController
 
@@ -42,6 +43,9 @@
     BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
     annotation.coordinate = startPt;
 	[myMap addAnnotation:annotation];
+    NSString *string = @"{\"name\": \"My Name\",\"list\": [\"one\",\"two\",\"three\"]}";
+    NSData* jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *resultsDictionary = [jsonData objectFromJSONData];
 }
 
 /**
@@ -74,6 +78,11 @@
     CLLocation *loc = [[CLLocation alloc] initWithLatitude: localLatitude longitude:localLongitude];
     [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
     myMap.showsUserLocation = NO;
+}
+
+- (IBAction)textFieldDoneEditing:(id)sender
+{
+    [sender resignFirstResponder];
 }
 
 @end

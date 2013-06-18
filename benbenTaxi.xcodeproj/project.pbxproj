@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A4B27DB176E0AF6002D72C0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4B27DA176E0AF6002D72C0 /* libz.dylib */; };
+		3A4B27E7176E1588002D72C0 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A4B27E6176E1588002D72C0 /* JSONKit.h */; };
+		3A4B27E8176E1771002D72C0 /* JSONKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A4B27E6176E1588002D72C0 /* JSONKit.h */; };
+		3A4B27EA176E1796002D72C0 /* JSONKit.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A4B27E9176E1796002D72C0 /* JSONKit.m */; };
+		3A64A97F17709A9300FE64C8 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B27E9176E1796002D72C0 /* JSONKit.m */; };
+		3A64A9F61770C56900FE64C8 /* benbenTaxiLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A64A9F41770C56900FE64C8 /* benbenTaxiLogin.h */; };
+		3A64A9F71770C56900FE64C8 /* benbenTaxiLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A64A9F51770C56900FE64C8 /* benbenTaxiLogin.m */; };
 		3A92383C175CF58600025B71 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A92383B175CF58600025B71 /* mapapi.bundle */; };
 		3AB50B18175B2F880079772E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AB50B16175B2F880079772E /* InfoPlist.strings */; };
 		3AB50B1A175B2F880079772E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB50B19175B2F880079772E /* main.m */; };
@@ -34,12 +41,19 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				3A4B27EA176E1796002D72C0 /* JSONKit.m in CopyFiles */,
+				3A4B27E8176E1771002D72C0 /* JSONKit.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3A4B27DA176E0AF6002D72C0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3A4B27E6176E1588002D72C0 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../json/JSONKit/JSONKit.h; sourceTree = "<group>"; };
+		3A4B27E9176E1796002D72C0 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = ../json/JSONKit/JSONKit.m; sourceTree = "<group>"; };
+		3A64A9F41770C56900FE64C8 /* benbenTaxiLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiLogin.h; sourceTree = "<group>"; };
+		3A64A9F51770C56900FE64C8 /* benbenTaxiLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = benbenTaxiLogin.m; sourceTree = "<group>"; };
 		3A92383B175CF58600025B71 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		3AB3A79A176D869900987413 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3AB50B09175B2F880079772E /* benbenTaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = benbenTaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A4B27DB176E0AF6002D72C0 /* libz.dylib in Frameworks */,
 				3AF6EAFC176D90490086F0E6 /* CoreTelephony.framework in Frameworks */,
 				3AF6EAFB176D90310086F0E6 /* QuartzCore.framework in Frameworks */,
 				3AF6EAFA176D90210086F0E6 /* CoreLocation.framework in Frameworks */,
@@ -138,6 +153,7 @@
 		3AB50B0C175B2F880079772E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A4B27DA176E0AF6002D72C0 /* libz.dylib */,
 				3AF6EAF7176D8FFD0086F0E6 /* OpenAL.framework */,
 				3AB3A79A176D869900987413 /* CoreTelephony.framework */,
 				3AB50B86175B45A80079772E /* SystemConfiguration.framework */,
@@ -157,6 +173,8 @@
 				3AB50B1C175B2F880079772E /* benbenTaxiAppDelegate.h */,
 				3AB50B1D175B2F880079772E /* benbenTaxiAppDelegate.m */,
 				3AB50B25175B2F880079772E /* MainStoryboard.storyboard */,
+				3A64A9F41770C56900FE64C8 /* benbenTaxiLogin.h */,
+				3A64A9F51770C56900FE64C8 /* benbenTaxiLogin.m */,
 				3AB50B28175B2F880079772E /* benbenTaxiViewController.h */,
 				3AB50B29175B2F880079772E /* benbenTaxiViewController.m */,
 				3AB50B14175B2F880079772E /* Supporting Files */,
@@ -181,6 +199,8 @@
 		3AB50B60175B41160079772E /* inc */ = {
 			isa = PBXGroup;
 			children = (
+				3A4B27E9176E1796002D72C0 /* JSONKit.m */,
+				3A4B27E6176E1588002D72C0 /* JSONKit.h */,
 				3AB50B61175B41160079772E /* BMapKit.h */,
 				3AB50B62175B41160079772E /* BMKAnnotation.h */,
 				3AB50B63175B41160079772E /* BMKAnnotationView.h */,
@@ -221,6 +241,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A4B27E7176E1588002D72C0 /* JSONKit.h in Headers */,
+				3A64A9F61770C56900FE64C8 /* benbenTaxiLogin.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,9 +316,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A64A97F17709A9300FE64C8 /* JSONKit.m in Sources */,
 				3AB50B1A175B2F880079772E /* main.m in Sources */,
 				3AB50B1E175B2F880079772E /* benbenTaxiAppDelegate.m in Sources */,
 				3AB50B2A175B2F880079772E /* benbenTaxiViewController.m in Sources */,
+				3A64A9F71770C56900FE64C8 /* benbenTaxiLogin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +399,7 @@
 		3AB50B2E175B2F880079772E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
@@ -400,6 +425,7 @@
 		3AB50B2F175B2F880079772E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
