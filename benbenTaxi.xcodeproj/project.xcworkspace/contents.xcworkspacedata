@@ -5,6 +5,12 @@
       location = "container:"
       name = "New Group">
       <FileRef
+         location = "group:../benbenTaxi/benbenTaxiLogin.h">
+      </FileRef>
+      <FileRef
+         location = "group:../benbenTaxi/benbenTaxiLogin.m">
+      </FileRef>
+      <FileRef
          location = "self:benbenTaxi.xcodeproj">
       </FileRef>
    </Group>

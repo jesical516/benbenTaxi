@@ -1,15 +1,20 @@
 //
 //  benbenTaxiLogin.h
-//  benbenTaxi
+//  
 //
-//  Created by 晨松 on 13-6-19.
-//  Copyright (c) 2013年 晨松. All rights reserved.
+//  Created by 晨松 on 13-6-20.
+//
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-
 @interface benbenTaxiLogin : UIViewController
+@property (retain, nonatomic) IBOutlet UILabel *loginDisplay;
+@property (retain, nonatomic) IBOutlet UITextField *username;
+@property (retain, nonatomic) IBOutlet UITextField *password;
+
+- (IBAction)textFieldDoneEditing:(id)sender;
+
+- (IBAction)backgroundTap:(id)sender;
 
 @end
