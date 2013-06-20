@@ -68,7 +68,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="passwordReceived:" destination="Ov7-SI-Bda" eventType="editingDidEnd" id="OZh-Ny-9P9"/>
                                     <action selector="textFieldDoneEditing:" destination="Ov7-SI-Bda" eventType="editingDidEndOnExit" id="GXm-hu-QSG"/>

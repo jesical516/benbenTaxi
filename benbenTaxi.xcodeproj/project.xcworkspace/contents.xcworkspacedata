@@ -8,6 +8,12 @@
          location = "group:../benbenTaxi/benbenTaxiLogin.h">
       </FileRef>
       <FileRef
+         location = "group:../benbenTaxi/login.h">
+      </FileRef>
+      <FileRef
+         location = "group:../benbenTaxi/login.m">
+      </FileRef>
+      <FileRef
          location = "group:../benbenTaxi/benbenTaxiLogin.m">
       </FileRef>
       <FileRef
