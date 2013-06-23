@@ -15,6 +15,31 @@
 
 @implementation benbenTaxiLogin
 
+bool isAutoLogin = true;
+
+-(bool) loadUserCookie
+{
+    
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    //这里需要拿到本地的cookie文件，如果cookie没有失效，则将cookie信息load进来。
+    //设置自动登录为true
+    if([self loadUserCookie]) {
+        isAutoLogin = true;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    if(isAutoLogin) {
+        [self.view setHidden:YES];
+        [self performSegueWithIdentifier:@"loginTrigger" sender:self];
+    }
+}
+
 - (IBAction)usernameReceived:(id)sender {
 
 }
@@ -23,6 +48,9 @@
 }
 
 - (IBAction)loginPressed:(id)sender {
+    NSLog(@"text 1 %@", self.password.text);
+    NSLog(@"text 1 %@", self.username.text);
+    
     NSString *phoneNumber = @"13439338326";
     NSString *passwordTest = @"12345678";
     
