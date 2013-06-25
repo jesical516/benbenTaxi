@@ -43,9 +43,25 @@
     BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
     annotation.coordinate = startPt;
 	[myMap addAnnotation:annotation];
-    NSString *string = @"{\"name\": \"My Name\",\"list\": [\"one\",\"two\",\"three\"]}";
-    NSData* jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *resultsDictionary = [jsonData objectFromJSONData];
+    //定位成功后，需要获取到附近的taxi，并将其展现在地图上。
+    //这里用到NUserDefaults的信息
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSLog(@"phone is %@" , [prefs valueForKey:@"phone"]);
+    NSLog(@"cookie is %@" , [prefs valueForKey:@"cookie"]);
+    /*
+     /api/v1/users/nearby_driver
+     get
+     lng
+     lat
+     radius  搜索范围，单位米，默认5000
+     time_range  搜索时间范围 单位分钟，默认值20
+     请求示例
+     /api/v1/users/nearby_driver?lat=8&lng=8
+     response
+     [{"driver_id":2,"created_at":"2013-06-01T20:48:55.984+08:00","lat":8.0,"lng":8.0},{"driver_id":4,"created_at":"2013-06-01T20:48:56.326+08:00","lat":8.0,"lng":8.0}]
+     */
+
 }
 
 /**
