@@ -38,6 +38,19 @@
  *在地图View停止定位后，会调用此函数
  *@param mapView 地图View
  */
+/*
+ * api使用
+ /api/v1/users/nearby_driver
+ get
+ lng
+ lat
+ radius  搜索范围，单位米，默认5000
+ time_range  搜索时间范围 单位分钟，默认值20
+ 请求示例
+ /api/v1/users/nearby_driver?lat=8&lng=8
+ response
+ [{"driver_id":2,"created_at":"2013-06-01T20:48:55.984+08:00","lat":8.0,"lng":8.0},{"driver_id":4,"created_at":"2013-06-01T20:48:56.326+08:00","lat":8.0,"lng":8.0}]
+ */
 - (void)mapViewDidStopLocatingUser:(BMKMapView *)mapView
 {
     BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
@@ -49,19 +62,30 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSLog(@"phone is %@" , [prefs valueForKey:@"phone"]);
     NSLog(@"cookie is %@" , [prefs valueForKey:@"cookie"]);
-    /*
-     /api/v1/users/nearby_driver
-     get
-     lng
-     lat
-     radius  搜索范围，单位米，默认5000
-     time_range  搜索时间范围 单位分钟，默认值20
-     请求示例
-     /api/v1/users/nearby_driver?lat=8&lng=8
-     response
-     [{"driver_id":2,"created_at":"2013-06-01T20:48:55.984+08:00","lat":8.0,"lng":8.0},{"driver_id":4,"created_at":"2013-06-01T20:48:56.326+08:00","lat":8.0,"lng":8.0}]
-     */
-
+    
+    //获取到经纬度、登录cookie后，先请求一次附近的司机信息
+    NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/users/nearby_driver?lat=8&lng=8"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+    
+    NSString *cookieStr = [prefs valueForKey:@"cookie"];
+    NSData* jsonData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSDictionary *cookieDict = [jsonData objectFromJSONData];
+    NSString *cookieKey = [cookieDict objectForKey:@"token_key"];
+    NSLog(@"Cookie is %@", cookieKey);
+    NSString *cookieValue = [cookieDict objectForKey:@"token_value"];
+    NSLog(@"Cookie is %@", cookieValue);
+    NSString *cookies = [cookieKey stringByAppendingString:@"="];
+    cookies = [cookies stringByAppendingString:cookieValue];
+    NSLog(@"Cookie is %@", cookies);
+    //得到cookie的key和value
+    [request setHTTPMethod:@"GET"];//设置请求方式为POST，默认为GET
+    [request setValue: cookies forHTTPHeaderField:@"Cookie"];
+    
+    
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *str1 = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",str1);
 }
 
 /**

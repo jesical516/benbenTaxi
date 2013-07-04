@@ -57,7 +57,19 @@ int loginExpireTime = 30 * 86400;
 
 - (IBAction)loginPressed:(id)sender {
     NSString *phoneNumber = self.username.text;
+    
+    if([phoneNumber isEqualToString:@""])
+    {
+        //手机号没有填
+        //显示错误信息，不跳到地图view
+        [self shouldPerformSegueWithIdentifier:@"loginTrigger" sender:self];
+    }
     NSString *passwordTest = self.password.text;
+    if([passwordTest isEqualToString:@""])
+    {
+        //手机号没有填
+        //显示错误信息，不跳到地图view
+    }
     
     NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/sessions/passenger_signin"];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
@@ -156,5 +168,9 @@ int loginExpireTime = 30 * 86400;
 {
     [self.username resignFirstResponder];
     [self.password resignFirstResponder];
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    return YES;
 }
 @end
