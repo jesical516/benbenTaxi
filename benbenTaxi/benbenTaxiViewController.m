@@ -85,7 +85,8 @@
     
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *str1 = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",str1);
+    
+    NSLog(@"%@", str1);
 }
 
 /**
@@ -98,11 +99,11 @@
 {
     NSLog(@"经度：%g",userLocation.coordinate.latitude);
     NSLog(@"纬度：%g",userLocation.coordinate.longitude);
-    startPt.latitude = 40.056885;
-    startPt.longitude = 116.30815;
+    startPt.latitude = userLocation.coordinate.latitude;
+    startPt.longitude = userLocation.coordinate.longitude;
     
-    float localLatitude=40.056885;
-    float localLongitude=116.30815;
+    float localLatitude=startPt.latitude;
+    float localLongitude=startPt.longitude;
     CLGeocoder *Geocoder=[[CLGeocoder alloc]init];
     CLGeocodeCompletionHandler handler = ^(NSArray *place, NSError *error) {
         for (CLPlacemark *placemark in place) {
