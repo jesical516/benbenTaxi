@@ -22,6 +22,8 @@
 		3AB50B27175B2F880079772E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AB50B25175B2F880079772E /* MainStoryboard.storyboard */; };
 		3AB50B2A175B2F880079772E /* benbenTaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB50B29175B2F880079772E /* benbenTaxiViewController.m */; };
 		3ABAE5B517771CA500B86F15 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABAE5B417771CA500B86F15 /* Security.framework */; };
+		3AE1CD1C178B233E00D25E70 /* MyMapAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE1CD1A178B233E00D25E70 /* MyMapAnnotation.h */; };
+		3AE1CD1D178B233E00D25E70 /* MyMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */; };
 		3AE233B217721B8900C21BA2 /* benbenTaxiLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */; };
 		3AE233B317721B8900C21BA2 /* benbenTaxiLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE233B117721B8900C21BA2 /* benbenTaxiLogin.m */; };
 		3AF6EAE8176D8EFF0086F0E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B0D175B2F880079772E /* UIKit.framework */; };
@@ -106,6 +108,8 @@
 		3AB50B84175B45990079772E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		3AB50B86175B45A80079772E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3ABAE5B417771CA500B86F15 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3AE1CD1A178B233E00D25E70 /* MyMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMapAnnotation.h; sourceTree = "<group>"; };
+		3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMapAnnotation.m; sourceTree = "<group>"; };
 		3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiLogin.h; sourceTree = "<group>"; };
 		3AE233B117721B8900C21BA2 /* benbenTaxiLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = benbenTaxiLogin.m; sourceTree = "<group>"; };
 		3AF6EAF7176D8FFD0086F0E6 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -181,6 +185,8 @@
 				3AB50B25175B2F880079772E /* MainStoryboard.storyboard */,
 				3AB50B28175B2F880079772E /* benbenTaxiViewController.h */,
 				3AB50B29175B2F880079772E /* benbenTaxiViewController.m */,
+				3AE1CD1A178B233E00D25E70 /* MyMapAnnotation.h */,
+				3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */,
 				3AB50B14175B2F880079772E /* Supporting Files */,
 			);
 			path = benbenTaxi;
@@ -247,6 +253,7 @@
 			files = (
 				3A4B27E7176E1588002D72C0 /* JSONKit.h in Headers */,
 				3AE233B217721B8900C21BA2 /* benbenTaxiLogin.h in Headers */,
+				3AE1CD1C178B233E00D25E70 /* MyMapAnnotation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +332,7 @@
 				3AB50B1E175B2F880079772E /* benbenTaxiAppDelegate.m in Sources */,
 				3AB50B2A175B2F880079772E /* benbenTaxiViewController.m in Sources */,
 				3AE233B317721B8900C21BA2 /* benbenTaxiLogin.m in Sources */,
+				3AE1CD1D178B233E00D25E70 /* MyMapAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

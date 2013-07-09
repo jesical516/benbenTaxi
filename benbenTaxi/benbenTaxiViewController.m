@@ -55,7 +55,9 @@
 {
     BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
     annotation.coordinate = startPt;
-	[myMap addAnnotation:annotation];
+    [myMap addAnnotation:annotation];
+    
+    
     //定位成功后，需要获取到附近的taxi，并将其展现在地图上。
     //这里用到NUserDefaults的信息
     
@@ -87,6 +89,21 @@
     NSString *str1 = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
     
     NSLog(@"%@", str1);
+    
+    //这里需要将附近的司机信息展示出来
+    /*
+    CLLocationCoordinate2D coor;
+	coor.latitude = 39.915;
+	coor.longitude = 116.404;
+	annotation.coordinate = coor;
+    
+	BMKPointAnnotation *pointAnnotation = [[BMKPointAnnotation alloc] init];
+    pointAnnotation.title = @"王师傅";
+    pointAnnotation.subtitle = @"13439338326";
+    pointAnnotation.coordinate = coor;
+    //[myMap addAnnotation:pointAnnotation];
+    [pointAnnotation release];
+     */
 }
 
 /**
@@ -125,5 +142,21 @@
 {
     [sender resignFirstResponder];
 }
+
+/*
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
+{
+	if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
+		BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
+        newAnnotation.image = [UIImage imageNamed:@"steering.png"];
+        if(nil == newAnnotation.image) {
+            NSLog(@"%@", @"Here");
+        }
+		newAnnotation.animatesDrop = YES;
+		return newAnnotation;
+	}
+	return nil;
+}
+ */
 
 @end
