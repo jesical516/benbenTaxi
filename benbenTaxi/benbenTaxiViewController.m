@@ -16,6 +16,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    myMap.zoomLevel = 17;
     myMap.showsUserLocation = YES;
 }
 
@@ -136,6 +137,7 @@
     CLLocation *loc = [[CLLocation alloc] initWithLatitude: localLatitude longitude:localLongitude];
     [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
     myMap.showsUserLocation = NO;
+    myMap.centerCoordinate = startPt;
 }
 
 - (IBAction)textFieldDoneEditing:(id)sender
