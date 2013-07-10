@@ -12,7 +12,25 @@
 #import "BMKMapView.h"
 @implementation MyMapAnnotation
 
+@synthesize location;
+@synthesize title;
+@synthesize subtitle;
+@synthesize headImage;
+
 -(void)dealloc {
     [super dealloc];
 }
+
+- (id)initWithLocation:(CLLocationCoordinate2D)coord {
+    self = [super init];
+    if (self) {
+        location = coord;
+    }
+    return self;
+}
+
+- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate {
+    location = newCoordinate;
+}
+
 @end

@@ -21,5 +21,8 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, copy) NSString *headImage;
-    
+
+- (id)initWithLocation:(CLLocationCoordinate2D)coord;
+- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate;
+
 @end

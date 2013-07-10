@@ -13,6 +13,7 @@
 		3A4B27EA176E1796002D72C0 /* JSONKit.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A4B27E9176E1796002D72C0 /* JSONKit.m */; };
 		3A64A97F17709A9300FE64C8 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B27E9176E1796002D72C0 /* JSONKit.m */; };
 		3A92383C175CF58600025B71 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A92383B175CF58600025B71 /* mapapi.bundle */; };
+		3AA55AD3178C5CD6004F622C /* steering.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AA55AD2178C5CD6004F622C /* steering.png */; };
 		3AB50B18175B2F880079772E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AB50B16175B2F880079772E /* InfoPlist.strings */; };
 		3AB50B1A175B2F880079772E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB50B19175B2F880079772E /* main.m */; };
 		3AB50B1E175B2F880079772E /* benbenTaxiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB50B1D175B2F880079772E /* benbenTaxiAppDelegate.m */; };
@@ -56,6 +57,7 @@
 		3A4B27E6176E1588002D72C0 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../json/JSONKit/JSONKit.h; sourceTree = "<group>"; };
 		3A4B27E9176E1796002D72C0 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = ../json/JSONKit/JSONKit.m; sourceTree = "<group>"; };
 		3A92383B175CF58600025B71 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
+		3AA55AD2178C5CD6004F622C /* steering.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = steering.png; path = benbenTaxi.xcodeproj/../steering.png; sourceTree = "<group>"; };
 		3AB3A79A176D869900987413 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3AB50B09175B2F880079772E /* benbenTaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = benbenTaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AB50B0D175B2F880079772E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -140,6 +142,7 @@
 		3AB50AFE175B2F880079772E = {
 			isa = PBXGroup;
 			children = (
+				3AA55AD2178C5CD6004F622C /* steering.png */,
 				3ABAE5B417771CA500B86F15 /* Security.framework */,
 				3A92383B175CF58600025B71 /* mapapi.bundle */,
 				3AB50B60175B41160079772E /* inc */,
@@ -317,6 +320,7 @@
 				3AB50B24175B2F880079772E /* Default-568h@2x.png in Resources */,
 				3AB50B27175B2F880079772E /* MainStoryboard.storyboard in Resources */,
 				3A92383C175CF58600025B71 /* mapapi.bundle in Resources */,
+				3AA55AD3178C5CD6004F622C /* steering.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

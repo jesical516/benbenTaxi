@@ -11,13 +11,17 @@
 #import "BMKMapView.h"
 #import "JSONKit.h"
 
+
 @implementation benbenTaxiViewController
+- (IBAction)callTaxiPressed:(id)sender {
+}
 
 - (void)viewDidLoad
-{
+{ 
     [super viewDidLoad];
     myMap.zoomLevel = 17;
     myMap.showsUserLocation = YES;
+    isLocation = false;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -56,8 +60,9 @@
 {
     BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
     annotation.coordinate = startPt;
+    NSLog(@"Here A");
     [myMap addAnnotation:annotation];
-    
+    NSLog(@"Here B");
     
     //定位成功后，需要获取到附近的taxi，并将其展现在地图上。
     //这里用到NUserDefaults的信息
@@ -92,21 +97,25 @@
     NSLog(@"%@", str1);
     
     //这里需要将附近的司机信息展示出来
-    /*
-    CLLocationCoordinate2D coor;
-	coor.latitude = 39.915;
-	coor.longitude = 116.404;
-	annotation.coordinate = coor;
     
-	BMKPointAnnotation *pointAnnotation = [[BMKPointAnnotation alloc] init];
-    pointAnnotation.title = @"王师傅";
-    pointAnnotation.subtitle = @"13439338326";
-    pointAnnotation.coordinate = coor;
-    //[myMap addAnnotation:pointAnnotation];
-    [pointAnnotation release];
-     */
+    CLLocationCoordinate2D driver1;//得到经纬度，用于展示图标
+    driver1.latitude = 39.9204;
+    driver1.longitude = 116.480;
+    
+    BMKPointAnnotation* driverAnnotation1 = [[BMKPointAnnotation alloc]init];
+    driverAnnotation1.coordinate = driver1;
+    
+    CLLocationCoordinate2D driver2;//得到经纬度，用于展示图标
+    driver2.latitude = 39.9205;
+    driver2.longitude = 116.483;
+    
+    BMKPointAnnotation* driverAnnotation2 = [[BMKPointAnnotation alloc]init];
+    driverAnnotation2.coordinate = driver2;
+    
+    
+    NSArray *mapAnnotations = [[NSArray alloc] initWithObjects:driverAnnotation1, driverAnnotation2, nil];
+    [myMap addAnnotations:mapAnnotations];
 }
-
 /**
  *用户位置更新后，会调用此函数
  *@param mapView 地图View
@@ -129,7 +138,6 @@
             if(cityName == NULL) {
                 cityName = placemark.administrativeArea;
             }
-            NSLog(@"cityName %@",cityName);
             break;
         }
     };
@@ -145,20 +153,20 @@
     [sender resignFirstResponder];
 }
 
-/*
+
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
 {
 	if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
-		BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
-        newAnnotation.image = [UIImage imageNamed:@"steering.png"];
-        if(nil == newAnnotation.image) {
-            NSLog(@"%@", @"Here");
+        BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
+        if(isLocation) {
+            newAnnotation.image = [UIImage imageNamed:@"steering.png"];
+        } else {
+            isLocation = true;
         }
 		newAnnotation.animatesDrop = YES;
 		return newAnnotation;
 	}
 	return nil;
 }
- */
 
 @end
