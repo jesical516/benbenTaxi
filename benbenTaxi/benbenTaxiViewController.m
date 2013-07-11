@@ -156,7 +156,8 @@
 
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
 {
-	if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
+	
+    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
         if(isLocation) {
             newAnnotation.image = [UIImage imageNamed:@"steering.png"];
@@ -167,6 +168,22 @@
 		return newAnnotation;
 	}
 	return nil;
+    
+    /*
+    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
+        BMKAnnotationView *newAnnotation = [[[BMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
+        if(isLocation) {
+            newAnnotation.image = [UIImage imageNamed:@"steering.png"];
+        } else {
+            isLocation = true;
+        }
+		[newAnnotation setSelected :YES];
+        newAnnotation.
+		return newAnnotation;
+	}
+	return nil;
+     */
+    
 }
 
 @end

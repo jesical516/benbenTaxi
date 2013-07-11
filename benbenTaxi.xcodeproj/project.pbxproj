@@ -36,6 +36,7 @@
 		3AF6EAFA176D90210086F0E6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B80175B45780079772E /* CoreLocation.framework */; };
 		3AF6EAFB176D90310086F0E6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B82175B45850079772E /* QuartzCore.framework */; };
 		3AF6EAFC176D90490086F0E6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB3A79A176D869900987413 /* CoreTelephony.framework */; };
+		3AFFC9B6178EF90F00C8BA9B /* benbenIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFFC9B5178EF90F00C8BA9B /* benbenIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,7 +58,7 @@
 		3A4B27E6176E1588002D72C0 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../json/JSONKit/JSONKit.h; sourceTree = "<group>"; };
 		3A4B27E9176E1796002D72C0 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = ../json/JSONKit/JSONKit.m; sourceTree = "<group>"; };
 		3A92383B175CF58600025B71 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
-		3AA55AD2178C5CD6004F622C /* steering.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = steering.png; path = benbenTaxi.xcodeproj/../steering.png; sourceTree = "<group>"; };
+		3AA55AD2178C5CD6004F622C /* steering.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = steering.png; path = benbenTaxi.xcodeproj/../steering.png; sourceTree = "<group>"; };
 		3AB3A79A176D869900987413 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3AB50B09175B2F880079772E /* benbenTaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = benbenTaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AB50B0D175B2F880079772E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -115,6 +116,7 @@
 		3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiLogin.h; sourceTree = "<group>"; };
 		3AE233B117721B8900C21BA2 /* benbenTaxiLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = benbenTaxiLogin.m; sourceTree = "<group>"; };
 		3AF6EAF7176D8FFD0086F0E6 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		3AFFC9B5178EF90F00C8BA9B /* benbenIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = benbenIcon.png; path = ../../../benbenIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				3AB50B15175B2F880079772E /* benbenTaxi-Info.plist */,
+				3AFFC9B5178EF90F00C8BA9B /* benbenIcon.png */,
 				3AB50B16175B2F880079772E /* InfoPlist.strings */,
 				3AB50B19175B2F880079772E /* main.m */,
 				3AB50B1B175B2F880079772E /* benbenTaxi-Prefix.pch */,
@@ -321,6 +324,7 @@
 				3AB50B27175B2F880079772E /* MainStoryboard.storyboard in Resources */,
 				3A92383C175CF58600025B71 /* mapapi.bundle in Resources */,
 				3AA55AD3178C5CD6004F622C /* steering.png in Resources */,
+				3AFFC9B6178EF90F00C8BA9B /* benbenIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
