@@ -111,6 +111,10 @@ int loginExpireTime = 30 * 86400;
 }
 
 - (IBAction)newAcountPressed:(id)sender {
+    //这里，如果注册键被按下，则注册改为返回，登录改为确认，同时光标停到用户名的输入地方
+   [sender setTitle:@"返回" forState:UIControlStateNormal];
+    
+    
     NSLog(@"text 1 %@", self.password.text);
     NSLog(@"text 1 %@", self.username.text);
     
