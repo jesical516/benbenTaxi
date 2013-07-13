@@ -183,11 +183,15 @@ int loginExpireTime = 30 * 86400;
 {
     [sender resignFirstResponder];
 }
+- (IBAction)passwordConfirmPressed:(id)sender {
+    
+}
 
 - (IBAction)backgroundTap:(id)sender
 {
     [self.username resignFirstResponder];
     [self.password resignFirstResponder];
+    [self.passwordConfirm resignFirstResponder];
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {

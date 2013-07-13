@@ -79,14 +79,14 @@
                                     <action selector="textFieldDoneEditing:" destination="Ov7-SI-Bda" eventType="editingDidEndOnExit" id="GXm-hu-QSG"/>
                                 </connections>
                             </textField>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="确认密码" minimumFontSize="17" id="pnC-Op-j1X">
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="确认密码" minimumFontSize="17" id="pnC-Op-j1X">
                                 <rect key="frame" x="38" y="215" width="254" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
-                                    <action selector="passwordReceived:" destination="Ov7-SI-Bda" eventType="editingDidEnd" id="F2v-jn-v8I"/>
+                                    <action selector="passwordConfirmPressed:" destination="Ov7-SI-Bda" eventType="editingDidEnd" id="3ad-mc-5XF"/>
                                     <action selector="textFieldDoneEditing:" destination="Ov7-SI-Bda" eventType="editingDidEndOnExit" id="ama-lI-uqk"/>
                                 </connections>
                             </textField>
@@ -161,10 +161,13 @@
                 <relationship kind="action" name="backgroundTap:"/>
                 <relationship kind="action" name="loginPressed:"/>
                 <relationship kind="action" name="newAcountPressed:"/>
+                <relationship kind="action" name="passwordConfirmPressed:"/>
                 <relationship kind="action" name="passwordReceived:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
+                <relationship kind="action" name="usernameReceived:"/>
                 <relationship kind="outlet" name="login" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="newAcount" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordConfirm" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
@@ -173,6 +176,7 @@
         <class className="benbenTaxiViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiViewController.h"/>
             <relationships>
+                <relationship kind="action" name="callTaxiPressed:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
                 <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
                 <relationship kind="outlet" name="titleDisplay" candidateClass="UILabel"/>
