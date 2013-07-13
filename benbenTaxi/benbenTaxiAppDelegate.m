@@ -18,7 +18,9 @@
     // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
     BOOL ret = [_mapManager start:@"BFF9B1F6539715946EFCCCB6D0072086610DB5C9"  generalDelegate:nil];
     if (!ret) {
-        NSLog(@"manager start failed!");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"" delegate:self cancelButtonTitle:@"退出" otherButtonTitles: nil];
+        [alert show];
+        return NO;
     }
     // Add the navigation controller's view to the window and display.
     [self.window makeKeyAndVisible]; 

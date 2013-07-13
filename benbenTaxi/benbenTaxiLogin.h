@@ -12,6 +12,9 @@
 @property (retain, nonatomic) IBOutlet UILabel *loginDisplay;
 @property (retain, nonatomic) IBOutlet UITextField *username;
 @property (retain, nonatomic) IBOutlet UITextField *password;
+@property (retain, nonatomic) IBOutlet UITextField *passwordConfirm;
+@property (retain, nonatomic) IBOutlet UIButton *login;
+@property (retain, nonatomic) IBOutlet UIButton *newAcount;
 
 
 - (IBAction)textFieldDoneEditing:(id)sender;

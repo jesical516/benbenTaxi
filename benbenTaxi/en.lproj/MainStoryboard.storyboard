@@ -26,12 +26,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="newAcount" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0ji-Lq-1Be">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="newAcountBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0ji-Lq-1Be">
                                 <rect key="frame" x="174" y="278" width="113" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="新用户注册">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -41,13 +41,13 @@
                                     <action selector="newAcountPressed:" destination="Ov7-SI-Bda" eventType="touchUpInside" id="7QZ-O0-hg2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4FI-qc-cHZ">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="loginBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4FI-qc-cHZ">
                                 <rect key="frame" x="38" y="278" width="113" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="登录">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,7 +58,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" placeholder="手机号" minimumFontSize="17" id="INQ-Ev-m5j">
-                                <rect key="frame" x="38" y="111" width="254" height="30"/>
+                                <rect key="frame" x="38" y="111" width="254" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
@@ -79,7 +79,7 @@
                                     <action selector="textFieldDoneEditing:" destination="Ov7-SI-Bda" eventType="editingDidEndOnExit" id="GXm-hu-QSG"/>
                                 </connections>
                             </textField>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="确认密码" minimumFontSize="17" id="pnC-Op-j1X">
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="确认密码" minimumFontSize="17" id="pnC-Op-j1X">
                                 <rect key="frame" x="38" y="215" width="254" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,8 +101,11 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     </view>
                     <connections>
+                        <outlet property="login" destination="4FI-qc-cHZ" id="kFr-ZE-3m0"/>
                         <outlet property="loginDisplay" destination="tnR-1i-q3o" id="LbT-EF-D71"/>
+                        <outlet property="newAcount" destination="0ji-Lq-1Be" id="h5O-Zh-Jdv"/>
                         <outlet property="password" destination="2Rg-gd-m11" id="GJA-Ih-oFY"/>
+                        <outlet property="passwordConfirm" destination="pnC-Op-j1X" id="Wig-ZY-Dnx"/>
                         <outlet property="username" destination="INQ-Ev-m5j" id="clV-zr-kLl"/>
                     </connections>
                 </viewController>
@@ -160,16 +163,16 @@
                 <relationship kind="action" name="newAcountPressed:"/>
                 <relationship kind="action" name="passwordReceived:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
-                <relationship kind="action" name="usernameReceived:"/>
+                <relationship kind="outlet" name="login" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginDisplay" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordConfirm" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="benbenTaxiViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiViewController.h"/>
             <relationships>
-                <relationship kind="action" name="callTaxiPressed:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
                 <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
                 <relationship kind="outlet" name="titleDisplay" candidateClass="UILabel"/>

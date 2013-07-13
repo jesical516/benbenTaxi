@@ -111,10 +111,24 @@ int loginExpireTime = 30 * 86400;
 }
 
 - (IBAction)newAcountPressed:(id)sender {
-    //这里，如果注册键被按下，则注册改为返回，登录改为确认，同时光标停到用户名的输入地方
-   [sender setTitle:@"返回" forState:UIControlStateNormal];
+    UIButton* btn = (UIButton*)sender;
+   NSLog(@"%@",  btn.currentTitle);
     
-    
+    if( [btn.currentTitle isEqualToString:@"返回"] ) {
+        [sender setTitle:@"新用户注册" forState:UIControlStateNormal];
+        [self.passwordConfirm setHidden:true];
+        [self.login setTitle:@"登陆" forState:UIControlStateNormal];
+        //将确认密码建隐藏，同时将登陆键的名字改回来，还要将光标改回来
+    } else {
+        //这里，如果注册键被按下，则注册改为返回，登录改为确认，同时光标停到用户名的输入地方
+        [sender setTitle:@"返回" forState:UIControlStateNormal];
+        [_passwordConfirm setHidden:false];
+        [self.login setTitle:@"确定" forState:UIControlStateNormal];
+        //将确认密码按钮显示，并将登陆键的名字变为确定，同时将光标停在手机号的输入框内
+    }
+}
+
+- (void) newAcount {
     NSLog(@"text 1 %@", self.password.text);
     NSLog(@"text 1 %@", self.username.text);
     
@@ -122,7 +136,7 @@ int loginExpireTime = 30 * 86400;
     NSString *passwordTest = @"12345678";
     
     NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/users/create_passenger"];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];  
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPMethod:@"POST"];//设置请求方式为POST，默认为GET
     
     //设置用户名和密码
@@ -159,7 +173,9 @@ int loginExpireTime = 30 * 86400;
     [_loginDisplay release];
     [_username release];
     [_password release];
-    [_password release];
+    [_passwordConfirm release];
+    [_login release];
+    [_newAcount release];
     [super dealloc];
 }
 
