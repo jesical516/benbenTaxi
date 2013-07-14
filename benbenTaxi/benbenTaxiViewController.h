@@ -17,6 +17,7 @@
     NSString *phoneNum; //本机号码，用于注册
     bool isLocation;
 }
+@property (retain, nonatomic) IBOutlet UIButton *sendRequestBtn;
 
 - (IBAction)textFieldDoneEditing:(id)sender;
 @end

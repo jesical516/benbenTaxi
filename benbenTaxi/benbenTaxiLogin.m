@@ -70,6 +70,12 @@ int loginExpireTime = 30 * 86400;
 }
 
 - (IBAction)loginPressed:(id)sender {
+    if( [self.username.text isEqualToString:@""] )
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入手机号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
     UIButton* btn = (UIButton*) sender;
     if ([btn.currentTitle isEqualToString:@"确定"]) {
         if( ![self.passwordConfirm.text isEqualToString:self.password.text] ) {

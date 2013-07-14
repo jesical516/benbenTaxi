@@ -23,10 +23,13 @@
     myMap.showsUserLocation = YES;
     isLocation = false;
 }
+- (IBAction)sendTaxiRequest:(id)sender {
+}
 
 -(void)viewWillAppear:(BOOL)animated {
     [myMap viewWillAppear];
     myMap.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
+    [self.sendRequestBtn setBackgroundColor];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -60,9 +63,7 @@
 {
     BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
     annotation.coordinate = startPt;
-    NSLog(@"Here A");
     [myMap addAnnotation:annotation];
-    NSLog(@"Here B");
     
     //定位成功后，需要获取到附近的taxi，并将其展现在地图上。
     //这里用到NUserDefaults的信息
@@ -156,34 +157,27 @@
 
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
 {
-	
     if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
         if(isLocation) {
             newAnnotation.image = [UIImage imageNamed:@"steering.png"];
         } else {
+            newAnnotation.image = [UIImage imageNamed:@"icon_center_point.png"];
             isLocation = true;
         }
 		newAnnotation.animatesDrop = YES;
 		return newAnnotation;
 	}
 	return nil;
-    
-    /*
-    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
-        BMKAnnotationView *newAnnotation = [[[BMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
-        if(isLocation) {
-            newAnnotation.image = [UIImage imageNamed:@"steering.png"];
-        } else {
-            isLocation = true;
-        }
-		[newAnnotation setSelected :YES];
-        newAnnotation.
-		return newAnnotation;
-	}
-	return nil;
-     */
-    
+
+}
+- (IBAction)taxiPressed:(id)sender {
+    NSLog(@"Here");
 }
 
+
+- (void)dealloc {
+    [_sendRequestBtn release];
+    [super dealloc];
+}
 @end
