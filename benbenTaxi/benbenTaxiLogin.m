@@ -17,6 +17,7 @@
 
 bool isAutoLogin = false;
 bool newAcountState = false;
+bool loginState = false;
 int loginExpireTime = 30 * 86400;
 
 -(void) loadUserCookie
@@ -54,6 +55,78 @@ int loginExpireTime = 30 * 86400;
 }
 
 - (IBAction)loginPressed:(id)sender {
+    if( [self.username.text isEqualToString:@""] )
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入手机号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
+    if( self.username.text.length != 11 ) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入有效的手机号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
+    if( [self.password.text isEqualToString:@""] ) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入密码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
+    UIButton* btn = (UIButton*) sender;
+    if ([btn.currentTitle isEqualToString:@"确定"]) {
+        if( [self.passwordConfirm.text isEqualToString:@""] ) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请再次输入密码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+            
+            return;
+        }
+        
+        if( ![self.passwordConfirm.text isEqualToString:self.password.text] ) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"两次输入的密码不一致，请重新输入" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+            return;
+        }
+        
+    } else {
+        NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/sessions/passenger_signin"];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+        [request setHTTPMethod:@"POST"];//设置请求方式为POST，默认为GET
+        
+        //设置用户名和密码
+        NSMutableDictionary *postInfoJobj = [NSMutableDictionary dictionary];
+        NSMutableDictionary *userInfoJobj = [NSMutableDictionary dictionary];
+        [userInfoJobj setObject : self.username.text forKey:@"mobile"];
+        [userInfoJobj setObject : self.password.text forKey:@"password"];
+        [postInfoJobj setObject : userInfoJobj forKey:@"session"];
+        NSString *strPostInfo = [postInfoJobj JSONString];
+        
+        NSLog(@"post info is %@", strPostInfo);
+        
+        NSData *data = [strPostInfo dataUsingEncoding:NSUTF8StringEncoding];
+        
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPBody:data];
+        
+        NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSString *str1 = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",str1);
+        
+        NSDictionary *loginResult = [received objectFromJSONData];
+        NSString *errorMsg = [loginResult objectForKey:@"errors"];
+        if (nil != errorMsg) {
+            NSLog(@"login failed");
+        } else {
+            NSString *cookieInfo = [loginResult JSONString];
+            NSLog(@"cookie is %@", cookieInfo);
+            //从返回的结果里面拿到cookie id，然后保存在userDefaults中
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setBool:YES forKey:@"has_login"];
+            [userDefaults setValue: self.username.text forKey:@"phone"];
+            [userDefaults setValue: cookieInfo forKey:@"cookie"];
+        }
+    }
     NSString *phoneNumber = self.username.text;
     
     if([phoneNumber isEqualToString:@""])
@@ -110,20 +183,17 @@ int loginExpireTime = 30 * 86400;
 
 - (IBAction)newAcountPressed:(id)sender {
     UIButton* btn = (UIButton*)sender;
-   NSLog(@"%@",  btn.currentTitle);
-    
+    NSLog(@"%@",  btn.currentTitle);
+    //如果当前标题为返回
     if( [btn.currentTitle isEqualToString:@"返回"] ) {
         [sender setTitle:@"新用户注册" forState:UIControlStateNormal];
         [self.passwordConfirm setHidden:true];
         [self.login setTitle:@"登陆" forState:UIControlStateNormal];
         newAcountState = NO;
-        //将确认密码建隐藏，同时将登陆键的名字改回来，还要将光标改回来
     } else {
-        //这里，如果注册键被按下，则注册改为返回，登录改为确认，同时光标停到用户名的输入地方
         [sender setTitle:@"返回" forState:UIControlStateNormal];
         [_passwordConfirm setHidden:false];
         [self.login setTitle:@"确定" forState:UIControlStateNormal];
-        //将确认密码按钮显示，并将登陆键的名字变为确定，同时将光标停在手机号的输入框内
         newAcountState = YES;
     }
 }
@@ -196,7 +266,11 @@ int loginExpireTime = 30 * 86400;
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     if(newAcountState) {
-        return false;
+        return NO;
+    }
+    
+    if(!loginState) {
+        return NO;
     }
     
     return YES;
