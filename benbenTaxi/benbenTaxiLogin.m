@@ -16,6 +16,7 @@
 @implementation benbenTaxiLogin
 
 bool isAutoLogin = false;
+bool newAcountState = false;
 int loginExpireTime = 30 * 86400;
 
 -(void) loadUserCookie
@@ -34,9 +35,6 @@ int loginExpireTime = 30 * 86400;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //这里需要拿到本地的cookie文件，如果cookie没有失效，则将cookie信息load进来。
-    //设置自动登录为true
     [self loadUserCookie];
 }
 
@@ -118,6 +116,7 @@ int loginExpireTime = 30 * 86400;
         [sender setTitle:@"新用户注册" forState:UIControlStateNormal];
         [self.passwordConfirm setHidden:true];
         [self.login setTitle:@"登陆" forState:UIControlStateNormal];
+        newAcountState = NO;
         //将确认密码建隐藏，同时将登陆键的名字改回来，还要将光标改回来
     } else {
         //这里，如果注册键被按下，则注册改为返回，登录改为确认，同时光标停到用户名的输入地方
@@ -125,6 +124,7 @@ int loginExpireTime = 30 * 86400;
         [_passwordConfirm setHidden:false];
         [self.login setTitle:@"确定" forState:UIControlStateNormal];
         //将确认密码按钮显示，并将登陆键的名字变为确定，同时将光标停在手机号的输入框内
+        newAcountState = YES;
     }
 }
 
@@ -195,6 +195,10 @@ int loginExpireTime = 30 * 86400;
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if(newAcountState) {
+        return false;
+    }
+    
     return YES;
 }
 @end
