@@ -14,6 +14,8 @@
 	<array>
 		<string>benbenIcon.png</string>
 	</array>
+	<key>UILaunchImageFile~iphone</key>
+	<string>start.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>chensong.zjd.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
