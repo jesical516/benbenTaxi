@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3A4AB61B1792E49A007CA445 /* 打车按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4AB61A1792E499007CA445 /* 打车按钮.png */; };
 		3A4AB61D1792E9B8007CA445 /* icon_center_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4AB61C1792E9B8007CA445 /* icon_center_point.png */; };
+		3A4AB624179308BA007CA445 /* MyBMKPointAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A4AB622179308BA007CA445 /* MyBMKPointAnnotation.h */; };
+		3A4AB625179308BA007CA445 /* MyBMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4AB623179308BA007CA445 /* MyBMKPointAnnotation.m */; };
 		3A4B27DB176E0AF6002D72C0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4B27DA176E0AF6002D72C0 /* libz.dylib */; };
 		3A4B27E7176E1588002D72C0 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A4B27E6176E1588002D72C0 /* JSONKit.h */; };
 		3A4B27E8176E1771002D72C0 /* JSONKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A4B27E6176E1588002D72C0 /* JSONKit.h */; };
@@ -61,6 +63,8 @@
 /* Begin PBXFileReference section */
 		3A4AB61A1792E499007CA445 /* 打车按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "打车按钮.png"; sourceTree = SOURCE_ROOT; };
 		3A4AB61C1792E9B8007CA445 /* icon_center_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_center_point.png; sourceTree = SOURCE_ROOT; };
+		3A4AB622179308BA007CA445 /* MyBMKPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBMKPointAnnotation.h; sourceTree = "<group>"; };
+		3A4AB623179308BA007CA445 /* MyBMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBMKPointAnnotation.m; sourceTree = "<group>"; };
 		3A4B27DA176E0AF6002D72C0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3A4B27E6176E1588002D72C0 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../json/JSONKit/JSONKit.h; sourceTree = "<group>"; };
 		3A4B27E9176E1796002D72C0 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = ../json/JSONKit/JSONKit.m; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 		3AB50B13175B2F880079772E /* benbenTaxi */ = {
 			isa = PBXGroup;
 			children = (
+				3A4AB622179308BA007CA445 /* MyBMKPointAnnotation.h */,
+				3A4AB623179308BA007CA445 /* MyBMKPointAnnotation.m */,
 				3A5EC12417925B920006B847 /* benbenConn.h */,
 				3A5EC12517925B920006B847 /* benbenConn.m */,
 				3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */,
@@ -276,6 +282,7 @@
 				3AE233B217721B8900C21BA2 /* benbenTaxiLogin.h in Headers */,
 				3AE1CD1C178B233E00D25E70 /* MyMapAnnotation.h in Headers */,
 				3A5EC12617925B920006B847 /* benbenConn.h in Headers */,
+				3A4AB624179308BA007CA445 /* MyBMKPointAnnotation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +368,7 @@
 				3AE233B317721B8900C21BA2 /* benbenTaxiLogin.m in Sources */,
 				3AE1CD1D178B233E00D25E70 /* MyMapAnnotation.m in Sources */,
 				3A5EC12717925B920006B847 /* benbenConn.m in Sources */,
+				3A4AB625179308BA007CA445 /* MyBMKPointAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

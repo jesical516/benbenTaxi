@@ -184,12 +184,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiLogin.h"/>
             <relationships>
                 <relationship kind="action" name="backgroundTap:"/>
-                <relationship kind="action" name="loginPressed:"/>
-                <relationship kind="action" name="newAcountPressed:"/>
-                <relationship kind="action" name="passwordConfirmPressed:"/>
-                <relationship kind="action" name="passwordReceived:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
-                <relationship kind="action" name="usernameReceived:"/>
                 <relationship kind="outlet" name="login" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginDisplay" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="newAcount" candidateClass="UIButton"/>

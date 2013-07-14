@@ -63,6 +63,7 @@
 {
     BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
     annotation.coordinate = startPt;
+    annotation.title = cityName;
     [myMap addAnnotation:annotation];
     
     //定位成功后，需要获取到附近的taxi，并将其展现在地图上。
@@ -138,7 +139,7 @@
             cityName=placemark.locality;
             if(cityName == NULL) {
                 cityName = placemark.administrativeArea;
-            }
+            } 
             break;
         }
     };
@@ -162,7 +163,8 @@
         if(isLocation) {
             newAnnotation.image = [UIImage imageNamed:@"steering.png"];
         } else {
-            newAnnotation.image = [UIImage imageNamed:@"icon_center_point.png"];
+            //newAnnotation.image = [UIImage imageNamed:@"icon_center_point.png"];
+            newAnnotation.enabled3D = true;
             isLocation = true;
         }
 		newAnnotation.animatesDrop = YES;
