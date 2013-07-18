@@ -163,7 +163,9 @@
     NSLog(@"called here");
     if ([annotation isKindOfClass:[MyBMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
+        newAnnotation.image = [UIImage imageNamed:@"icon_center_point.png"];
         newAnnotation.animatesDrop = YES;
+        return newAnnotation;
 	} else if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
         newAnnotation.image = [UIImage imageNamed:@"steering.png"];
