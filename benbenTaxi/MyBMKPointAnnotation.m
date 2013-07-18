@@ -10,4 +10,6 @@
 
 @implementation MyBMKPointAnnotation
 
+bool isSelfPositionAnnotation;
+
 @end

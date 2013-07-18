@@ -10,6 +10,7 @@
 #import "BMapKit.h"
 #import "BMKMapView.h"
 #import "JSONKit.h"
+#import "MyBMKPointAnnotation.h"
 
 
 @implementation benbenTaxiViewController
@@ -61,9 +62,9 @@
  */
 - (void)mapViewDidStopLocatingUser:(BMKMapView *)mapView
 {
-    BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
+    MyBMKPointAnnotation* annotation = [[MyBMKPointAnnotation alloc]init];
     annotation.coordinate = startPt;
-    annotation.title = cityName;
+    annotation.title = @"我在";
     [myMap addAnnotation:annotation];
     
     //定位成功后，需要获取到附近的taxi，并将其展现在地图上。
@@ -106,6 +107,7 @@
     
     BMKPointAnnotation* driverAnnotation1 = [[BMKPointAnnotation alloc]init];
     driverAnnotation1.coordinate = driver1;
+    driverAnnotation1.title = @"司机";
     
     CLLocationCoordinate2D driver2;//得到经纬度，用于展示图标
     driver2.latitude = 39.9205;
@@ -113,7 +115,7 @@
     
     BMKPointAnnotation* driverAnnotation2 = [[BMKPointAnnotation alloc]init];
     driverAnnotation2.coordinate = driver2;
-    
+    driverAnnotation2.title = @"司机";
     
     NSArray *mapAnnotations = [[NSArray alloc] initWithObjects:driverAnnotation1, driverAnnotation2, nil];
     [myMap addAnnotations:mapAnnotations];
@@ -158,19 +160,18 @@
 
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
 {
-    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
+    NSLog(@"called here");
+    if ([annotation isKindOfClass:[MyBMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
-        if(isLocation) {
-            newAnnotation.image = [UIImage imageNamed:@"steering.png"];
-        } else {
-            //newAnnotation.image = [UIImage imageNamed:@"icon_center_point.png"];
-            newAnnotation.enabled3D = true;
-            isLocation = true;
-        }
-		newAnnotation.animatesDrop = YES;
+        newAnnotation.animatesDrop = YES;
+	} else if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
+        BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
+        newAnnotation.image = [UIImage imageNamed:@"steering.png"];
+        newAnnotation.animatesDrop = YES;
 		return newAnnotation;
 	}
-	return nil;
+    
+    return nil;
 
 }
 - (IBAction)taxiPressed:(id)sender {

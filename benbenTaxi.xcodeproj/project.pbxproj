@@ -155,10 +155,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A5FB0BF1797CFF300D9933C /* login */ = {
+			isa = PBXGroup;
+			children = (
+				3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */,
+				3AE233B117721B8900C21BA2 /* benbenTaxiLogin.m */,
+			);
+			name = login;
+			sourceTree = "<group>";
+		};
+		3A5FB0C01797D01900D9933C /* location */ = {
+			isa = PBXGroup;
+			children = (
+				3AE1CD1A178B233E00D25E70 /* MyMapAnnotation.h */,
+				3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */,
+			);
+			name = location;
+			sourceTree = "<group>";
+		};
+		3A5FB0C11797D03C00D9933C /* server */ = {
+			isa = PBXGroup;
+			children = (
+				3A5EC12417925B920006B847 /* benbenConn.h */,
+				3A5EC12517925B920006B847 /* benbenConn.m */,
+			);
+			name = server;
+			sourceTree = "<group>";
+		};
+		3A5FB0C21797D06200D9933C /* annoation */ = {
+			isa = PBXGroup;
+			children = (
+				3A4AB622179308BA007CA445 /* MyBMKPointAnnotation.h */,
+				3A4AB623179308BA007CA445 /* MyBMKPointAnnotation.m */,
+			);
+			name = annoation;
+			sourceTree = "<group>";
+		};
 		3AB50AFE175B2F880079772E = {
 			isa = PBXGroup;
 			children = (
-				3ABAE5B417771CA500B86F15 /* Security.framework */,
 				3A92383B175CF58600025B71 /* mapapi.bundle */,
 				3AB50B60175B41160079772E /* inc */,
 				3AB50B7E175B41160079772E /* libbaidumapapi.a */,
@@ -179,6 +214,7 @@
 		3AB50B0C175B2F880079772E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3ABAE5B417771CA500B86F15 /* Security.framework */,
 				3A4B27DA176E0AF6002D72C0 /* libz.dylib */,
 				3AF6EAF7176D8FFD0086F0E6 /* OpenAL.framework */,
 				3AB3A79A176D869900987413 /* CoreTelephony.framework */,
@@ -196,19 +232,15 @@
 		3AB50B13175B2F880079772E /* benbenTaxi */ = {
 			isa = PBXGroup;
 			children = (
-				3A4AB622179308BA007CA445 /* MyBMKPointAnnotation.h */,
-				3A4AB623179308BA007CA445 /* MyBMKPointAnnotation.m */,
-				3A5EC12417925B920006B847 /* benbenConn.h */,
-				3A5EC12517925B920006B847 /* benbenConn.m */,
-				3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */,
-				3AE233B117721B8900C21BA2 /* benbenTaxiLogin.m */,
+				3A5FB0C21797D06200D9933C /* annoation */,
+				3A5FB0C11797D03C00D9933C /* server */,
+				3A5FB0C01797D01900D9933C /* location */,
+				3A5FB0BF1797CFF300D9933C /* login */,
 				3AB50B1C175B2F880079772E /* benbenTaxiAppDelegate.h */,
 				3AB50B1D175B2F880079772E /* benbenTaxiAppDelegate.m */,
 				3AB50B25175B2F880079772E /* MainStoryboard.storyboard */,
 				3AB50B28175B2F880079772E /* benbenTaxiViewController.h */,
 				3AB50B29175B2F880079772E /* benbenTaxiViewController.m */,
-				3AE1CD1A178B233E00D25E70 /* MyMapAnnotation.h */,
-				3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */,
 				3AB50B14175B2F880079772E /* Supporting Files */,
 			);
 			path = benbenTaxi;
