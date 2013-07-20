@@ -15,6 +15,8 @@
 		3A4B27E7176E1588002D72C0 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A4B27E6176E1588002D72C0 /* JSONKit.h */; };
 		3A4B27E8176E1771002D72C0 /* JSONKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A4B27E6176E1588002D72C0 /* JSONKit.h */; };
 		3A4B27EA176E1796002D72C0 /* JSONKit.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A4B27E9176E1796002D72C0 /* JSONKit.m */; };
+		3A5DD6EB179A49640055537C /* getNearbyTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A5DD6E9179A49640055537C /* getNearbyTask.h */; };
+		3A5DD6EC179A49640055537C /* getNearbyTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5DD6EA179A49640055537C /* getNearbyTask.m */; };
 		3A5EC11F179252720006B847 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5EC11E179252720006B847 /* start.png */; };
 		3A5EC121179252ED0006B847 /* benbenIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5EC120179252ED0006B847 /* benbenIcon.png */; };
 		3A5EC123179253030006B847 /* steering.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5EC122179253030006B847 /* steering.png */; };
@@ -68,6 +70,8 @@
 		3A4B27DA176E0AF6002D72C0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3A4B27E6176E1588002D72C0 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../json/JSONKit/JSONKit.h; sourceTree = "<group>"; };
 		3A4B27E9176E1796002D72C0 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = ../json/JSONKit/JSONKit.m; sourceTree = "<group>"; };
+		3A5DD6E9179A49640055537C /* getNearbyTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getNearbyTask.h; sourceTree = "<group>"; };
+		3A5DD6EA179A49640055537C /* getNearbyTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getNearbyTask.m; sourceTree = "<group>"; };
 		3A5EC11E179252720006B847 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = SOURCE_ROOT; };
 		3A5EC120179252ED0006B847 /* benbenIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = benbenIcon.png; path = ../benbenIcon.png; sourceTree = "<group>"; };
 		3A5EC122179253030006B847 /* steering.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = steering.png; path = ../steering.png; sourceTree = "<group>"; };
@@ -155,6 +159,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A5DD6E8179A493E0055537C /* task */ = {
+			isa = PBXGroup;
+			children = (
+				3A5DD6E9179A49640055537C /* getNearbyTask.h */,
+				3A5DD6EA179A49640055537C /* getNearbyTask.m */,
+			);
+			name = task;
+			sourceTree = "<group>";
+		};
 		3A5FB0BF1797CFF300D9933C /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +245,7 @@
 		3AB50B13175B2F880079772E /* benbenTaxi */ = {
 			isa = PBXGroup;
 			children = (
+				3A5DD6E8179A493E0055537C /* task */,
 				3A5FB0C21797D06200D9933C /* annoation */,
 				3A5FB0C11797D03C00D9933C /* server */,
 				3A5FB0C01797D01900D9933C /* location */,
@@ -315,6 +329,7 @@
 				3AE1CD1C178B233E00D25E70 /* MyMapAnnotation.h in Headers */,
 				3A5EC12617925B920006B847 /* benbenConn.h in Headers */,
 				3A4AB624179308BA007CA445 /* MyBMKPointAnnotation.h in Headers */,
+				3A5DD6EB179A49640055537C /* getNearbyTask.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +416,7 @@
 				3AE1CD1D178B233E00D25E70 /* MyMapAnnotation.m in Sources */,
 				3A5EC12717925B920006B847 /* benbenConn.m in Sources */,
 				3A4AB625179308BA007CA445 /* MyBMKPointAnnotation.m in Sources */,
+				3A5DD6EC179A49640055537C /* getNearbyTask.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
