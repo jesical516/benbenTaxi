@@ -11,11 +11,16 @@
 #import "BMKMapView.h"
 #import "JSONKit.h"
 #import "MyBMKPointAnnotation.h"
+#import "locationModel.h"
+#import "ASIHTTPRequest.h"
 
 
 @implementation benbenTaxiViewController
 - (IBAction)callTaxiPressed:(id)sender {
 }
+
+LocationModel *locationModel;
+
 
 - (void)viewDidLoad
 { 
@@ -38,18 +43,25 @@
     NSString* cookiesTemp = [cookieKey stringByAppendingString:@"="];
     cookiesTemp = [cookiesTemp stringByAppendingString:cookieValue];
     NSLog(@"cookiesTemp:%@", cookiesTemp);
+    locationModel = [[LocationModel alloc] init];
+    [locationModel setValue:@"我在北京站" forKey:@"detailAddress"]; 
+    [locationModel addObserver:self forKeyPath:@"detailAddress" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+
 }
 - (IBAction)sendTaxiRequest:(id)sender {
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [myMap viewWillAppear];
     myMap.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
+    myMap.showsUserLocation = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [myMap viewWillDisappear];
     myMap.delegate = nil; // 不用时，置nil
+    myMap.showsUserLocation = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,13 +75,9 @@
     annotation.coordinate = startPt;
     annotation.title = @"我在";
     [myMap addAnnotation:annotation];
-    [self getNearbyDriversSucess];
 }
 
-- (void) getNearbyDriversSucess {
-    NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/users/nearby_driver?lat=8&lng=8"];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-    
+- (void) setConnectionParams : ASIHTTPRequest : request {
     [request setHTTPMethod:@"GET"];//设置请求方式为POST，默认为GET
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *cookieStr = [prefs valueForKey:@"cookie"];
@@ -80,8 +88,18 @@
     NSString* cookiesTemp = [cookieKey stringByAppendingString:@"="];
     cookiesTemp = [cookiesTemp stringByAppendingString:cookieValue];
     [request setValue:  cookiesTemp forHTTPHeaderField:@"Cookie"];
+}
+/*
+- (void) getNearbyDriversSucess {
+    NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/users/nearby_driver?lat=8&lng=8"];
+    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *str1 = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@", str1);
+    
     //这里需要将附近的司机信息展示出来
     
     CLLocationCoordinate2D driver1;//得到经纬度，用于展示图标
@@ -103,7 +121,7 @@
     NSArray *mapAnnotations = [[NSArray alloc] initWithObjects:driverAnnotation1, driverAnnotation2, nil];
     [myMap addAnnotations:mapAnnotations];
 }
-
+*/
 /**
  *用户位置更新后，会调用此函数
  *@param mapView 地图View
@@ -114,6 +132,7 @@
 {
     NSLog(@"经度：%g",userLocation.coordinate.latitude);
     NSLog(@"纬度：%g",userLocation.coordinate.longitude);
+    
     startPt.latitude = userLocation.coordinate.latitude;
     startPt.longitude = userLocation.coordinate.longitude;
     
@@ -132,8 +151,15 @@
     
     CLLocation *loc = [[CLLocation alloc] initWithLatitude: localLatitude longitude:localLongitude];
     [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
-    myMap.showsUserLocation = NO;
     myMap.centerCoordinate = startPt;
+    [locationModel setPassengerLocation:startPt];
+    /*
+    if(![locationModel.getDetailAddress isEqualToString:@"我在"]) {
+        [locationModel setValue:@"我在" forKey:@"detailAddress"];
+    }*/
+    
+    myMap.showsUserLocation = NO;
+    NSLog(@"address is %@", locationModel.getDetailAddress);
 }
 
 - (IBAction)textFieldDoneEditing:(id)sender
@@ -159,12 +185,28 @@
     
     return nil;
 }
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"here A");
+    if([keyPath isEqualToString:@"detailAddress"])
+    {
+        MyBMKPointAnnotation* annotation = [[MyBMKPointAnnotation alloc]init];
+        annotation.coordinate = startPt;
+        annotation.title = @"我在";
+        [myMap addAnnotation:annotation];
+    }
+}
+
 - (IBAction)taxiPressed:(id)sender {
+    
 }
 
 
 - (void)dealloc {
     [_sendRequestBtn release];
+    [locationModel removeObserver:self forKeyPath:@"detailAddress"];
+    [locationModel release];
     [super dealloc];
 }
 
