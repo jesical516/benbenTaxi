@@ -114,6 +114,13 @@ int loginExpireTime = 30 * 86400;
         [self.username setText:@""];
         [self.password setText:@""];
         [self.passwordConfirm setText:@""];
+        CGRect position = self.login.frame;
+        CGRect r2 = CGRectOffset(position, 0, -50);
+        [self.login setFrame:r2];
+        position = btn.frame;
+        r2 = CGRectOffset(position, 0, -50);
+        [btn setFrame:r2];
+        [self.loginStatusView stopAnimating];
         newAcountState = NO;
     } else {
         [self.username setText:@""];
@@ -122,6 +129,13 @@ int loginExpireTime = 30 * 86400;
         [sender setTitle:@"返回" forState:UIControlStateNormal];
         [_passwordConfirm setHidden:false];
         [self.login setTitle:@"确定" forState:UIControlStateNormal];
+        CGRect position = self.login.frame;
+        CGRect r2 = CGRectOffset(position, 0, 50);
+        [self.login setFrame:r2];
+        position = btn.frame;
+        r2 = CGRectOffset(position, 0, 50);
+        [btn setFrame:r2];
+        [self.loginStatusView startAnimating];
         newAcountState = YES;
     }
 }
@@ -222,6 +236,7 @@ int loginExpireTime = 30 * 86400;
     [_passwordConfirm release];
     [_login release];
     [_newAcount release];
+    [_loginStatusView release];
     [super dealloc];
 }
 

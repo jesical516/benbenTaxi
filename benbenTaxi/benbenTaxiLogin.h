@@ -16,6 +16,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *login;
 @property (retain, nonatomic) IBOutlet UIButton *newAcount;
 
+@property (retain, nonatomic) IBOutlet UIActivityIndicatorView *loginStatusView;
 
 - (IBAction)textFieldDoneEditing:(id)sender;
 

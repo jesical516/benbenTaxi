@@ -27,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="newAcountBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0ji-Lq-1Be">
-                                <rect key="frame" x="174" y="351" width="113" height="44"/>
+                                <rect key="frame" x="174" y="216" width="113" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="新用户注册">
@@ -42,7 +42,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="loginBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4FI-qc-cHZ">
-                                <rect key="frame" x="38" y="351" width="113" height="44"/>
+                                <rect key="frame" x="38" y="216" width="113" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="登录">
@@ -98,7 +98,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="uJr-LY-aTs">
-                                <rect key="frame" x="142" y="276" width="37" height="37"/>
+                                <rect key="frame" x="142" y="351" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
@@ -107,6 +107,7 @@
                     <connections>
                         <outlet property="login" destination="4FI-qc-cHZ" id="kFr-ZE-3m0"/>
                         <outlet property="loginDisplay" destination="tnR-1i-q3o" id="LbT-EF-D71"/>
+                        <outlet property="loginStatusView" destination="uJr-LY-aTs" id="CtS-rf-3Xq"/>
                         <outlet property="newAcount" destination="0ji-Lq-1Be" id="h5O-Zh-Jdv"/>
                         <outlet property="password" destination="2Rg-gd-m11" id="GJA-Ih-oFY"/>
                         <outlet property="passwordConfirm" destination="pnC-Op-j1X" id="Wig-ZY-Dnx"/>
@@ -196,6 +197,7 @@
                 <relationship kind="action" name="usernameReceived:"/>
                 <relationship kind="outlet" name="login" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="loginStatusView" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="newAcount" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordConfirm" candidateClass="UITextField"/>
@@ -205,6 +207,9 @@
         <class className="benbenTaxiViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiViewController.h"/>
             <relationships>
+                <relationship kind="action" name="callTaxiPressed:"/>
+                <relationship kind="action" name="sendTaxiRequest:"/>
+                <relationship kind="action" name="taxiPressed:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
                 <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
                 <relationship kind="outlet" name="sendRequestBtn" candidateClass="UIButton"/>
