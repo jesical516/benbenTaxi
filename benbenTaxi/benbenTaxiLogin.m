@@ -8,6 +8,8 @@
 
 #import "benbenTaxiLogin.h"
 #import "JSONKit.h"
+#import "benbenTaxiLoginManager.h"
+#import "LoginModel.h"
 
 @interface benbenTaxiLogin ()
 
@@ -20,14 +22,15 @@ bool newAcountState = false;
 bool loginState = false;
 int loginExpireTime = 30 * 86400;
 
+benbenTaxiLoginManager* loginManager;
+LoginModel* loginModel;
+
 -(void) loadUserCookie
 {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     [prefs removeObjectForKey:@"has_login"];
-    //如果用户注册成功且登录过，则直接登录
     if ([prefs boolForKey:@"has_login"] == YES) {
-        //判断下是否登录过，如果登录过，则将自动跳过
         NSLog(@"load%@", @" here");
         isAutoLogin = true;
     }
@@ -37,13 +40,20 @@ int loginExpireTime = 30 * 86400;
 {
     [super viewDidLoad];
     [self loadUserCookie];
+    loginManager = [[benbenTaxiLoginManager alloc]init];
+    
+    loginModel = [[LoginModel alloc]init];
+    [loginModel setErrorInfo:@""];
+    [loginModel setLoginStatus:false];
+    NSLog(@"here");
+    [loginManager setLoginModel:loginModel];
+    [loginModel addObserver:self forKeyPath:@"errorInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     if(isAutoLogin) {
         [self.view setHidden:YES];
         [self performSegueWithIdentifier:@"loginTrigger" sender:self];
-        
     }
 }
 
@@ -77,12 +87,13 @@ int loginExpireTime = 30 * 86400;
         return;
     }
     UIButton* btn = (UIButton*) sender;
-    if ([btn.currentTitle isEqualToString:@"确定"]) {
+    if ([btn.currentTitle isEqualToString:@"注册"]) {
         if( ![self.passwordConfirm.text isEqualToString:self.password.text] ) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"两次输入的密码不一致，请重新输入" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
             return;
         }
+        /*
         if([self newAcountProcess]) {
             [sender setTitle:@"新用户注册" forState:UIControlStateNormal];
             [self.passwordConfirm setHidden:true];
@@ -93,6 +104,9 @@ int loginExpireTime = 30 * 86400;
             [self.password setText:@""];
             [self.passwordConfirm setText:@""];
         }
+         */
+        [self.loginStatusView startAnimating];
+        [loginManager newAcountProcess : self.username.text : self.password.text ];
     } else {
         [self loginProcess];
     }
@@ -108,7 +122,7 @@ int loginExpireTime = 30 * 86400;
     NSLog(@"%@",  btn.currentTitle);
     //如果当前标题为返回
     if( [btn.currentTitle isEqualToString:@"返回"] ) {
-        [sender setTitle:@"新用户注册" forState:UIControlStateNormal];
+        [sender setTitle:@"注册" forState:UIControlStateNormal];
         [self.passwordConfirm setHidden:true];
         [self.login setTitle:@"登陆" forState:UIControlStateNormal];
         [self.username setText:@""];
@@ -128,14 +142,13 @@ int loginExpireTime = 30 * 86400;
         [self.passwordConfirm setText:@""];
         [sender setTitle:@"返回" forState:UIControlStateNormal];
         [_passwordConfirm setHidden:false];
-        [self.login setTitle:@"确定" forState:UIControlStateNormal];
+        [self.login setTitle:@"注册" forState:UIControlStateNormal];
         CGRect position = self.login.frame;
         CGRect r2 = CGRectOffset(position, 0, 50);
         [self.login setFrame:r2];
         position = btn.frame;
         r2 = CGRectOffset(position, 0, 50);
         [btn setFrame:r2];
-        [self.loginStatusView startAnimating];
         newAcountState = YES;
     }
 }
@@ -270,4 +283,21 @@ int loginExpireTime = 30 * 86400;
     
     return YES;
 }
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"here A");
+    if([keyPath isEqualToString:@"errorInfo"])
+    {
+        [self.loginStatusView stopAnimating];
+        if([loginModel getLoginStatus]) {
+            newAcountState = false;
+            loginState = true;
+            [self performSegueWithIdentifier:@"loginTrigger" sender:self];
+        } else {
+            loginState = false;
+        }
+    }
+}
+
 @end

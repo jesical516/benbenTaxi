@@ -9,5 +9,24 @@
 #import "LoginModel.h"
 
 @implementation LoginModel
-bool loginStatus;
+    bool loginStatus;
+    NSString* errorInfo;
+
+- (void) setLoginStatus : (bool) status
+{
+    loginStatus = status;
+}
+- (void) setErrorInfo : (NSString*) info
+{
+    errorInfo = info;
+}
+
+- (bool) getLoginStatus {
+    return loginStatus;
+}
+
+- (NSString*) getErrorInfo {
+    return errorInfo;
+}
+
 @end

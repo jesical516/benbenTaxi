@@ -10,4 +10,8 @@
 
 @interface LoginModel : NSObject
 
+- (void) setLoginStatus : (bool) status;
+- (void) setErrorInfo : (NSString*) info;
+- (bool) getLoginStatus;
+- (NSString*) getErrorInfo;
 @end

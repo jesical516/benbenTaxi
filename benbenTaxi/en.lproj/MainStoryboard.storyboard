@@ -54,7 +54,7 @@
                                 </state>
                                 <connections>
                                     <action selector="loginPressed:" destination="Ov7-SI-Bda" eventType="touchUpInside" id="loN-uN-aBw"/>
-                                    <segue destination="2" kind="modal" id="1r2-j8-g9m"/>
+                                    <segue destination="2" kind="modal" identifier="loginTrigger" id="1r2-j8-g9m"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" placeholder="手机号" minimumFontSize="17" id="INQ-Ev-m5j">
@@ -98,7 +98,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="uJr-LY-aTs">
-                                <rect key="frame" x="142" y="351" width="37" height="37"/>
+                                <rect key="frame" x="143" y="350" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>

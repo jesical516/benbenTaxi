@@ -1,0 +1,73 @@
+//
+//  benbenTaxiLoginManager.m
+//  benbenTaxi
+//
+//  Created by 晨松 on 13-7-23.
+//  Copyright (c) 2013年 晨松. All rights reserved.
+//
+
+#import "benbenTaxiLoginManager.h"
+#import "JSONKit.h"
+#import "ASIHTTPRequest.h"
+#import "LoginModel.h"
+
+@implementation benbenTaxiLoginManager
+LoginModel* model;
+
+- (void) newAcountProcess : (NSString*) phoneNum : (NSString*) password
+{
+    NSLog(@"phone is %@", phoneNum);
+    NSLog(@"password is %@", password);
+    
+    NSMutableDictionary *postInfoJobj = [NSMutableDictionary dictionary];
+    NSMutableDictionary *userInfoJobj = [NSMutableDictionary dictionary];
+    [userInfoJobj setObject : phoneNum forKey:@"mobile"];
+    [userInfoJobj setObject : password forKey:@"password"];
+    [userInfoJobj setObject : password forKey:@"password_confirmation"];
+    
+    [postInfoJobj setObject : userInfoJobj forKey:@"user"];
+    NSString *strPostInfo = [postInfoJobj JSONString];
+    
+    NSLog(@"post info is %@", strPostInfo);
+    
+    NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/users/create_passenger"];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL : url];
+    [request setRequestMethod:@"POST"];
+    [request appendPostData:[strPostInfo dataUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableDictionary * headerDict = [[NSMutableDictionary alloc]init];
+    [headerDict setValue:@"application/json" forKey:@"Content-Type"];
+    [request setRequestHeaders : headerDict];
+    [ ASIHTTPRequest setShouldUpdateNetworkActivityIndicator:YES ];
+    
+    [request setDelegate:self];
+    [request startAsynchronous];
+}
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    NSData *responseData = [request responseData];
+    NSString *str1 = [[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",str1);
+
+    NSDictionary *loginResult = [responseData objectFromJSONData];
+    NSDictionary *errorDict = [loginResult objectForKey:@"errors"];
+    if(nil != errorDict) {
+        NSArray* keysArray = [errorDict allKeys];
+        NSString* firstKey = [keysArray objectAtIndex:0];
+        NSArray *baseArray = [errorDict objectForKey:firstKey];
+        NSLog(@"base array is %@", baseArray.JSONString);
+        NSString* baseError = (NSString*)[baseArray objectAtIndex:0];
+        [model setLoginStatus:false];
+        [model setErrorInfo:baseError];
+        NSLog([model getErrorInfo]);
+    } else {
+        NSString* responseStr = @"";
+        [model setLoginStatus:true];
+        [model setErrorInfo:responseStr];
+    }
+}
+
+-(void) setLoginModel : (LoginModel*) loginModel
+{
+    model = loginModel;
+}
+@end
