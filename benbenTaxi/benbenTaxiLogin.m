@@ -93,27 +93,12 @@ LoginModel* loginModel;
             [alert show];
             return;
         }
-        /*
-        if([self newAcountProcess]) {
-            [sender setTitle:@"新用户注册" forState:UIControlStateNormal];
-            [self.passwordConfirm setHidden:true];
-            [self.login setTitle:@"登陆" forState:UIControlStateNormal];
-            newAcountState = NO;
-        } else {
-            [self.username setText:@""];
-            [self.password setText:@""];
-            [self.passwordConfirm setText:@""];
-        }
-         */
         [self.loginStatusView startAnimating];
         [loginManager newAcountProcess : self.username.text : self.password.text ];
     } else {
-        [self loginProcess];
+        [self.loginStatusView startAnimating];
+        [loginManager loginProcess : self.username.text : self.password.text ];
     }
-    
-    [self.username setText:@""];
-    [self.password setText:@""];
-    [self.passwordConfirm setText:@""];
 }
 
 - (IBAction)newAcountPressed:(id)sender {
@@ -151,51 +136,6 @@ LoginModel* loginModel;
         [btn setFrame:r2];
         newAcountState = YES;
     }
-}
-
-- (bool) newAcountProcess {
-    NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/users/create_passenger"];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-    [request setHTTPMethod:@"POST"];//设置请求方式为POST，默认为GET
-    
-    //设置用户名和密码
-    NSMutableDictionary *postInfoJobj = [NSMutableDictionary dictionary];
-    
-    NSMutableDictionary *userInfoJobj = [NSMutableDictionary dictionary];
-    [userInfoJobj setObject : self.username.text forKey:@"mobile"];
-    [userInfoJobj setObject : self.password.text forKey:@"password"];
-    [userInfoJobj setObject : self.password.text forKey:@"password_confirmation"];
-    
-    [postInfoJobj setObject : userInfoJobj forKey:@"user"];
-    NSString *strPostInfo = [postInfoJobj JSONString];
-    
-    NSLog(@"post info is %@", strPostInfo);
-    
-    NSData *data = [strPostInfo dataUsingEncoding:NSUTF8StringEncoding];
-    
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:data];
-    
-    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *str1 = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",str1);
-    
-    NSDictionary *loginResult = [received objectFromJSONData];
-    NSDictionary *errorDict = [loginResult objectForKey:@"errors"];
-    if(nil != errorDict) {
-        NSArray* keysArray = [errorDict allKeys];
-        NSString* firstKey = [keysArray objectAtIndex:0];
-        NSArray *baseArray = [errorDict objectForKey:firstKey];
-        NSLog(@"base array is %@", baseArray.JSONString);
-        NSString* baseError = (NSString*)[baseArray objectAtIndex:0];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:baseError delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-        [alert show];
-        return false;
-    } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"恭喜" message:@"注册成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-        [alert show];
-    }
-    return true;
 }
 
 -(void) loginProcess{
@@ -296,6 +236,9 @@ LoginModel* loginModel;
             [self performSegueWithIdentifier:@"loginTrigger" sender:self];
         } else {
             loginState = false;
+            NSString* errorInfo = [loginModel getErrorInfo];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:errorInfo delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
         }
     }
 }

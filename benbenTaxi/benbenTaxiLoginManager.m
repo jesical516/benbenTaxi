@@ -42,6 +42,30 @@ LoginModel* model;
     [request setDelegate:self];
     [request startAsynchronous];
 }
+
+- (void) loginProcess : (NSString*) phoneNum : (NSString*) password
+{
+    NSMutableDictionary *postInfoJobj = [NSMutableDictionary dictionary];
+    NSMutableDictionary *userInfoJobj = [NSMutableDictionary dictionary];
+    [userInfoJobj setObject : phoneNum forKey:@"mobile"];
+    [userInfoJobj setObject : password forKey:@"password"];
+    [postInfoJobj setObject : userInfoJobj forKey:@"session"];
+    NSString *strPostInfo = [postInfoJobj JSONString];
+    
+    NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/sessions/passenger_signin"];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL : url];
+    [request setRequestMethod:@"POST"];
+    [request appendPostData:[strPostInfo dataUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableDictionary * headerDict = [[NSMutableDictionary alloc]init];
+    [headerDict setValue:@"application/json" forKey:@"Content-Type"];
+    [request setRequestHeaders : headerDict];
+    [ ASIHTTPRequest setShouldUpdateNetworkActivityIndicator:YES ];
+    
+    [request setDelegate:self];
+    [request startAsynchronous];
+}
+
+
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     NSData *responseData = [request responseData];
@@ -58,7 +82,6 @@ LoginModel* model;
         NSString* baseError = (NSString*)[baseArray objectAtIndex:0];
         [model setLoginStatus:false];
         [model setErrorInfo:baseError];
-        NSLog([model getErrorInfo]);
     } else {
         NSString* responseStr = @"";
         [model setLoginStatus:true];
@@ -66,6 +89,12 @@ LoginModel* model;
     }
 }
 
+- (void) requestFailed : (ASIHTTPRequest *)request
+{
+    NSString* requestError = @"网络不给力，稍后再试";
+    [model setLoginStatus:false];
+    [model setErrorInfo:requestError];
+}
 -(void) setLoginModel : (LoginModel*) loginModel
 {
     model = loginModel;
