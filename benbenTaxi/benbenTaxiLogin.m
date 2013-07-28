@@ -10,6 +10,7 @@
 #import "JSONKit.h"
 #import "benbenTaxiLoginManager.h"
 #import "LoginModel.h"
+#import "PasswordInfo.h"
 
 @interface benbenTaxiLogin ()
 
@@ -24,6 +25,11 @@ int loginExpireTime = 30 * 86400;
 
 benbenTaxiLoginManager* loginManager;
 LoginModel* loginModel;
+
+NSString * const KEY_USERNAME_PASSWORD = @"benben.taxi.usernamepassword";
+NSString * const KEY_USERNAME = @"benben.taxi.app.username";
+NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
+
 
 -(void) loadUserCookie
 {
@@ -48,6 +54,15 @@ LoginModel* loginModel;
     NSLog(@"here");
     [loginManager setLoginModel:loginModel];
     [loginModel addObserver:self forKeyPath:@"errorInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString* phoneNum = [prefs valueForKey:@"phone"];
+    if(![phoneNum isEqualToString:@""]) {
+        NSMutableDictionary *usernamepasswordKVPairs = (NSMutableDictionary *)[PasswordInfo load:KEY_USERNAME_PASSWORD];
+        if(nil != usernamepasswordKVPairs) {
+            self.username.text = [usernamepasswordKVPairs objectForKey:KEY_USERNAME];
+            self.password.text = [usernamepasswordKVPairs objectForKey:KEY_PASSWORD];
+        }
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -109,7 +124,7 @@ LoginModel* loginModel;
     if( [btn.currentTitle isEqualToString:@"返回"] ) {
         [sender setTitle:@"注册" forState:UIControlStateNormal];
         [self.passwordConfirm setHidden:true];
-        [self.login setTitle:@"登陆" forState:UIControlStateNormal];
+        [self.login setTitle:@"登录" forState:UIControlStateNormal];
         [self.username setText:@""];
         [self.password setText:@""];
         [self.passwordConfirm setText:@""];
@@ -234,6 +249,11 @@ LoginModel* loginModel;
             newAcountState = false;
             loginState = true;
             [self performSegueWithIdentifier:@"loginTrigger" sender:self];
+            NSMutableDictionary *usernamepasswordKVPairs = [NSMutableDictionary dictionary];
+            [usernamepasswordKVPairs setObject : self.username.text forKey:KEY_USERNAME];
+            [usernamepasswordKVPairs setObject : self.password.text forKey:KEY_PASSWORD];
+            [PasswordInfo save:KEY_USERNAME_PASSWORD data:usernamepasswordKVPairs];
+            
         } else {
             loginState = false;
             NSString* errorInfo = [loginModel getErrorInfo];

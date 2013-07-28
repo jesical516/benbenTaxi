@@ -30,7 +30,7 @@
                                 <rect key="frame" x="174" y="216" width="113" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="新用户注册">
+                                <state key="normal" title="注册">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -189,12 +189,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiLogin.h"/>
             <relationships>
                 <relationship kind="action" name="backgroundTap:"/>
-                <relationship kind="action" name="loginPressed:"/>
-                <relationship kind="action" name="newAcountPressed:"/>
-                <relationship kind="action" name="passwordConfirmPressed:"/>
-                <relationship kind="action" name="passwordReceived:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
-                <relationship kind="action" name="usernameReceived:"/>
                 <relationship kind="outlet" name="login" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginDisplay" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="loginStatusView" candidateClass="UIActivityIndicatorView"/>
