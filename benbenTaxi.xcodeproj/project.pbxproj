@@ -16,8 +16,6 @@
 		3A4B27E7176E1588002D72C0 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A4B27E6176E1588002D72C0 /* JSONKit.h */; };
 		3A4B27E8176E1771002D72C0 /* JSONKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A4B27E6176E1588002D72C0 /* JSONKit.h */; };
 		3A4B27EA176E1796002D72C0 /* JSONKit.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A4B27E9176E1796002D72C0 /* JSONKit.m */; };
-		3A5DD6EB179A49640055537C /* getNearbyTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A5DD6E9179A49640055537C /* getNearbyTask.h */; };
-		3A5DD6EC179A49640055537C /* getNearbyTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5DD6EA179A49640055537C /* getNearbyTask.m */; };
 		3A5EC11F179252720006B847 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5EC11E179252720006B847 /* start.png */; };
 		3A5EC121179252ED0006B847 /* benbenIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5EC120179252ED0006B847 /* benbenIcon.png */; };
 		3A5EC123179253030006B847 /* steering.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5EC122179253030006B847 /* steering.png */; };
@@ -45,6 +43,10 @@
 		3ABAE5B517771CA500B86F15 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABAE5B417771CA500B86F15 /* Security.framework */; };
 		3AC1C51617A4B9F400689796 /* PasswordInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC1C51417A4B9F400689796 /* PasswordInfo.h */; };
 		3AC1C51717A4B9F400689796 /* PasswordInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1C51517A4B9F400689796 /* PasswordInfo.m */; };
+		3AC1C52717A53FF600689796 /* NearByDriversManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC1C52517A53FF600689796 /* NearByDriversManager.h */; };
+		3AC1C52817A53FF600689796 /* NearByDriversManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1C52617A53FF600689796 /* NearByDriversManager.m */; };
+		3AC1C52B17A542A200689796 /* NearByDriverModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC1C52917A542A100689796 /* NearByDriverModel.h */; };
+		3AC1C52C17A542A200689796 /* NearByDriverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1C52A17A542A200689796 /* NearByDriverModel.m */; };
 		3AE1CD1C178B233E00D25E70 /* MyMapAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE1CD1A178B233E00D25E70 /* MyMapAnnotation.h */; };
 		3AE1CD1D178B233E00D25E70 /* MyMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */; };
 		3AE233B217721B8900C21BA2 /* benbenTaxiLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */; };
@@ -103,8 +105,6 @@
 		3A4B27DA176E0AF6002D72C0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3A4B27E6176E1588002D72C0 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../json/JSONKit/JSONKit.h; sourceTree = "<group>"; };
 		3A4B27E9176E1796002D72C0 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = ../json/JSONKit/JSONKit.m; sourceTree = "<group>"; };
-		3A5DD6E9179A49640055537C /* getNearbyTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getNearbyTask.h; sourceTree = "<group>"; };
-		3A5DD6EA179A49640055537C /* getNearbyTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getNearbyTask.m; sourceTree = "<group>"; };
 		3A5EC11E179252720006B847 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = SOURCE_ROOT; };
 		3A5EC120179252ED0006B847 /* benbenIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = benbenIcon.png; path = ../benbenIcon.png; sourceTree = "<group>"; };
 		3A5EC122179253030006B847 /* steering.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = steering.png; path = ../steering.png; sourceTree = "<group>"; };
@@ -174,6 +174,10 @@
 		3ABAE5B417771CA500B86F15 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3AC1C51417A4B9F400689796 /* PasswordInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordInfo.h; sourceTree = "<group>"; };
 		3AC1C51517A4B9F400689796 /* PasswordInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordInfo.m; sourceTree = "<group>"; };
+		3AC1C52517A53FF600689796 /* NearByDriversManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByDriversManager.h; sourceTree = "<group>"; };
+		3AC1C52617A53FF600689796 /* NearByDriversManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByDriversManager.m; sourceTree = "<group>"; };
+		3AC1C52917A542A100689796 /* NearByDriverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByDriverModel.h; sourceTree = "<group>"; };
+		3AC1C52A17A542A200689796 /* NearByDriverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByDriverModel.m; sourceTree = "<group>"; };
 		3AE1CD1A178B233E00D25E70 /* MyMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMapAnnotation.h; sourceTree = "<group>"; };
 		3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMapAnnotation.m; sourceTree = "<group>"; };
 		3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiLogin.h; sourceTree = "<group>"; };
@@ -227,15 +231,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3A5DD6E8179A493E0055537C /* task */ = {
-			isa = PBXGroup;
-			children = (
-				3A5DD6E9179A49640055537C /* getNearbyTask.h */,
-				3A5DD6EA179A49640055537C /* getNearbyTask.m */,
-			);
-			name = task;
-			sourceTree = "<group>";
-		};
 		3A5FB0BF1797CFF300D9933C /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +251,10 @@
 				3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */,
 				3A81154F179BD43C00449764 /* LocationModel.h */,
 				3A811550179BD43C00449764 /* LocationModel.m */,
+				3AC1C52517A53FF600689796 /* NearByDriversManager.h */,
+				3AC1C52617A53FF600689796 /* NearByDriversManager.m */,
+				3AC1C52917A542A100689796 /* NearByDriverModel.h */,
+				3AC1C52A17A542A200689796 /* NearByDriverModel.m */,
 			);
 			name = location;
 			sourceTree = "<group>";
@@ -351,7 +350,6 @@
 			isa = PBXGroup;
 			children = (
 				3AC1C50F17A4B90100689796 /* user */,
-				3A5DD6E8179A493E0055537C /* task */,
 				3A5FB0C21797D06200D9933C /* annoation */,
 				3A5FB0C11797D03C00D9933C /* server */,
 				3A5FB0C01797D01900D9933C /* location */,
@@ -445,7 +443,6 @@
 				3AE1CD1C178B233E00D25E70 /* MyMapAnnotation.h in Headers */,
 				3A5EC12617925B920006B847 /* benbenConn.h in Headers */,
 				3A4AB624179308BA007CA445 /* MyBMKPointAnnotation.h in Headers */,
-				3A5DD6EB179A49640055537C /* getNearbyTask.h in Headers */,
 				3A811551179BD43C00449764 /* LocationModel.h in Headers */,
 				3A811557179BF1D300449764 /* LoginModel.h in Headers */,
 				3A3E8699179D929A00FEAAC7 /* benbenTaxiLoginManager.h in Headers */,
@@ -462,6 +459,8 @@
 				3AFE950817A02EAD00D99306 /* ASINetworkQueue.h in Headers */,
 				3AFE950917A02EAD00D99306 /* ASIProgressDelegate.h in Headers */,
 				3AC1C51617A4B9F400689796 /* PasswordInfo.h in Headers */,
+				3AC1C52717A53FF600689796 /* NearByDriversManager.h in Headers */,
+				3AC1C52B17A542A200689796 /* NearByDriverModel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,7 +548,6 @@
 				3AE1CD1D178B233E00D25E70 /* MyMapAnnotation.m in Sources */,
 				3A5EC12717925B920006B847 /* benbenConn.m in Sources */,
 				3A4AB625179308BA007CA445 /* MyBMKPointAnnotation.m in Sources */,
-				3A5DD6EC179A49640055537C /* getNearbyTask.m in Sources */,
 				3A811552179BD43C00449764 /* LocationModel.m in Sources */,
 				3A811558179BF1D300449764 /* LoginModel.m in Sources */,
 				3A3E869A179D929A00FEAAC7 /* benbenTaxiLoginManager.m in Sources */,
@@ -562,6 +560,8 @@
 				3AFE950417A02EAD00D99306 /* ASIHTTPRequest.m in Sources */,
 				3AFE950717A02EAD00D99306 /* ASIInputStream.m in Sources */,
 				3AC1C51717A4B9F400689796 /* PasswordInfo.m in Sources */,
+				3AC1C52817A53FF600689796 /* NearByDriversManager.m in Sources */,
+				3AC1C52C17A542A200689796 /* NearByDriverModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

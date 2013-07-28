@@ -153,50 +153,6 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
     }
 }
 
--(void) loginProcess{
-    NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/sessions/passenger_signin"];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-    [request setHTTPMethod:@"POST"];//设置请求方式为POST，默认为GET
-    
-    //设置用户名和密码
-    NSMutableDictionary *postInfoJobj = [NSMutableDictionary dictionary];
-    NSMutableDictionary *userInfoJobj = [NSMutableDictionary dictionary];
-    [userInfoJobj setObject : self.username.text forKey:@"mobile"];
-    [userInfoJobj setObject : self.password.text forKey:@"password"];
-    [postInfoJobj setObject : userInfoJobj forKey:@"session"];
-    NSString *strPostInfo = [postInfoJobj JSONString];
-    
-    NSLog(@"post info is %@", strPostInfo);
-    
-    NSData *data = [strPostInfo dataUsingEncoding:NSUTF8StringEncoding];
-    
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:data];
-    
-    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *str1 = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",str1);
-    
-    NSDictionary *loginResult = [received objectFromJSONData];
-    NSDictionary *errorDict = [loginResult objectForKey:@"errors"];
-    if(nil != errorDict) {
-        NSArray *baseArray = [errorDict objectForKey:@"base"];
-        NSLog(@"base array is %@", baseArray.JSONString);
-        NSString* baseError = (NSString*)[baseArray objectAtIndex:0];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:baseError delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-        [alert show];
-    } else {
-        loginState = YES;
-        NSString *cookieInfo = [loginResult JSONString];
-        NSLog(@"cookie is %@", cookieInfo);
-        //从返回的结果里面拿到cookie id，然后保存在userDefaults中
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setBool:YES forKey:@"has_login"];
-        [userDefaults setValue: self.username.text forKey:@"phone"];
-        [userDefaults setValue: cookieInfo forKey:@"cookie"];
-    }
-}
-
 - (void)dealloc {
     [_loginDisplay release];
     [_username release];
@@ -205,6 +161,7 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
     [_login release];
     [_newAcount release];
     [_loginStatusView release];
+    [loginModel removeObserver:self forKeyPath:@"errorInfo"];
     [super dealloc];
 }
 
@@ -241,7 +198,6 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"here A");
     if([keyPath isEqualToString:@"errorInfo"])
     {
         [self.loginStatusView stopAnimating];
@@ -253,7 +209,6 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
             [usernamepasswordKVPairs setObject : self.username.text forKey:KEY_USERNAME];
             [usernamepasswordKVPairs setObject : self.password.text forKey:KEY_PASSWORD];
             [PasswordInfo save:KEY_USERNAME_PASSWORD data:usernamepasswordKVPairs];
-            
         } else {
             loginState = false;
             NSString* errorInfo = [loginModel getErrorInfo];

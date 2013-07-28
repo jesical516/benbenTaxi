@@ -11,46 +11,41 @@
 #import "BMKMapView.h"
 #import "JSONKit.h"
 #import "MyBMKPointAnnotation.h"
-#import "locationModel.h"
 #import "ASIHTTPRequest.h"
+#import "MyBMKUserLocation.h"
+#import "MyBMKMapView.h"
+#import "NearByDriverModel.h"
+#import "NearByDriversManager.h"
 
 
 @implementation benbenTaxiViewController
-- (IBAction)callTaxiPressed:(id)sender {
-}
 
-LocationModel *locationModel;
+NearByDriverModel* nearByDriverModel;
+NearByDriversManager* nearByDriversManager;
+NSArray *driverArray;
 
 
 - (void)viewDidLoad
 { 
     [super viewDidLoad];
-    myMap.zoomLevel = 17;
+    myMap.zoomLevel = 15;
     myMap.showsUserLocation = YES;
-    
+  
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     phoneNum = [prefs valueForKey:@"phone"];
+    nearByDriversManager = [[NearByDriversManager alloc]init];
+    nearByDriverModel = [[NearByDriverModel alloc]init];
+    [nearByDriverModel setNearByDriverInfo:@""];
+    [nearByDriverModel setStatus:false];
+    [nearByDriversManager setNearByDriverModel:nearByDriverModel];
     
-    NSString *cookieStr = [prefs valueForKey:@"cookie"];
-    NSData* jsonData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *cookieDict = [jsonData objectFromJSONData];
-    NSString *cookieKey = [cookieDict objectForKey:@"token_key"];
-    NSString *cookieValue = [cookieDict objectForKey:@"token_value"];
-    
-    NSLog(@"cookieKey:%@", cookieKey);
-    NSLog(@"cookieValue:%@", cookieValue);
-    
-    NSString* cookiesTemp = [cookieKey stringByAppendingString:@"="];
-    cookiesTemp = [cookiesTemp stringByAppendingString:cookieValue];
-    NSLog(@"cookiesTemp:%@", cookiesTemp);
-    locationModel = [[LocationModel alloc] init];
-    [locationModel setValue:@"我在北京站" forKey:@"detailAddress"]; 
-    [locationModel addObserver:self forKeyPath:@"detailAddress" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
-
+    [nearByDriverModel addObserver:self forKeyPath:@"driverInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    driverArray = nil;
 }
 - (IBAction)sendTaxiRequest:(id)sender {
-    
+    NSLog(@"driver info is %@", [nearByDriverModel getNearByDriverInfo]);
 }
+
 
 -(void)viewWillAppear:(BOOL)animated {
     [myMap viewWillAppear];
@@ -71,37 +66,16 @@ LocationModel *locationModel;
 
 - (void)mapViewDidStopLocatingUser:(BMKMapView *)mapView
 {
+    NSLog(@"location stop");
     MyBMKPointAnnotation* annotation = [[MyBMKPointAnnotation alloc]init];
     annotation.coordinate = startPt;
     annotation.title = @"我在";
     [myMap addAnnotation:annotation];
+    [nearByDriversManager getNearbyDrivers:startPt];
 }
 
-- (void) setConnectionParams : ASIHTTPRequest : request {
-    [request setHTTPMethod:@"GET"];//设置请求方式为POST，默认为GET
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *cookieStr = [prefs valueForKey:@"cookie"];
-    NSData* jsonData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *cookieDict = [jsonData objectFromJSONData];
-    NSString *cookieKey = [cookieDict objectForKey:@"token_key"];
-    NSString *cookieValue = [cookieDict objectForKey:@"token_value"];
-    NSString* cookiesTemp = [cookieKey stringByAppendingString:@"="];
-    cookiesTemp = [cookiesTemp stringByAppendingString:cookieValue];
-    [request setValue:  cookiesTemp forHTTPHeaderField:@"Cookie"];
-}
 /*
 - (void) getNearbyDriversSucess {
-    NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/users/nearby_driver?lat=8&lng=8"];
-    
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    
-    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *str1 = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"%@", str1);
-    
-    //这里需要将附近的司机信息展示出来
-    
     CLLocationCoordinate2D driver1;//得到经纬度，用于展示图标
     driver1.latitude = 39.9204;
     driver1.longitude = 116.480;
@@ -138,6 +112,7 @@ LocationModel *locationModel;
     
     float localLatitude=startPt.latitude;
     float localLongitude=startPt.longitude;
+    
     CLGeocoder *Geocoder=[[CLGeocoder alloc]init];
     CLGeocodeCompletionHandler handler = ^(NSArray *place, NSError *error) {
         for (CLPlacemark *placemark in place) {
@@ -152,14 +127,7 @@ LocationModel *locationModel;
     CLLocation *loc = [[CLLocation alloc] initWithLatitude: localLatitude longitude:localLongitude];
     [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
     myMap.centerCoordinate = startPt;
-    [locationModel setPassengerLocation:startPt];
-    /*
-    if(![locationModel.getDetailAddress isEqualToString:@"我在"]) {
-        [locationModel setValue:@"我在" forKey:@"detailAddress"];
-    }*/
-    
     myMap.showsUserLocation = NO;
-    NSLog(@"address is %@", locationModel.getDetailAddress);
 }
 
 - (IBAction)textFieldDoneEditing:(id)sender
@@ -173,7 +141,7 @@ LocationModel *locationModel;
     NSLog(@"called here");
     if ([annotation isKindOfClass:[MyBMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
-        newAnnotation.image = [UIImage imageNamed:@"icon_center_point.png"];
+        //newAnnotation.image = [UIImage imageNamed:@"icon_center_point.png"];
         newAnnotation.animatesDrop = YES;
         return newAnnotation;
 	} else if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
@@ -188,13 +156,37 @@ LocationModel *locationModel;
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"here A");
-    if([keyPath isEqualToString:@"detailAddress"])
+    if([keyPath isEqualToString:@"driverInfo"])
     {
-        MyBMKPointAnnotation* annotation = [[MyBMKPointAnnotation alloc]init];
-        annotation.coordinate = startPt;
-        annotation.title = @"我在";
-        [myMap addAnnotation:annotation];
+        if(nil != driverArray && driverArray.count > 0) {
+            [myMap removeAnnotations:driverArray];
+        }
+        NSString* driverInfoStr = nearByDriverModel.getNearByDriverInfo;
+        NSData *data = [driverInfoStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSArray *arr = (NSArray *)[data mutableObjectFromJSONData];
+        NSMutableArray* drivers = [NSMutableArray array];
+        for(int i=0;i<arr.count;i++)
+        {
+            NSDictionary *driver = [arr objectAtIndex:i];
+            NSNumber *driverID = [driver objectForKey:@"driver_id"];
+            NSNumber* lat = [driver objectForKey:@"lat"];
+            NSNumber* lng = [driver objectForKey:@"lng"];
+            CLLocationCoordinate2D driverLocation;//得到经纬度，用于展示图标
+            driverLocation.latitude = [lat.stringValue floatValue];
+            driverLocation.longitude = [lng.stringValue floatValue];
+            NSLog(@"经度：%g",driverLocation.latitude);
+            NSLog(@"纬度：%g",driverLocation.longitude);
+            
+            NSLog(@"%@", lat.stringValue);
+            BMKPointAnnotation* driverAnnotation = [[BMKPointAnnotation alloc]init];
+            driverAnnotation.coordinate = driverLocation;
+            NSString* driverTitle = @"司机";
+            driverTitle = [driverTitle stringByAppendingString:driverID.stringValue];
+            driverAnnotation.title = driverTitle;
+            [drivers addObject:driverAnnotation];
+        }
+        driverArray =  [drivers mutableCopy];;
+        [myMap addAnnotations : driverArray];
     }
 }
 
@@ -205,8 +197,6 @@ LocationModel *locationModel;
 
 - (void)dealloc {
     [_sendRequestBtn release];
-    [locationModel removeObserver:self forKeyPath:@"detailAddress"];
-    [locationModel release];
     [super dealloc];
 }
 

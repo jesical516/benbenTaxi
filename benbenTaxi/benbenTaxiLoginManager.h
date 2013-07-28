@@ -14,4 +14,5 @@
 -(void) setLoginModel : (LoginModel*) model;
 - (void) newAcountProcess : (NSString*) phoneNum : (NSString*) password;
 - (void) loginProcess : (NSString*) phoneNum : (NSString*) password;
+
 @end
