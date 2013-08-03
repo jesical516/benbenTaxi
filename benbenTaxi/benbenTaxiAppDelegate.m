@@ -10,6 +10,7 @@
 
 @implementation benbenTaxiAppDelegate
 
+bool firstOpen = true;
 @synthesize window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -46,6 +47,12 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    if(firstOpen == true) {
+        firstOpen = false;
+    } else {
+        NSLog(@"applicationDidBecomeActive");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateStatus" object:nil];
+    }
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
 }

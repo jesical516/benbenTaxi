@@ -16,6 +16,7 @@
 #import "MyBMKMapView.h"
 #import "NearByDriverModel.h"
 #import "NearByDriversManager.h"
+#import "benbenTaxiAppDelegate.h"
 
 
 @implementation benbenTaxiViewController
@@ -23,10 +24,13 @@
 NearByDriverModel* nearByDriverModel;
 NearByDriversManager* nearByDriversManager;
 NSArray *driverArray;
+MyBMKPointAnnotation* passengerAnnotation;
+
 
 
 - (void)viewDidLoad
 { 
+    NSLog(@"view did load");
     [super viewDidLoad];
     myMap.zoomLevel = 15;
     myMap.showsUserLocation = YES;
@@ -41,6 +45,8 @@ NSArray *driverArray;
     
     [nearByDriverModel addObserver:self forKeyPath:@"driverInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     driverArray = nil;
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
+    passengerAnnotation = nil;
 }
 - (IBAction)sendTaxiRequest:(id)sender {
     NSLog(@"driver info is %@", [nearByDriverModel getNearByDriverInfo]);
@@ -66,36 +72,16 @@ NSArray *driverArray;
 
 - (void)mapViewDidStopLocatingUser:(BMKMapView *)mapView
 {
-    NSLog(@"location stop");
-    MyBMKPointAnnotation* annotation = [[MyBMKPointAnnotation alloc]init];
-    annotation.coordinate = startPt;
-    annotation.title = @"我在";
-    [myMap addAnnotation:annotation];
+    if(nil != passengerAnnotation) {
+        [myMap removeAnnotation:passengerAnnotation];
+    }
+    passengerAnnotation = [[MyBMKPointAnnotation alloc]init];
+    passengerAnnotation.coordinate = startPt;
+    passengerAnnotation.title = @"我在";
+    [myMap addAnnotation:passengerAnnotation];
     [nearByDriversManager getNearbyDrivers:startPt];
 }
 
-/*
-- (void) getNearbyDriversSucess {
-    CLLocationCoordinate2D driver1;//得到经纬度，用于展示图标
-    driver1.latitude = 39.9204;
-    driver1.longitude = 116.480;
-    
-    BMKPointAnnotation* driverAnnotation1 = [[BMKPointAnnotation alloc]init];
-    driverAnnotation1.coordinate = driver1;
-    driverAnnotation1.title = @"司机";
-    
-    CLLocationCoordinate2D driver2;//得到经纬度，用于展示图标
-    driver2.latitude = 39.9205;
-    driver2.longitude = 116.483;
-    
-    BMKPointAnnotation* driverAnnotation2 = [[BMKPointAnnotation alloc]init];
-    driverAnnotation2.coordinate = driver2;
-    driverAnnotation2.title = @"司机";
-    
-    NSArray *mapAnnotations = [[NSArray alloc] initWithObjects:driverAnnotation1, driverAnnotation2, nil];
-    [myMap addAnnotations:mapAnnotations];
-}
-*/
 /**
  *用户位置更新后，会调用此函数
  *@param mapView 地图View
@@ -104,9 +90,6 @@ NSArray *driverArray;
 
 - (void)mapView:(BMKMapView *)mapView didUpdateUserLocation:(BMKUserLocation *)userLocation;
 {
-    NSLog(@"经度：%g",userLocation.coordinate.latitude);
-    NSLog(@"纬度：%g",userLocation.coordinate.longitude);
-    
     startPt.latitude = userLocation.coordinate.latitude;
     startPt.longitude = userLocation.coordinate.longitude;
     
@@ -138,7 +121,6 @@ NSArray *driverArray;
 
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
 {
-    NSLog(@"called here");
     if ([annotation isKindOfClass:[MyBMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
         //newAnnotation.image = [UIImage imageNamed:@"icon_center_point.png"];
@@ -174,10 +156,6 @@ NSArray *driverArray;
             CLLocationCoordinate2D driverLocation;//得到经纬度，用于展示图标
             driverLocation.latitude = [lat.stringValue floatValue];
             driverLocation.longitude = [lng.stringValue floatValue];
-            NSLog(@"经度：%g",driverLocation.latitude);
-            NSLog(@"纬度：%g",driverLocation.longitude);
-            
-            NSLog(@"%@", lat.stringValue);
             BMKPointAnnotation* driverAnnotation = [[BMKPointAnnotation alloc]init];
             driverAnnotation.coordinate = driverLocation;
             NSString* driverTitle = @"司机";
@@ -194,6 +172,9 @@ NSArray *driverArray;
     
 }
 
+-(void)updateStatus:(NSNotification*)notifi {
+    myMap.showsUserLocation = true;
+}
 
 - (void)dealloc {
     [_sendRequestBtn release];

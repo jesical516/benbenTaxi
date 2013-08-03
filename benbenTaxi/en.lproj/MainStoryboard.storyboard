@@ -225,8 +225,6 @@
         <class className="benbenTaxiViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiViewController.h"/>
             <relationships>
-                <relationship kind="action" name="sendTaxiRequest:"/>
-                <relationship kind="action" name="taxiPressed:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
                 <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
                 <relationship kind="outlet" name="sendRequestBtn" candidateClass="UIButton"/>

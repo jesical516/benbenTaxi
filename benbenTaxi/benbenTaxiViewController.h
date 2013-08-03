@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BMapKit.h"
 #import "MyBMKMapView.h"
+#import "benbenTaxiAppDelegate.h"
 
 @interface benbenTaxiViewController :  UIViewController <BMKMapViewDelegate> {
     IBOutlet UILabel *titleDisplay;
@@ -18,6 +19,7 @@
     NSString *phoneNum; //本机号码，用于注册
 }
 @property (retain, nonatomic) IBOutlet UIButton *sendRequestBtn;
-
+@property(retain) benbenTaxiAppDelegate *appDelegate;
+-(void)updateStatus:(NSNotification*)notifi;
 - (IBAction)textFieldDoneEditing:(id)sender;
 @end
