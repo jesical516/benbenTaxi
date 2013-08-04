@@ -64,6 +64,9 @@
 		3AF6EAFA176D90210086F0E6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B80175B45780079772E /* CoreLocation.framework */; };
 		3AF6EAFB176D90310086F0E6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B82175B45850079772E /* QuartzCore.framework */; };
 		3AF6EAFC176D90490086F0E6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB3A79A176D869900987413 /* CoreTelephony.framework */; };
+		3AFA3F6417AE87FF00EDAD7B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFA3F6317AE87FF00EDAD7B /* AVFoundation.framework */; };
+		3AFA3F6617AE880D00EDAD7B /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFA3F6517AE880D00EDAD7B /* CoreAudio.framework */; };
+		3AFA3F6817AE8C3500EDAD7B /* audioRecord.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA3F6717AE8C3500EDAD7B /* audioRecord.xib */; };
 		3AFE94F617A02EAD00D99306 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE94E217A02EAD00D99306 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3AFE94F717A02EAD00D99306 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE94E317A02EAD00D99306 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3AFE94F817A02EAD00D99306 /* ASIHTTPRequestDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AFE94E417A02EAD00D99306 /* ASIHTTPRequestDelegate.h */; };
@@ -191,6 +194,9 @@
 		3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiLogin.h; sourceTree = "<group>"; };
 		3AE233B117721B8900C21BA2 /* benbenTaxiLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = benbenTaxiLogin.m; sourceTree = "<group>"; };
 		3AF6EAF7176D8FFD0086F0E6 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		3AFA3F6317AE87FF00EDAD7B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3AFA3F6517AE880D00EDAD7B /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		3AFA3F6717AE8C3500EDAD7B /* audioRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = audioRecord.xib; path = ../audioRecord.xib; sourceTree = "<group>"; };
 		3AFE94E217A02EAD00D99306 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASINetworkQueue.m; path = "pokeb-asi-http-request-3ed0b3c/Classes/ASINetworkQueue.m"; sourceTree = "<group>"; };
 		3AFE94E317A02EAD00D99306 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIAuthenticationDialog.m; path = "pokeb-asi-http-request-3ed0b3c/Classes/ASIAuthenticationDialog.m"; sourceTree = "<group>"; };
 		3AFE94E417A02EAD00D99306 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequestDelegate.h; path = "pokeb-asi-http-request-3ed0b3c/Classes/ASIHTTPRequestDelegate.h"; sourceTree = "<group>"; };
@@ -218,6 +224,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AFA3F6617AE880D00EDAD7B /* CoreAudio.framework in Frameworks */,
+				3AFA3F6417AE87FF00EDAD7B /* AVFoundation.framework in Frameworks */,
 				3ABAE5B517771CA500B86F15 /* Security.framework in Frameworks */,
 				3A797F22179C25EE00A6BEA0 /* libxml2.2.dylib in Frameworks */,
 				3A797F1F179C24AD00A6BEA0 /* libz.1.2.5.dylib in Frameworks */,
@@ -315,6 +323,8 @@
 		3AB50AFE175B2F880079772E = {
 			isa = PBXGroup;
 			children = (
+				3AFA3F6517AE880D00EDAD7B /* CoreAudio.framework */,
+				3AFA3F6317AE87FF00EDAD7B /* AVFoundation.framework */,
 				3A797FC3179C29B300A6BEA0 /* ASIRequest */,
 				3AB50B60175B41160079772E /* inc */,
 				3AB50B7E175B41160079772E /* libbaidumapapi.a */,
@@ -376,6 +386,7 @@
 		3AB50B14175B2F880079772E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3AFA3F6717AE8C3500EDAD7B /* audioRecord.xib */,
 				3A92383B175CF58600025B71 /* mapapi.bundle */,
 				3A811553179BEF0300449764 /* icon_center_point.png */,
 				3A4AB61A1792E499007CA445 /* 打车按钮.png */,
@@ -552,6 +563,7 @@
 				3A5EC123179253030006B847 /* steering.png in Resources */,
 				3A4AB61B1792E49A007CA445 /* 打车按钮.png in Resources */,
 				3A811554179BEF0300449764 /* icon_center_point.png in Resources */,
+				3AFA3F6817AE8C3500EDAD7B /* audioRecord.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
