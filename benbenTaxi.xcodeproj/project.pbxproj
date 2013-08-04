@@ -349,6 +349,7 @@
 		3AB50B13175B2F880079772E /* benbenTaxi */ = {
 			isa = PBXGroup;
 			children = (
+				3AD5E50C17AE3D2B00640990 /* advertising */,
 				3AC1C50F17A4B90100689796 /* user */,
 				3A5FB0C21797D06200D9933C /* annoation */,
 				3A5FB0C11797D03C00D9933C /* server */,
@@ -429,6 +430,13 @@
 				3AC1C51517A4B9F400689796 /* PasswordInfo.m */,
 			);
 			name = user;
+			sourceTree = "<group>";
+		};
+		3AD5E50C17AE3D2B00640990 /* advertising */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = advertising;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
