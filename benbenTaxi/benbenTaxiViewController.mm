@@ -58,7 +58,7 @@ NSTimer* advertisingTimer;
     advertisingLabel.text = @"奔奔打车";
     [self setAdvertisingAction];
     if( nil == advertisingTimer ) {
-        advertisingTimer=[NSTimer scheduledTimerWithTimeInterval: 0.05
+        advertisingTimer=[NSTimer scheduledTimerWithTimeInterval: 30
                                                target: self
                                              selector: @selector(handleTimer:)
                                              userInfo: nil
@@ -183,9 +183,9 @@ NSTimer* advertisingTimer;
         }
         driverArray =  [drivers mutableCopy];;
         [myMap addAnnotations : driverArray];
-    } else if( [keyPath isEqualToString:@"addvertisingInfo"] ) {
-        if( [advertisingModel valueForKey:@"status"]) {
-            advertisingLabel.text = [advertisingModel valueForKey:@"addvertisingInfo"];
+    } else if( [keyPath isEqualToString:@"advertisingInfo"] ) {
+        if( [advertisingModel getStatus]) {
+            advertisingLabel.text = [advertisingModel valueForKey:@"advertisingInfo"];
             [self setAdvertisingAction];
         }
     }
@@ -209,7 +209,7 @@ NSTimer* advertisingTimer;
 - (void) setAdvertisingAction {
     CGRect frame = advertisingLabel.frame;
     CGSize dims = [advertisingLabel.text sizeWithFont:advertisingLabel.font];
-    frame.origin.x = dims.width >320 ? dims.width:320;      //设置起点
+    frame.origin.x = 0;      //设置起点
     [advertisingLabel setFrame:CGRectMake(frame.origin.x, frame.origin.y, dims.width, dims.height)];
     [UIView beginAnimations:@"testAnimation" context:NULL];
     [UIView setAnimationDuration:18.8f];     //动画执行时间

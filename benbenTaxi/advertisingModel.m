@@ -10,4 +10,11 @@
 
 @implementation AdvertisingModel
 
+- (bool) getStatus {
+    return status;
+}
+- (void) setStatus : (bool) newStatus {
+    status = newStatus;
+}
+
 @end

@@ -13,4 +13,6 @@
     NSString* advertisingInfo;
 }
 
+- (bool) getStatus;
+- (void) setStatus : (bool) newStatus;
 @end
