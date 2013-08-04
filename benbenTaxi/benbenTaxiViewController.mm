@@ -235,9 +235,7 @@ NSTimer* advertisingTimer;
 }
 
 - (IBAction)audioRecordPressed:(id)sender {
-    NSLog(@"audioRecordPressed");
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"打车确认" message:@"aaa" delegate:self cancelButtonTitle:@"取消" otherButtonTitles: nil];
-    [alert show];
+    
 }
 
 @end
