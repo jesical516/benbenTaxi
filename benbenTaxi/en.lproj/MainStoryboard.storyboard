@@ -154,7 +154,6 @@
                                         </state>
                                         <connections>
                                             <action selector="audioRecordPressed:" destination="2" eventType="touchUpInside" id="9SJ-g6-6xA"/>
-                                            <action selector="sendTaxiRequest:" destination="2" eventType="touchUpInside" id="MPO-yj-o9Q"/>
                                         </connections>
                                     </button>
                                 </subviews>

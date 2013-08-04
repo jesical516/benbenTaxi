@@ -69,7 +69,7 @@ NSTimer* advertisingTimer;
     
     longPressGR.allowableMovement=NO;
     longPressGR.minimumPressDuration = 0.2;
-    [_sendRequestBtn addGestureRecognizer:longPressGR];
+    [self.sendRequestBtn addGestureRecognizer:longPressGR];
     [longPressGR release];
 }
 
@@ -192,11 +192,6 @@ NSTimer* advertisingTimer;
         }
     }
 }
-/*
-- (IBAction)taxiPressed:(id)sender
-{
-        
-}*/
 
 -(void)updateStatus:(NSNotification*)notifi {
     myMap.showsUserLocation = true;
@@ -240,7 +235,7 @@ NSTimer* advertisingTimer;
 }
 
 - (IBAction)audioRecordPressed:(id)sender {
-    
+    NSLog(@"audioRecordPressed");
 }
 
 @end
