@@ -10,7 +10,7 @@
 
 @interface AdvertisingModel : NSObject {
     bool status;
-    NSString* addvertisingInfo;
+    NSString* advertisingInfo;
 }
 
 @end

@@ -173,8 +173,9 @@
                     <navigationItem key="navigationItem" id="soq-2y-ilR"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="advertisingLabel" destination="tIt-pJ-DeP" id="923-2i-Nnm"/>
                         <outlet property="myMap" destination="Pbj-hf-Zdk" id="h99-yZ-SiZ"/>
-                        <outlet property="titleDisplay" destination="NDZ-39-9Fj" id="5aT-b5-3qq"/>
+                        <outlet property="titleDisplay" destination="tIt-pJ-DeP" id="m64-qH-Xyo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -235,6 +236,7 @@
                 <relationship kind="action" name="sendTaxiRequest:"/>
                 <relationship kind="action" name="taxiPressed:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
+                <relationship kind="outlet" name="advertisingLabel" candidateClass="BMKMapView"/>
                 <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
                 <relationship kind="outlet" name="sendRequestBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="titleDisplay" candidateClass="UILabel"/>

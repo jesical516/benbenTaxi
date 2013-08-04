@@ -28,6 +28,7 @@ NSArray *driverArray;
 MyBMKPointAnnotation* passengerAnnotation;
 AdvertisingModel* advertisingModel;
 AdvertisingManager* advertisingManager;
+NSTimer* advertisingTimer;
 
 - (void)viewDidLoad
 { 
@@ -52,6 +53,17 @@ AdvertisingManager* advertisingManager;
     advertisingModel = [[AdvertisingModel alloc]init];
     advertisingManager = [[AdvertisingManager alloc]init];
     [advertisingManager setAdvertisingModel:advertisingModel];
+    [advertisingModel addObserver:self forKeyPath:@"advertisingInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    
+    advertisingLabel.text = @"奔奔打车";
+    [self setAdvertisingAction];
+    if( nil == advertisingTimer ) {
+        advertisingTimer=[NSTimer scheduledTimerWithTimeInterval: 0.05
+                                               target: self
+                                             selector: @selector(handleTimer:)
+                                             userInfo: nil
+                                              repeats: YES];
+    }
     
 }
 - (IBAction)sendTaxiRequest:(id)sender {
@@ -171,6 +183,11 @@ AdvertisingManager* advertisingManager;
         }
         driverArray =  [drivers mutableCopy];;
         [myMap addAnnotations : driverArray];
+    } else if( [keyPath isEqualToString:@"addvertisingInfo"] ) {
+        if( [advertisingModel valueForKey:@"status"]) {
+            advertisingLabel.text = [advertisingModel valueForKey:@"addvertisingInfo"];
+            [self setAdvertisingAction];
+        }
     }
 }
 
@@ -184,9 +201,30 @@ AdvertisingManager* advertisingManager;
 
 - (void)dealloc {
     [_sendRequestBtn release];
+    [advertisingLabel release];
+    [advertisingLabel release];
     [super dealloc];
 }
 
-- (void) 
+- (void) setAdvertisingAction {
+    CGRect frame = advertisingLabel.frame;
+    CGSize dims = [advertisingLabel.text sizeWithFont:advertisingLabel.font];
+    frame.origin.x = dims.width >320 ? dims.width:320;      //设置起点
+    [advertisingLabel setFrame:CGRectMake(frame.origin.x, frame.origin.y, dims.width, dims.height)];
+    [UIView beginAnimations:@"testAnimation" context:NULL];
+    [UIView setAnimationDuration:18.8f];     //动画执行时间
+    [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationRepeatAutoreverses:NO];
+    [UIView setAnimationRepeatCount:999999]; // 动画执行次数
+    frame = advertisingLabel.frame;
+    frame.origin.x = -dims.width;   //设置终点
+    advertisingLabel.frame = frame;
+    [UIView commitAnimations]; 
+}
+
+- (void) handleTimer : (id) sender {
+    [advertisingManager updateAdvertisingInfo];
+}
 
 @end
