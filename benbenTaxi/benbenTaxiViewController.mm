@@ -55,21 +55,23 @@ NSTimer* advertisingTimer;
     [advertisingManager setAdvertisingModel:advertisingModel];
     [advertisingModel addObserver:self forKeyPath:@"advertisingInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     
-    advertisingLabel.text = @"奔奔打车";
-    [self setAdvertisingAction];
+    [advertisingManager updateAdvertisingInfo];
     if( nil == advertisingTimer ) {
-        advertisingTimer=[NSTimer scheduledTimerWithTimeInterval: 30
+        advertisingTimer=[NSTimer scheduledTimerWithTimeInterval: 900
                                                target: self
                                              selector: @selector(handleTimer:)
                                              userInfo: nil
                                               repeats: YES];
     }
     
+    UILongPressGestureRecognizer *longPressGR =
+    [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(audioRecordPressed:)];
+    
+    longPressGR.allowableMovement=NO;
+    longPressGR.minimumPressDuration = 0.2;
+    [_sendRequestBtn addGestureRecognizer:longPressGR];
+    [longPressGR release];
 }
-- (IBAction)sendTaxiRequest:(id)sender {
-    NSLog(@"driver info is %@", [nearByDriverModel getNearByDriverInfo]);
-}
-
 
 -(void)viewWillAppear:(BOOL)animated {
     [myMap viewWillAppear];
@@ -147,8 +149,7 @@ NSTimer* advertisingTimer;
 	} else if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
         newAnnotation.image = [UIImage imageNamed:@"steering.png"];
-        newAnnotation.animatesDrop = YES;
-		return newAnnotation;
+        return newAnnotation;
 	}
     
     return nil;
@@ -185,18 +186,29 @@ NSTimer* advertisingTimer;
         [myMap addAnnotations : driverArray];
     } else if( [keyPath isEqualToString:@"advertisingInfo"] ) {
         if( [advertisingModel getStatus]) {
-            advertisingLabel.text = [advertisingModel valueForKey:@"advertisingInfo"];
+            NSString* advertisingInfo = [advertisingModel valueForKey:@"advertisingInfo"];
+            advertisingLabel.text = [@"=====欢迎使用奔奔打车=====" stringByAppendingString : advertisingInfo];
             [self setAdvertisingAction];
         }
     }
 }
-
-- (IBAction)taxiPressed:(id)sender {
-    
-}
+/*
+- (IBAction)taxiPressed:(id)sender
+{
+        
+}*/
 
 -(void)updateStatus:(NSNotification*)notifi {
     myMap.showsUserLocation = true;
+    advertisingLabel.text = @"=====欢迎使用奔奔打车=====";
+    [advertisingManager updateAdvertisingInfo];
+    if( nil == advertisingTimer ) {
+        advertisingTimer=[NSTimer scheduledTimerWithTimeInterval: 900
+                                                          target: self
+                                                        selector: @selector(handleTimer:)
+                                                        userInfo: nil
+                                                         repeats: YES];
+    }
 }
 
 - (void)dealloc {
@@ -212,7 +224,7 @@ NSTimer* advertisingTimer;
     frame.origin.x = 0;      //设置起点
     [advertisingLabel setFrame:CGRectMake(frame.origin.x, frame.origin.y, dims.width, dims.height)];
     [UIView beginAnimations:@"testAnimation" context:NULL];
-    [UIView setAnimationDuration:18.8f];     //动画执行时间
+    [UIView setAnimationDuration:30.8f];     //动画执行时间
     [UIView setAnimationCurve:UIViewAnimationCurveLinear];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationRepeatAutoreverses:NO];
@@ -225,6 +237,10 @@ NSTimer* advertisingTimer;
 
 - (void) handleTimer : (id) sender {
     [advertisingManager updateAdvertisingInfo];
+}
+
+- (IBAction)audioRecordPressed:(id)sender {
+    
 }
 
 @end

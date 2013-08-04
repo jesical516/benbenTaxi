@@ -153,13 +153,14 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="audioRecordPressed:" destination="2" eventType="touchUpInside" id="9SJ-g6-6xA"/>
                                             <action selector="sendTaxiRequest:" destination="2" eventType="touchUpInside" id="MPO-yj-o9Q"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="广告接口" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tIt-pJ-DeP">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="=====欢迎使用奔奔打车=====" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tIt-pJ-DeP">
                                 <rect key="frame" x="0.0" y="35" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -233,10 +234,9 @@
         <class className="benbenTaxiViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiViewController.h"/>
             <relationships>
-                <relationship kind="action" name="sendTaxiRequest:"/>
-                <relationship kind="action" name="taxiPressed:"/>
+                <relationship kind="action" name="audioRecordPressed:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
-                <relationship kind="outlet" name="advertisingLabel" candidateClass="BMKMapView"/>
+                <relationship kind="outlet" name="advertisingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
                 <relationship kind="outlet" name="sendRequestBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="titleDisplay" candidateClass="UILabel"/>
