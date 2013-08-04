@@ -17,7 +17,8 @@
 #import "NearByDriverModel.h"
 #import "NearByDriversManager.h"
 #import "benbenTaxiAppDelegate.h"
-
+#import "AdvertisingModel.h"
+#import "AdvertisingManager.h"
 
 @implementation benbenTaxiViewController
 
@@ -25,8 +26,8 @@ NearByDriverModel* nearByDriverModel;
 NearByDriversManager* nearByDriversManager;
 NSArray *driverArray;
 MyBMKPointAnnotation* passengerAnnotation;
-
-
+AdvertisingModel* advertisingModel;
+AdvertisingManager* advertisingManager;
 
 - (void)viewDidLoad
 { 
@@ -47,6 +48,11 @@ MyBMKPointAnnotation* passengerAnnotation;
     driverArray = nil;
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
     passengerAnnotation = nil;
+    
+    advertisingModel = [[AdvertisingModel alloc]init];
+    advertisingManager = [[AdvertisingManager alloc]init];
+    [advertisingManager setAdvertisingModel:advertisingModel];
+    
 }
 - (IBAction)sendTaxiRequest:(id)sender {
     NSLog(@"driver info is %@", [nearByDriverModel getNearByDriverInfo]);
@@ -180,5 +186,7 @@ MyBMKPointAnnotation* passengerAnnotation;
     [_sendRequestBtn release];
     [super dealloc];
 }
+
+- (void) 
 
 @end

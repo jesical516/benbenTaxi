@@ -49,6 +49,8 @@
 		3AC1C52C17A542A200689796 /* NearByDriverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1C52A17A542A200689796 /* NearByDriverModel.m */; };
 		3AD5E50F17AE3EE000640990 /* AdvertisingModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AD5E50D17AE3EE000640990 /* AdvertisingModel.h */; };
 		3AD5E51017AE3EE000640990 /* AdvertisingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD5E50E17AE3EE000640990 /* AdvertisingModel.m */; };
+		3AD5E51317AE3F2A00640990 /* AdvertisingManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AD5E51117AE3F2A00640990 /* AdvertisingManager.h */; };
+		3AD5E51417AE3F2A00640990 /* AdvertisingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD5E51217AE3F2A00640990 /* AdvertisingManager.m */; };
 		3AE1CD1C178B233E00D25E70 /* MyMapAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE1CD1A178B233E00D25E70 /* MyMapAnnotation.h */; };
 		3AE1CD1D178B233E00D25E70 /* MyMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */; };
 		3AE233B217721B8900C21BA2 /* benbenTaxiLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */; };
@@ -182,6 +184,8 @@
 		3AC1C52A17A542A200689796 /* NearByDriverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByDriverModel.m; sourceTree = "<group>"; };
 		3AD5E50D17AE3EE000640990 /* AdvertisingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisingModel.h; sourceTree = "<group>"; };
 		3AD5E50E17AE3EE000640990 /* AdvertisingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisingModel.m; sourceTree = "<group>"; };
+		3AD5E51117AE3F2A00640990 /* AdvertisingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisingManager.h; sourceTree = "<group>"; };
+		3AD5E51217AE3F2A00640990 /* AdvertisingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisingManager.m; sourceTree = "<group>"; };
 		3AE1CD1A178B233E00D25E70 /* MyMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMapAnnotation.h; sourceTree = "<group>"; };
 		3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMapAnnotation.m; sourceTree = "<group>"; };
 		3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiLogin.h; sourceTree = "<group>"; };
@@ -441,6 +445,8 @@
 			children = (
 				3AD5E50D17AE3EE000640990 /* AdvertisingModel.h */,
 				3AD5E50E17AE3EE000640990 /* AdvertisingModel.m */,
+				3AD5E51117AE3F2A00640990 /* AdvertisingManager.h */,
+				3AD5E51217AE3F2A00640990 /* AdvertisingManager.m */,
 			);
 			name = advertising;
 			sourceTree = "<group>";
@@ -476,6 +482,7 @@
 				3AC1C52717A53FF600689796 /* NearByDriversManager.h in Headers */,
 				3AC1C52B17A542A200689796 /* NearByDriverModel.h in Headers */,
 				3AD5E50F17AE3EE000640990 /* AdvertisingModel.h in Headers */,
+				3AD5E51317AE3F2A00640990 /* AdvertisingManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +585,7 @@
 				3AC1C52817A53FF600689796 /* NearByDriversManager.m in Sources */,
 				3AC1C52C17A542A200689796 /* NearByDriverModel.m in Sources */,
 				3AD5E51017AE3EE000640990 /* AdvertisingModel.m in Sources */,
+				3AD5E51417AE3F2A00640990 /* AdvertisingManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
