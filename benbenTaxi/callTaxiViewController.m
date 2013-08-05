@@ -14,7 +14,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -22,7 +22,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    UILongPressGestureRecognizer *longPrees = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(recordBtnLongPressed:)];
+    longPrees.delegate = self;
+    [_audioRecordBtn addGestureRecognizer:longPrees];
+    [longPrees release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,6 +36,8 @@
 
 - (void)dealloc {
     [_locationDisplay release];
+    [_audioRecordBtn release];
+    [_audioRecordBtn release];
     [super dealloc];
 }
 
@@ -40,8 +45,14 @@
     
 }
 
-- (IBAction)audioRecord:(id)sender {
-    
+#pragma mark - 长按录音
+- (void)recordBtnLongPressed:(UILongPressGestureRecognizer*) longPressedRecognizer{
+    //长按开始
+    if(longPressedRecognizer.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"long pressed start");
+    }//长按结束
+    else if(longPressedRecognizer.state == UIGestureRecognizerStateEnded || longPressedRecognizer.state == UIGestureRecognizerStateCancelled){
+        NSLog(@"long pressed end");
+    }
 }
-
 @end

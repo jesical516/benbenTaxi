@@ -10,5 +10,6 @@
 
 @interface callTaxiViewController : UIViewController
 @property (retain, nonatomic) IBOutlet UILabel *locationDisplay;
+@property (retain, nonatomic) IBOutlet UIButton *audioRecordBtn;
 
 @end

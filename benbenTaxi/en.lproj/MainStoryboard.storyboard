@@ -254,9 +254,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="audioRecord:" destination="hCT-Xg-xvv" eventType="touchUpInside" id="KeC-0i-aDb"/>
-                                </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="CIw-XI-GJL">
                                 <rect key="frame" x="147" y="373" width="37" height="37"/>
@@ -266,6 +263,7 @@
                         <color key="backgroundColor" red="0.047058828175067902" green="0.035294119268655777" blue="0.12549020349979401" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <connections>
+                        <outlet property="audioRecordBtn" destination="ETS-3R-s6W" id="2Uw-R5-Ply"/>
                         <outlet property="locationDisplay" destination="43Y-pI-SCc" id="LaY-0n-RAV"/>
                     </connections>
                 </viewController>
@@ -310,6 +308,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/callTaxiViewController.h"/>
             <relationships>
                 <relationship kind="action" name="sendTaxiRequest:"/>
+                <relationship kind="outlet" name="audioRecordBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="locationDisplay" candidateClass="UILabel"/>
             </relationships>
         </class>
