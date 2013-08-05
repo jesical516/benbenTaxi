@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3A3E8699179D929A00FEAAC7 /* benbenTaxiLoginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A3E8697179D929A00FEAAC7 /* benbenTaxiLoginManager.h */; };
 		3A3E869A179D929A00FEAAC7 /* benbenTaxiLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E8698179D929A00FEAAC7 /* benbenTaxiLoginManager.m */; };
+		3A45A4CE17AFFE5400016AA7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A45A4CD17AFFE5400016AA7 /* AudioToolbox.framework */; };
+		3A45A4D217B004A500016AA7 /* VoiceRecorderBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A45A4D017B004A500016AA7 /* VoiceRecorderBase.h */; };
+		3A45A4D317B004A500016AA7 /* VoiceRecorderBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A45A4D117B004A500016AA7 /* VoiceRecorderBase.m */; };
 		3A4AB61B1792E49A007CA445 /* 打车按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4AB61A1792E499007CA445 /* 打车按钮.png */; };
 		3A4AB624179308BA007CA445 /* MyBMKPointAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A4AB622179308BA007CA445 /* MyBMKPointAnnotation.h */; };
 		3A4AB625179308BA007CA445 /* MyBMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4AB623179308BA007CA445 /* MyBMKPointAnnotation.m */; };
@@ -109,6 +112,9 @@
 /* Begin PBXFileReference section */
 		3A3E8697179D929A00FEAAC7 /* benbenTaxiLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiLoginManager.h; sourceTree = "<group>"; };
 		3A3E8698179D929A00FEAAC7 /* benbenTaxiLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = benbenTaxiLoginManager.m; sourceTree = "<group>"; };
+		3A45A4CD17AFFE5400016AA7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3A45A4D017B004A500016AA7 /* VoiceRecorderBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorderBase.h; sourceTree = "<group>"; };
+		3A45A4D117B004A500016AA7 /* VoiceRecorderBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorderBase.m; sourceTree = "<group>"; };
 		3A4AB61A1792E499007CA445 /* 打车按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "打车按钮.png"; sourceTree = SOURCE_ROOT; };
 		3A4AB622179308BA007CA445 /* MyBMKPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBMKPointAnnotation.h; sourceTree = "<group>"; };
 		3A4AB623179308BA007CA445 /* MyBMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBMKPointAnnotation.m; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A45A4CE17AFFE5400016AA7 /* AudioToolbox.framework in Frameworks */,
 				3AFA3F6617AE880D00EDAD7B /* CoreAudio.framework in Frameworks */,
 				3AFA3F6417AE87FF00EDAD7B /* AVFoundation.framework in Frameworks */,
 				3ABAE5B517771CA500B86F15 /* Security.framework in Frameworks */,
@@ -253,6 +260,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A45A4CF17AFFE7300016AA7 /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				3A45A4D017B004A500016AA7 /* VoiceRecorderBase.h */,
+				3A45A4D117B004A500016AA7 /* VoiceRecorderBase.m */,
+			);
+			name = audio;
+			sourceTree = "<group>";
+		};
 		3A5FB0BF1797CFF300D9933C /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,8 +345,6 @@
 		3AB50AFE175B2F880079772E = {
 			isa = PBXGroup;
 			children = (
-				3AFA3F6517AE880D00EDAD7B /* CoreAudio.framework */,
-				3AFA3F6317AE87FF00EDAD7B /* AVFoundation.framework */,
 				3A797FC3179C29B300A6BEA0 /* ASIRequest */,
 				3AB50B60175B41160079772E /* inc */,
 				3AB50B7E175B41160079772E /* libbaidumapapi.a */,
@@ -351,6 +365,9 @@
 		3AB50B0C175B2F880079772E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A45A4CD17AFFE5400016AA7 /* AudioToolbox.framework */,
+				3AFA3F6517AE880D00EDAD7B /* CoreAudio.framework */,
+				3AFA3F6317AE87FF00EDAD7B /* AVFoundation.framework */,
 				3A797F21179C25EE00A6BEA0 /* libxml2.2.dylib */,
 				3A797F1C179C24AD00A6BEA0 /* libz.1.2.5.dylib */,
 				3A797F19179C248D00A6BEA0 /* MobileCoreServices.framework */,
@@ -373,6 +390,7 @@
 		3AB50B13175B2F880079772E /* benbenTaxi */ = {
 			isa = PBXGroup;
 			children = (
+				3A45A4CF17AFFE7300016AA7 /* audio */,
 				3AFA3F6917AE8F6F00EDAD7B /* Taxi */,
 				3AD5E50C17AE3D2B00640990 /* advertising */,
 				3AC1C50F17A4B90100689796 /* user */,
@@ -512,6 +530,7 @@
 				3AD5E50F17AE3EE000640990 /* AdvertisingModel.h in Headers */,
 				3AD5E51317AE3F2A00640990 /* AdvertisingManager.h in Headers */,
 				3AFA3F7A17AEA28600EDAD7B /* callTaxiViewController.h in Headers */,
+				3A45A4D217B004A500016AA7 /* VoiceRecorderBase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +637,7 @@
 				3AD5E51017AE3EE000640990 /* AdvertisingModel.m in Sources */,
 				3AD5E51417AE3F2A00640990 /* AdvertisingManager.m in Sources */,
 				3AFA3F7B17AEA28600EDAD7B /* callTaxiViewController.m in Sources */,
+				3A45A4D317B004A500016AA7 /* VoiceRecorderBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

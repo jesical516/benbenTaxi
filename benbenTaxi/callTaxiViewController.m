@@ -10,6 +10,9 @@
 
 @implementation callTaxiViewController
 
+NSString* recordFileName = @"taxiRequestAudioRecord";
+@synthesize recorder;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -50,9 +53,16 @@
     //长按开始
     if(longPressedRecognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"long pressed start");
+        //设置文件名
+        [recorder beginRecordByFileName:recordFileName];
+        
     }//长按结束
     else if(longPressedRecognizer.state == UIGestureRecognizerStateEnded || longPressedRecognizer.state == UIGestureRecognizerStateCancelled){
         NSLog(@"long pressed end");
     }
+}
+
+- (void)VoiceRecorderBaseVCRecordFinish:(NSString *)_filePath fileName:(NSString*)_fileName{
+    NSLog(@"录音完成，文件路径:%@",_filePath);
 }
 @end

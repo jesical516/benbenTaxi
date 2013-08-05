@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VoiceRecorderBase.h"
 
 @interface callTaxiViewController : UIViewController
 @property (retain, nonatomic) IBOutlet UILabel *locationDisplay;
 @property (retain, nonatomic) IBOutlet UIButton *audioRecordBtn;
+
+@property (retain, nonatomic)  VoiceRecorderBase *recorder;
 
 @end
