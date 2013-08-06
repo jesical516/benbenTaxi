@@ -22,11 +22,12 @@
 @end
 
 
-@interface VoiceRecorderBase : NSObject {
+@interface VoiceRecorderBase : NSObject<AVAudioRecorderDelegate> {
 @protected
     NSInteger               maxRecordTime;  //最大录音时间
     NSString                *recordFileName;//录音文件名
     NSString                *recordFilePath;//录音文件路径
+    CGPoint                 curTouchPoint;      //触摸点
     CGFloat                 curCount;           //当前计数,初始为0
     BOOL                    canNotSend;         //不能发送
     NSTimer                 *timer;
@@ -84,5 +85,6 @@
  @returns 录音设置
  */
 + (NSDictionary*)getAudioRecorderSettingDict;
+- (void)beginRecordByFileName:(NSString*)_fileName;
 
 @end

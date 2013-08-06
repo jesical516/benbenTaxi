@@ -25,6 +25,9 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    recorder = [[VoiceRecorderBase alloc]init];
+    recorder.vrbDelegate = self;
+    
     UILongPressGestureRecognizer *longPrees = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(recordBtnLongPressed:)];
     longPrees.delegate = self;
     [_audioRecordBtn addGestureRecognizer:longPrees];
@@ -62,7 +65,9 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
     }
 }
 
-- (void)VoiceRecorderBaseVCRecordFinish:(NSString *)_filePath fileName:(NSString*)_fileName{
+- (void)VoiceRecorderBaseRecordFinish:(NSString *)_filePath fileName:(NSString*)_fileName{
     NSLog(@"录音完成，文件路径:%@",_filePath);
 }
+
+
 @end
