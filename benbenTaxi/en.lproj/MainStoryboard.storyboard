@@ -199,7 +199,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="newAcountBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="f4e-pR-ASf">
-                                <rect key="frame" x="176" y="289" width="113" height="44"/>
+                                <rect key="frame" x="177" y="332" width="113" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="取消">
@@ -214,7 +214,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="loginBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zJN-2t-r5V">
-                                <rect key="frame" x="40" y="289" width="113" height="44"/>
+                                <rect key="frame" x="41" y="332" width="113" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="发送">
@@ -230,14 +230,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="位置：北京市朝阳区红庙西里" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="43Y-pI-SCc">
-                                <rect key="frame" x="55" y="213" width="221" height="21"/>
+                                <rect key="frame" x="56" y="256" width="221" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="例句：打车从xxx地到xxx地" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JxA-Ao-rhY">
-                                <rect key="frame" x="55" y="242" width="220" height="21"/>
+                                <rect key="frame" x="56" y="285" width="220" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -256,13 +256,29 @@
                                 </state>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="CIw-XI-GJL">
-                                <rect key="frame" x="147" y="373" width="37" height="37"/>
+                                <rect key="frame" x="147" y="419" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BdY-7I-dmE">
+                                <rect key="frame" x="117" y="191" width="87" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="播放">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="audioPlay:" destination="hCT-Xg-xvv" eventType="touchUpInside" id="20W-GK-6dB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.047058828175067902" green="0.035294119268655777" blue="0.12549020349979401" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <connections>
+                        <outlet property="audioPlayBtn" destination="BdY-7I-dmE" id="yZg-9O-9bv"/>
                         <outlet property="audioRecordBtn" destination="ETS-3R-s6W" id="2Uw-R5-Ply"/>
                         <outlet property="locationDisplay" destination="43Y-pI-SCc" id="LaY-0n-RAV"/>
                     </connections>
@@ -284,12 +300,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiLogin.h"/>
             <relationships>
                 <relationship kind="action" name="backgroundTap:"/>
-                <relationship kind="action" name="loginPressed:"/>
-                <relationship kind="action" name="newAcountPressed:"/>
-                <relationship kind="action" name="passwordConfirmPressed:"/>
-                <relationship kind="action" name="passwordReceived:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
-                <relationship kind="action" name="usernameReceived:"/>
                 <relationship kind="outlet" name="login" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginDisplay" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="loginStatusView" candidateClass="UIActivityIndicatorView"/>
@@ -312,6 +323,9 @@
         <class className="callTaxiViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/callTaxiViewController.h"/>
             <relationships>
+                <relationship kind="action" name="audioPlay:"/>
+                <relationship kind="action" name="sendTaxiRequest:"/>
+                <relationship kind="outlet" name="audioPlayBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="audioRecordBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="locationDisplay" candidateClass="UILabel"/>
             </relationships>
@@ -323,6 +337,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1r2-j8-g9m"/>
+        <segue reference="6Fz-IK-pOS"/>
     </inferredMetricsTieBreakers>
 </document>

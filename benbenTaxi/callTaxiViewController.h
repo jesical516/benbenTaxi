@@ -15,5 +15,8 @@
 @property (retain, nonatomic) IBOutlet UIButton *audioRecordBtn;
 
 @property (retain, nonatomic)  VoiceRecorderBase *recorder;
+@property (retain, nonatomic) IBOutlet UIButton *audioPlayBtn;
+@property (retain, nonatomic) AVAudioPlayer *player;
+
 
 @end

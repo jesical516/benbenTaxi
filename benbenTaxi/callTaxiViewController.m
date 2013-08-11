@@ -11,12 +11,13 @@
 @implementation callTaxiViewController
 
 NSString* recordFileName = @"taxiRequestAudioRecord";
-@synthesize recorder;
+@synthesize recorder, player;
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    player = [[AVAudioPlayer alloc]init];
     recorder = [[VoiceRecorderBase alloc]init];
     recorder.vrbDelegate = self;
     
@@ -35,6 +36,7 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
 - (void)dealloc {
     [_locationDisplay release];
     [_audioRecordBtn release];
+    [_audioPlayBtn release];
     [super dealloc];
 }
 
@@ -51,18 +53,19 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
         [recorder beginRecordByFileName:recordFileName];
     }//长按结束
     else if(longPressedRecognizer.state == UIGestureRecognizerStateEnded || longPressedRecognizer.state == UIGestureRecognizerStateCancelled){
-        NSLog(@"长按事件");
-        
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"消息" message:@"确定删除该模式吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"删除", nil];
-        
-        [alert show];
-        NSLog(@"long pressed end");
-        _audioRecordBtn.highlighted = FALSE;
+        NSLog(@"record done");
+    }
+}
+- (IBAction)audioPlay:(id)sender {
+   if (recordFileName.length > 0) {
+       player = [player initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"]] error:nil];
+       [player play];
     }
 }
 
 - (void)VoiceRecorderBaseRecordFinish:(NSString *)_filePath fileName:(NSString*)_fileName{
     NSLog(@"录音完成，文件路径:%@",_filePath);
+    self.audioPlayBtn.hidden = FALSE;
 }
 
 
