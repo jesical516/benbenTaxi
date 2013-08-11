@@ -51,7 +51,7 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
     loginModel = [[LoginModel alloc]init];
     [loginModel setErrorInfo:@""];
     [loginModel setLoginStatus:false];
-    NSLog(@"here");
+    NSLog(@"benbenTaxi login here");
     [loginManager setLoginModel:loginModel];
     [loginModel addObserver:self forKeyPath:@"errorInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -63,6 +63,7 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
             self.password.text = [usernamepasswordKVPairs objectForKey:KEY_PASSWORD];
         }
     }
+    NSLog(@"benbenTaxi login end");
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -70,6 +71,7 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
         [self.view setHidden:YES];
         [self performSegueWithIdentifier:@"loginTrigger" sender:self];
     }
+    NSLog(@"viewDidAppear");
 }
 
 - (IBAction)usernameReceived:(id)sender {

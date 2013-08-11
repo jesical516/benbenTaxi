@@ -22,7 +22,7 @@
 @end
 
 
-@interface VoiceRecorderBase : NSObject<AVAudioRecorderDelegate> {
+@interface VoiceRecorderBase : NSObject<AVAudioRecorderDelegate, UIGestureRecognizerDelegate> {
 @protected
     NSInteger               maxRecordTime;  //最大录音时间
     NSString                *recordFileName;//录音文件名

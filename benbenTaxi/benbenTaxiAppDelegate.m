@@ -23,8 +23,16 @@ bool firstOpen = true;
         [alert show];
         return NO;
     }
-    // Add the navigation controller's view to the window and display.
-    [self.window makeKeyAndVisible]; 
+    
+    self.window = [[[CustomWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    self.window.rootViewController = [storyBoard instantiateInitialViewController];
+    //self.rootView = [[benbenTaxiLogin alloc] initWithNibName:@"login" bundle:nil];
+    //self.window.rootViewController = self.rootView;
+    [self.window makeKeyAndVisible];
+    if([self.window isKindOfClass:[CustomWindow class]]) {
+        NSLog(@"Fuck here");
+    }
     return YES;
 }
 

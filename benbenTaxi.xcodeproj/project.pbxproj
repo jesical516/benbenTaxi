@@ -73,6 +73,8 @@
 		3AFA3F7117AE954500EDAD7B /* 录音图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA3F7017AE954400EDAD7B /* 录音图标.png */; };
 		3AFA3F7A17AEA28600EDAD7B /* callTaxiViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AFA3F7817AEA28600EDAD7B /* callTaxiViewController.h */; };
 		3AFA3F7B17AEA28600EDAD7B /* callTaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA3F7917AEA28600EDAD7B /* callTaxiViewController.m */; };
+		3AFA711E17B77DBD00C890A0 /* CustomWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AFA711C17B77DBD00C890A0 /* CustomWindow.h */; };
+		3AFA711F17B77DBD00C890A0 /* CustomWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA711D17B77DBD00C890A0 /* CustomWindow.m */; };
 		3AFE94F617A02EAD00D99306 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE94E217A02EAD00D99306 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3AFE94F717A02EAD00D99306 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE94E317A02EAD00D99306 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3AFE94F817A02EAD00D99306 /* ASIHTTPRequestDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AFE94E417A02EAD00D99306 /* ASIHTTPRequestDelegate.h */; };
@@ -209,6 +211,8 @@
 		3AFA3F7017AE954400EDAD7B /* 录音图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "录音图标.png"; sourceTree = SOURCE_ROOT; };
 		3AFA3F7817AEA28600EDAD7B /* callTaxiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = callTaxiViewController.h; sourceTree = "<group>"; };
 		3AFA3F7917AEA28600EDAD7B /* callTaxiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = callTaxiViewController.m; sourceTree = "<group>"; };
+		3AFA711C17B77DBD00C890A0 /* CustomWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWindow.h; sourceTree = "<group>"; };
+		3AFA711D17B77DBD00C890A0 /* CustomWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWindow.m; sourceTree = "<group>"; };
 		3AFE94E217A02EAD00D99306 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASINetworkQueue.m; path = "pokeb-asi-http-request-3ed0b3c/Classes/ASINetworkQueue.m"; sourceTree = "<group>"; };
 		3AFE94E317A02EAD00D99306 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIAuthenticationDialog.m; path = "pokeb-asi-http-request-3ed0b3c/Classes/ASIAuthenticationDialog.m"; sourceTree = "<group>"; };
 		3AFE94E417A02EAD00D99306 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequestDelegate.h; path = "pokeb-asi-http-request-3ed0b3c/Classes/ASIHTTPRequestDelegate.h"; sourceTree = "<group>"; };
@@ -390,6 +394,7 @@
 		3AB50B13175B2F880079772E /* benbenTaxi */ = {
 			isa = PBXGroup;
 			children = (
+				3AFA711B17B77D8200C890A0 /* window */,
 				3A45A4CF17AFFE7300016AA7 /* audio */,
 				3AFA3F6917AE8F6F00EDAD7B /* Taxi */,
 				3AD5E50C17AE3D2B00640990 /* advertising */,
@@ -497,6 +502,15 @@
 			name = Taxi;
 			sourceTree = "<group>";
 		};
+		3AFA711B17B77D8200C890A0 /* window */ = {
+			isa = PBXGroup;
+			children = (
+				3AFA711C17B77DBD00C890A0 /* CustomWindow.h */,
+				3AFA711D17B77DBD00C890A0 /* CustomWindow.m */,
+			);
+			name = window;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -531,6 +545,7 @@
 				3AD5E51317AE3F2A00640990 /* AdvertisingManager.h in Headers */,
 				3AFA3F7A17AEA28600EDAD7B /* callTaxiViewController.h in Headers */,
 				3A45A4D217B004A500016AA7 /* VoiceRecorderBase.h in Headers */,
+				3AFA711E17B77DBD00C890A0 /* CustomWindow.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +653,7 @@
 				3AD5E51417AE3F2A00640990 /* AdvertisingManager.m in Sources */,
 				3AFA3F7B17AEA28600EDAD7B /* callTaxiViewController.m in Sources */,
 				3A45A4D317B004A500016AA7 /* VoiceRecorderBase.m in Sources */,
+				3AFA711F17B77DBD00C890A0 /* CustomWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

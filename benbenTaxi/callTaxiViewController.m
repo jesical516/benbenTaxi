@@ -13,14 +13,6 @@
 NSString* recordFileName = @"taxiRequestAudioRecord";
 @synthesize recorder;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -43,7 +35,6 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
 - (void)dealloc {
     [_locationDisplay release];
     [_audioRecordBtn release];
-    [_audioRecordBtn release];
     [super dealloc];
 }
 
@@ -55,13 +46,18 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
 - (void)recordBtnLongPressed:(UILongPressGestureRecognizer*) longPressedRecognizer{
     //长按开始
     if(longPressedRecognizer.state == UIGestureRecognizerStateBegan) {
+        _audioRecordBtn.highlighted = TRUE;
         NSLog(@"long pressed start");
-        //设置文件名
         [recorder beginRecordByFileName:recordFileName];
-        
     }//长按结束
     else if(longPressedRecognizer.state == UIGestureRecognizerStateEnded || longPressedRecognizer.state == UIGestureRecognizerStateCancelled){
+        NSLog(@"长按事件");
+        
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"消息" message:@"确定删除该模式吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"删除", nil];
+        
+        [alert show];
         NSLog(@"long pressed end");
+        _audioRecordBtn.highlighted = FALSE;
     }
 }
 

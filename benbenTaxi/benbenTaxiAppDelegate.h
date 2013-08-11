@@ -12,9 +12,15 @@
 
 #import <UIKit/UIKit.h>
 #import "BMapKit.h"
+#import "CustomWindow.h"
+#import "benbenTaxiLogin.h"
 
 @interface benbenTaxiAppDelegate : UIResponder <UIApplicationDelegate> {
+    //CustomWindow* window;
     BMKMapManager* _mapManager;
-    UIWindow *window;
 }
+
+@property (strong, nonatomic) CustomWindow *window;
+@property (strong, nonatomic) benbenTaxiLogin *rootView;
+
 @end
