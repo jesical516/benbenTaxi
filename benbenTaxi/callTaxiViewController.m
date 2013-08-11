@@ -59,6 +59,8 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
 - (IBAction)audioPlay:(id)sender {
    if (recordFileName.length > 0) {
        player = [player initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"]] error:nil];
+       [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error: nil];
+       player.volume = 1.0;`
        [player play];
     }
 }
