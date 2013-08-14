@@ -7,11 +7,13 @@
 //
 
 #import "callTaxiViewController.h"
+#import "VoiceConverter.h"
 
 @implementation callTaxiViewController
 
 NSString* recordFileName = @"taxiRequestAudioRecord";
-@synthesize recorder, player;
+
+@synthesize recorder, player, convertAmr;
 
 
 - (void)viewDidLoad
@@ -41,7 +43,25 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
 }
 
 - (IBAction)sendTaxiRequest:(id)sender {
+    if (recordFileName.length > 0){
+        convertAmr = [recordFileName stringByAppendingString:@"wavToAmr"];
+        
+        //转格式
+        [VoiceConverter wavToAmr:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"] amrSavePath:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"]];
+        
+    }
     
+    if (convertAmr.length > 0){
+        //转格式
+        [VoiceConverter amrToWav:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"] wavSavePath:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"]];
+    }
+    
+    if (recordFileName.length > 0) {
+        player = [player initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"]] error:nil];
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error: nil];
+        player.volume = 1.0;
+        [player play];
+    }
 }
 
 #pragma mark - 长按录音
@@ -60,7 +80,7 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
    if (recordFileName.length > 0) {
        player = [player initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"]] error:nil];
        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error: nil];
-       player.volume = 1.0;`
+       player.volume = 1.0;
        [player play];
     }
 }

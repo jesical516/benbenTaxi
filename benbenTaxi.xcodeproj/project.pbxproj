@@ -25,6 +25,18 @@
 		3A5EC12617925B920006B847 /* benbenConn.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A5EC12417925B920006B847 /* benbenConn.h */; };
 		3A5EC12717925B920006B847 /* benbenConn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5EC12517925B920006B847 /* benbenConn.m */; };
 		3A64A97F17709A9300FE64C8 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B27E9176E1796002D72C0 /* JSONKit.m */; };
+		3A707C4317BBEA52009C3E60 /* amrFileCodec.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A707C3417BBEA52009C3E60 /* amrFileCodec.h */; };
+		3A707C4417BBEA52009C3E60 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3A707C3517BBEA52009C3E60 /* amrFileCodec.mm */; };
+		3A707C4517BBEA52009C3E60 /* wav.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A707C3617BBEA52009C3E60 /* wav.h */; };
+		3A707C4617BBEA52009C3E60 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3A707C3717BBEA52009C3E60 /* wav.mm */; };
+		3A707C4917BBEA52009C3E60 /* interf_dec.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A707C3C17BBEA52009C3E60 /* interf_dec.h */; };
+		3A707C4A17BBEA52009C3E60 /* interf_enc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A707C3D17BBEA52009C3E60 /* interf_enc.h */; };
+		3A707C4B17BBEA52009C3E60 /* dec_if.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A707C3F17BBEA52009C3E60 /* dec_if.h */; };
+		3A707C4C17BBEA52009C3E60 /* if_rom.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A707C4017BBEA52009C3E60 /* if_rom.h */; };
+		3A707C4D17BBEA52009C3E60 /* VoiceConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A707C4117BBEA52009C3E60 /* VoiceConverter.h */; };
+		3A707C4E17BBEA52009C3E60 /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3A707C4217BBEA52009C3E60 /* VoiceConverter.mm */; };
+		3A707C4F17BBEED8009C3E60 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A707C3917BBEA52009C3E60 /* libopencore-amrnb.a */; };
+		3A707C5017BBEED8009C3E60 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A707C3A17BBEA52009C3E60 /* libopencore-amrwb.a */; };
 		3A797F18179C247200A6BEA0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797F17179C247200A6BEA0 /* CFNetwork.framework */; };
 		3A797F1A179C248D00A6BEA0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797F19179C248D00A6BEA0 /* MobileCoreServices.framework */; };
 		3A797F1F179C24AD00A6BEA0 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797F1C179C24AD00A6BEA0 /* libz.1.2.5.dylib */; };
@@ -128,6 +140,18 @@
 		3A5EC122179253030006B847 /* steering.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = steering.png; path = ../steering.png; sourceTree = "<group>"; };
 		3A5EC12417925B920006B847 /* benbenConn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenConn.h; sourceTree = "<group>"; };
 		3A5EC12517925B920006B847 /* benbenConn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = benbenConn.m; sourceTree = "<group>"; };
+		3A707C3417BBEA52009C3E60 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
+		3A707C3517BBEA52009C3E60 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
+		3A707C3617BBEA52009C3E60 /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
+		3A707C3717BBEA52009C3E60 /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
+		3A707C3917BBEA52009C3E60 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libopencore-amrnb.a"; path = "benbenTaxi/voiceConvert/lib/libopencore-amrnb.a"; sourceTree = "<group>"; };
+		3A707C3A17BBEA52009C3E60 /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libopencore-amrwb.a"; path = "benbenTaxi/voiceConvert/lib/libopencore-amrwb.a"; sourceTree = "<group>"; };
+		3A707C3C17BBEA52009C3E60 /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		3A707C3D17BBEA52009C3E60 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		3A707C3F17BBEA52009C3E60 /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		3A707C4017BBEA52009C3E60 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
+		3A707C4117BBEA52009C3E60 /* VoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceConverter.h; sourceTree = "<group>"; };
+		3A707C4217BBEA52009C3E60 /* VoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceConverter.mm; sourceTree = "<group>"; };
 		3A797F17179C247200A6BEA0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3A797F19179C248D00A6BEA0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3A797F1C179C24AD00A6BEA0 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
@@ -240,6 +264,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A707C4F17BBEED8009C3E60 /* libopencore-amrnb.a in Frameworks */,
+				3A707C5017BBEED8009C3E60 /* libopencore-amrwb.a in Frameworks */,
 				3A45A4CE17AFFE5400016AA7 /* AudioToolbox.framework in Frameworks */,
 				3AFA3F6617AE880D00EDAD7B /* CoreAudio.framework in Frameworks */,
 				3AFA3F6417AE87FF00EDAD7B /* AVFoundation.framework in Frameworks */,
@@ -319,6 +345,56 @@
 			name = annoation;
 			sourceTree = "<group>";
 		};
+		3A707C3217BBEA52009C3E60 /* voiceConvert */ = {
+			isa = PBXGroup;
+			children = (
+				3A707C3317BBEA52009C3E60 /* amrwapper */,
+				3A707C3817BBEA52009C3E60 /* lib */,
+				3A707C3B17BBEA52009C3E60 /* opencore-amrnb */,
+				3A707C3E17BBEA52009C3E60 /* opencore-amrwb */,
+				3A707C4117BBEA52009C3E60 /* VoiceConverter.h */,
+				3A707C4217BBEA52009C3E60 /* VoiceConverter.mm */,
+			);
+			name = voiceConvert;
+			path = benbenTaxi/voiceConvert;
+			sourceTree = "<group>";
+		};
+		3A707C3317BBEA52009C3E60 /* amrwapper */ = {
+			isa = PBXGroup;
+			children = (
+				3A707C3417BBEA52009C3E60 /* amrFileCodec.h */,
+				3A707C3517BBEA52009C3E60 /* amrFileCodec.mm */,
+				3A707C3617BBEA52009C3E60 /* wav.h */,
+				3A707C3717BBEA52009C3E60 /* wav.mm */,
+			);
+			path = amrwapper;
+			sourceTree = "<group>";
+		};
+		3A707C3817BBEA52009C3E60 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		3A707C3B17BBEA52009C3E60 /* opencore-amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				3A707C3C17BBEA52009C3E60 /* interf_dec.h */,
+				3A707C3D17BBEA52009C3E60 /* interf_enc.h */,
+			);
+			path = "opencore-amrnb";
+			sourceTree = "<group>";
+		};
+		3A707C3E17BBEA52009C3E60 /* opencore-amrwb */ = {
+			isa = PBXGroup;
+			children = (
+				3A707C3F17BBEA52009C3E60 /* dec_if.h */,
+				3A707C4017BBEA52009C3E60 /* if_rom.h */,
+			);
+			path = "opencore-amrwb";
+			sourceTree = "<group>";
+		};
 		3A797FC3179C29B300A6BEA0 /* ASIRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +425,7 @@
 		3AB50AFE175B2F880079772E = {
 			isa = PBXGroup;
 			children = (
+				3A707C3217BBEA52009C3E60 /* voiceConvert */,
 				3A797FC3179C29B300A6BEA0 /* ASIRequest */,
 				3AB50B60175B41160079772E /* inc */,
 				3AB50B7E175B41160079772E /* libbaidumapapi.a */,
@@ -369,6 +446,8 @@
 		3AB50B0C175B2F880079772E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A707C3917BBEA52009C3E60 /* libopencore-amrnb.a */,
+				3A707C3A17BBEA52009C3E60 /* libopencore-amrwb.a */,
 				3A45A4CD17AFFE5400016AA7 /* AudioToolbox.framework */,
 				3AFA3F6517AE880D00EDAD7B /* CoreAudio.framework */,
 				3AFA3F6317AE87FF00EDAD7B /* AVFoundation.framework */,
@@ -546,6 +625,13 @@
 				3AFA3F7A17AEA28600EDAD7B /* callTaxiViewController.h in Headers */,
 				3A45A4D217B004A500016AA7 /* VoiceRecorderBase.h in Headers */,
 				3AFA711E17B77DBD00C890A0 /* CustomWindow.h in Headers */,
+				3A707C4317BBEA52009C3E60 /* amrFileCodec.h in Headers */,
+				3A707C4517BBEA52009C3E60 /* wav.h in Headers */,
+				3A707C4917BBEA52009C3E60 /* interf_dec.h in Headers */,
+				3A707C4A17BBEA52009C3E60 /* interf_enc.h in Headers */,
+				3A707C4B17BBEA52009C3E60 /* dec_if.h in Headers */,
+				3A707C4C17BBEA52009C3E60 /* if_rom.h in Headers */,
+				3A707C4D17BBEA52009C3E60 /* VoiceConverter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +740,9 @@
 				3AFA3F7B17AEA28600EDAD7B /* callTaxiViewController.m in Sources */,
 				3A45A4D317B004A500016AA7 /* VoiceRecorderBase.m in Sources */,
 				3AFA711F17B77DBD00C890A0 /* CustomWindow.m in Sources */,
+				3A707C4417BBEA52009C3E60 /* amrFileCodec.mm in Sources */,
+				3A707C4617BBEA52009C3E60 /* wav.mm in Sources */,
+				3A707C4E17BBEA52009C3E60 /* VoiceConverter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,8 +841,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/benbenTaxi/voiceConvert/lib\"",
 				);
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"$(SRCROOT)/../BaiduMap_iOSSDK_v2.0.0_All/BaiduMap_iOSSDK_v2.0.0_Lib/BaiduMapApi_Lib_iOS_2.0.0/libs/Release-iphoneos\"";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/benbenTaxi/voiceConvert/lib\"",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-ObjC",
@@ -787,6 +881,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/benbenTaxi/voiceConvert/lib\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				"OTHER_LDFLAGS[arch=*]" = (

@@ -17,6 +17,8 @@
 @property (retain, nonatomic)  VoiceRecorderBase *recorder;
 @property (retain, nonatomic) IBOutlet UIButton *audioPlayBtn;
 @property (retain, nonatomic) AVAudioPlayer *player;
+@property (copy, nonatomic)     NSString                *convertAmr;        //转换后的amr文件名
+@property (copy, nonatomic)     NSString                *convertWav;        //amr转wav的文件名
 
 
 @end
