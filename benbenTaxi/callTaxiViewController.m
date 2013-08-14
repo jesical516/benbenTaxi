@@ -13,7 +13,7 @@
 
 NSString* recordFileName = @"taxiRequestAudioRecord";
 
-@synthesize recorder, player, convertAmr;
+@synthesize recorder, player, convertAmr, convertWav;
 
 
 - (void)viewDidLoad
@@ -51,13 +51,14 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
         
     }
     
+    convertWav = [recordFileName stringByAppendingString:@"AmrToWav"];
     if (convertAmr.length > 0){
         //转格式
-        [VoiceConverter amrToWav:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"] wavSavePath:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"]];
+        [VoiceConverter amrToWav:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"] wavSavePath:[VoiceRecorderBase getPathByFileName:convertWav ofType:@"wav"]];
     }
     
-    if (recordFileName.length > 0) {
-        player = [player initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"]] error:nil];
+    if (convertWav.length > 0) {
+        player = [player initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:convertWav ofType:@"wav"]] error:nil];
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error: nil];
         player.volume = 1.0;
         [player play];
