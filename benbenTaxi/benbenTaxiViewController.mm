@@ -47,7 +47,7 @@ NSTimer* advertisingTimer;
     
     [nearByDriverModel addObserver:self forKeyPath:@"driverInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     driverArray = nil;
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
     passengerAnnotation = nil;
     
     advertisingModel = [[AdvertisingModel alloc]init];
@@ -116,6 +116,9 @@ NSTimer* advertisingTimer;
     float localLatitude=startPt.latitude;
     float localLongitude=startPt.longitude;
     
+    NSLog(@"%g", startPt.latitude);
+    NSLog(@"%g", startPt.longitude);
+    
     CLGeocoder *Geocoder=[[CLGeocoder alloc]init];
     CLGeocodeCompletionHandler handler = ^(NSArray *place, NSError *error) {
         for (CLPlacemark *placemark in place) {
@@ -131,6 +134,10 @@ NSTimer* advertisingTimer;
     [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
     myMap.centerCoordinate = startPt;
     myMap.showsUserLocation = NO;
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    [prefs setValue: [NSString stringWithFormat:@"%f",startPt.latitude] forKey:@"latitude"];
+    [prefs setValue: [NSString stringWithFormat:@"%f", startPt.longitude] forKey:@"longitude"];
 }
 
 - (IBAction)textFieldDoneEditing:(id)sender

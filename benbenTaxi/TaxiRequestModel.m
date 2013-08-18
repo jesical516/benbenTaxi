@@ -10,11 +10,11 @@
 
 @implementation TaxiRequestModel
 
-- (bool) getStatus {
-    return status;
+- (bool) getTaxiRequestStatus {
+    return taxiRequestStatus;
 }
-- (void) setStatus : (bool) newStatus {
-    status = newStatus;
+- (void) setTaxiRequestStatus : (bool) newStatus {
+    taxiRequestStatus = newStatus;
 }
 
 

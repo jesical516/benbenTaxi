@@ -10,11 +10,13 @@
 #import "VoiceConverter.h"
 #import "TaxiRequestModel.h"
 #import "TaxiRequestManager.h"
+#import "JSONKit.h"
+#import "base64.h"
 
 @implementation callTaxiViewController
 
 NSString* recordFileName = @"taxiRequestAudioRecord";
-TaxiRequestModel* model;
+TaxiRequestModel* taxiRequestmodel;
 TaxiRequestManager* taxiRequestManager;
 
 @synthesize recorder, player, convertAmr, convertWav;
@@ -23,7 +25,8 @@ TaxiRequestManager* taxiRequestManager;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    model = [[TaxiRequestModel alloc]init];
+    taxiRequestmodel = [[TaxiRequestModel alloc]init];
+    [taxiRequestmodel setTaxiRequestStatus:FALSE];
     taxiRequestManager = [[TaxiRequestManager alloc]init];
     player = [[AVAudioPlayer alloc]init];
     recorder = [[VoiceRecorderBase alloc]init];
@@ -34,8 +37,8 @@ TaxiRequestManager* taxiRequestManager;
     [_audioRecordBtn addGestureRecognizer:longPrees];
     [longPrees release];
     
-    [taxiRequestManager setTaxiRequestModel:model];
-    [model addObserver:self forKeyPath:@"request" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    [taxiRequestManager setTaxiRequestModel:taxiRequestmodel];
+    [taxiRequestmodel addObserver:self forKeyPath:@"request" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     
 }
 
@@ -56,25 +59,48 @@ TaxiRequestManager* taxiRequestManager;
 - (IBAction)sendTaxiRequest:(id)sender {
     if (recordFileName.length > 0){
         convertAmr = [recordFileName stringByAppendingString:@"wavToAmr"];
-        
-        //转格式
         [VoiceConverter wavToAmr:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"] amrSavePath:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"]];
-        
     }
     
-    convertWav = [recordFileName stringByAppendingString:@"AmrToWav"];
     if (convertAmr.length > 0){
+        self.convertWav = [recordFileName stringByAppendingString:@"amrToWav"];
+        
         //转格式
         [VoiceConverter amrToWav:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"] wavSavePath:[VoiceRecorderBase getPathByFileName:convertWav ofType:@"wav"]];
     }
     
-    if (convertWav.length > 0) {
+    if (convertAmr.length > 0) {
         player = [player initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:convertWav ofType:@"wav"]] error:nil];
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error: nil];
         player.volume = 1.0;
         [player play];
     }
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    NSData* audioData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:convertWav]]];
+    NSLog(@"here fuck %@", audioData);
+    NSString* phoneNum = [prefs valueForKey:@"phone"];
+    NSString* latitude = [prefs valueForKey:@"latitude"];
+    NSString* longitude = [prefs valueForKey:@"longitude"];
+    
+    NSMutableDictionary *postInfoJobj = [NSMutableDictionary dictionary];
+    NSMutableDictionary *userInfoJobj = [NSMutableDictionary dictionary];
+    
+    [userInfoJobj setObject : phoneNum forKey:@"passenger_mobile"];
+    [userInfoJobj setObject : longitude forKey:@"passenger_lng"];
+    [userInfoJobj setObject : latitude forKey:@"passenger_lat"];
+    [userInfoJobj setObject : @"30" forKey:@"waiting_time_range"];
+    [userInfoJobj setObject : @"amr" forKey:@"passenger_voice_format"];
+    
+    [postInfoJobj setObject : userInfoJobj forKey:@"taxi_request"];
+    NSString *strPostInfo = [postInfoJobj JSONString];
+    [taxiRequestManager sendTaxiRequest : strPostInfo];
     [self.sendRequestProcess startAnimating];
+    NSFileManager * filemanager = [[[NSFileManager alloc]init] autorelease];
+    if([filemanager fileExistsAtPath:[VoiceRecorderBase getPathByFileName:convertAmr]]){
+        NSLog(@"Found here");
+    }
 }
 
 #pragma mark - 长按录音
@@ -105,8 +131,11 @@ TaxiRequestManager* taxiRequestManager;
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if([keyPath isEqualToString:@"driverInfo"])
+    if([keyPath isEqualToString:@"request"])
     {
+        if([taxiRequestmodel getTaxiRequestStatus]) {
+            [self performSegueWithIdentifier:@"TaxiRequestTrigger" sender:self];
+        }
     }
 }
 

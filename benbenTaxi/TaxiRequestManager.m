@@ -12,14 +12,14 @@
 
 @implementation TaxiRequestManager
 
-NSString* api = @"http://42.121.55.211:8081/api/v1/taxi_requests";
+NSString* TAXI_REQUEST_API = @"http://42.121.55.211:8081/api/v1/taxi_requests";
 -(void) setTaxiRequestModel : (TaxiRequestModel*) newTaxiRequestModel {
     taxiRequestModel = newTaxiRequestModel;
     
 }
 
 -(void) sendTaxiRequest : (NSString*) postData {
-    NSURL *url = [NSURL URLWithString:api];
+    NSURL *url = [NSURL URLWithString:TAXI_REQUEST_API];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL : url];
     [request setRequestMethod:@"POST"];
     
@@ -47,32 +47,13 @@ NSString* api = @"http://42.121.55.211:8081/api/v1/taxi_requests";
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    NSData *responseData = [request responseData];
-    NSString *advertisingResult = [[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSData *data = [advertisingResult dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *arr = (NSArray *)[data mutableObjectFromJSONData];
-    NSString* advertisingInfo = @"";
-    for(int i=0;i<arr.count;i++)
-    {
-        NSDictionary *advertisingItem = [arr objectAtIndex:i];
-        NSString *adInfo = [advertisingItem objectForKey:@"content"];
-        if ([advertisingInfo isEqualToString:@""]) {
-            advertisingInfo = adInfo;
-        } else {
-            advertisingInfo = [ advertisingInfo stringByAppendingString: @" "];
-            advertisingInfo = [ advertisingInfo stringByAppendingString: adInfo];
-            
-        }
-    }
-    
-    NSLog(@"%@",advertisingResult);
-    [taxiRequestModel setStatus:TRUE];
-    [taxiRequestModel setValue: advertisingInfo forKey:@"request"];
+    [taxiRequestModel setTaxiRequestStatus:TRUE];
+    [taxiRequestModel setValue: @"OK" forKey:@"request"];
 }
 
 - (void) requestFailed : (ASIHTTPRequest *)request
 {
-    [taxiRequestModel setStatus:FALSE];
+    [taxiRequestModel setTaxiRequestStatus:FALSE];
     [taxiRequestModel setValue: @"" forKey:@"request"];
 }
 

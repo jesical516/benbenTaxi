@@ -210,7 +210,7 @@
                                 </state>
                                 <connections>
                                     <action selector="newAcountPressed:" destination="Ov7-SI-Bda" eventType="touchUpInside" id="jfk-PK-sAm"/>
-                                    <segue destination="2" kind="modal" modalTransitionStyle="crossDissolve" id="6Fz-IK-pOS"/>
+                                    <segue destination="2" kind="modal" identifier="TaxiRequestTrigger" modalTransitionStyle="crossDissolve" id="6Fz-IK-pOS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="loginBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zJN-2t-r5V">
@@ -227,6 +227,7 @@
                                 <connections>
                                     <action selector="loginPressed:" destination="Ov7-SI-Bda" eventType="touchUpInside" id="4eb-Ed-hME"/>
                                     <action selector="sendTaxiRequest:" destination="hCT-Xg-xvv" eventType="touchUpInside" id="X4o-ph-kY5"/>
+                                    <segue destination="2" kind="modal" id="iDe-70-eVf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="位置：北京市朝阳区红庙西里" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="43Y-pI-SCc">

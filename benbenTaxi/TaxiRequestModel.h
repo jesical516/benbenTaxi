@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface TaxiRequestModel : NSObject {
-    bool status;
+    bool taxiRequestStatus;
     NSString* request;
 }
 
-- (bool) getStatus;
-- (void) setStatus : (bool) newStatus;
+- (bool) getTaxiRequestStatus;
+- (void) setTaxiRequestStatus : (bool) newStatus;
 
 @end
