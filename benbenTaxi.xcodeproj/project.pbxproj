@@ -46,6 +46,10 @@
 		3A811554179BEF0300449764 /* icon_center_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A811553179BEF0300449764 /* icon_center_point.png */; };
 		3A811557179BF1D300449764 /* LoginModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A811555179BF1D200449764 /* LoginModel.h */; };
 		3A811558179BF1D300449764 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A811556179BF1D200449764 /* LoginModel.m */; };
+		3A82B79917C0AE3600FCBB14 /* TaxiRequestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A82B79717C0AE3600FCBB14 /* TaxiRequestModel.h */; };
+		3A82B79A17C0AE3600FCBB14 /* TaxiRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A82B79817C0AE3600FCBB14 /* TaxiRequestModel.m */; };
+		3A82B79D17C0AE4B00FCBB14 /* TaxiRequestManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A82B79B17C0AE4B00FCBB14 /* TaxiRequestManager.h */; };
+		3A82B79E17C0AE4B00FCBB14 /* TaxiRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A82B79C17C0AE4B00FCBB14 /* TaxiRequestManager.m */; };
 		3A92383C175CF58600025B71 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A92383B175CF58600025B71 /* mapapi.bundle */; };
 		3AB50B18175B2F880079772E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AB50B16175B2F880079772E /* InfoPlist.strings */; };
 		3AB50B1A175B2F880079772E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB50B19175B2F880079772E /* main.m */; };
@@ -161,6 +165,10 @@
 		3A811553179BEF0300449764 /* icon_center_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_center_point.png; path = ../icon_center_point.png; sourceTree = "<group>"; };
 		3A811555179BF1D200449764 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
 		3A811556179BF1D200449764 /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
+		3A82B79717C0AE3600FCBB14 /* TaxiRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiRequestModel.h; sourceTree = "<group>"; };
+		3A82B79817C0AE3600FCBB14 /* TaxiRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiRequestModel.m; sourceTree = "<group>"; };
+		3A82B79B17C0AE4B00FCBB14 /* TaxiRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiRequestManager.h; sourceTree = "<group>"; };
+		3A82B79C17C0AE4B00FCBB14 /* TaxiRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiRequestManager.m; sourceTree = "<group>"; };
 		3A92383B175CF58600025B71 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = ../mapapi.bundle; sourceTree = "<group>"; };
 		3AB3A79A176D869900987413 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3AB50B09175B2F880079772E /* benbenTaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = benbenTaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -577,6 +585,10 @@
 			children = (
 				3AFA3F7817AEA28600EDAD7B /* callTaxiViewController.h */,
 				3AFA3F7917AEA28600EDAD7B /* callTaxiViewController.m */,
+				3A82B79717C0AE3600FCBB14 /* TaxiRequestModel.h */,
+				3A82B79817C0AE3600FCBB14 /* TaxiRequestModel.m */,
+				3A82B79B17C0AE4B00FCBB14 /* TaxiRequestManager.h */,
+				3A82B79C17C0AE4B00FCBB14 /* TaxiRequestManager.m */,
 			);
 			name = Taxi;
 			sourceTree = "<group>";
@@ -632,6 +644,8 @@
 				3A707C4B17BBEA52009C3E60 /* dec_if.h in Headers */,
 				3A707C4C17BBEA52009C3E60 /* if_rom.h in Headers */,
 				3A707C4D17BBEA52009C3E60 /* VoiceConverter.h in Headers */,
+				3A82B79917C0AE3600FCBB14 /* TaxiRequestModel.h in Headers */,
+				3A82B79D17C0AE4B00FCBB14 /* TaxiRequestManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +757,8 @@
 				3A707C4417BBEA52009C3E60 /* amrFileCodec.mm in Sources */,
 				3A707C4617BBEA52009C3E60 /* wav.mm in Sources */,
 				3A707C4E17BBEA52009C3E60 /* VoiceConverter.mm in Sources */,
+				3A82B79A17C0AE3600FCBB14 /* TaxiRequestModel.m in Sources */,
+				3A82B79E17C0AE4B00FCBB14 /* TaxiRequestManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
