@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TaxiRequestModel.h"
 
-@interface TaxiRequestManager : NSObject
+@interface TaxiRequestManager : NSObject {
+    TaxiRequestModel* taxiRequestModel;
+}
+
+
+-(void) setTaxiRequestModel : (TaxiRequestModel*) newTaxiRequestModel;
+-(void) sendTaxiRequest : (NSString*) postData;
 
 @end

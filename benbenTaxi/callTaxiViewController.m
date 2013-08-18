@@ -8,10 +8,14 @@
 
 #import "callTaxiViewController.h"
 #import "VoiceConverter.h"
+#import "TaxiRequestModel.h"
+#import "TaxiRequestManager.h"
 
 @implementation callTaxiViewController
 
 NSString* recordFileName = @"taxiRequestAudioRecord";
+TaxiRequestModel* model;
+TaxiRequestManager* taxiRequestManager;
 
 @synthesize recorder, player, convertAmr, convertWav;
 
@@ -19,6 +23,8 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    model = [[TaxiRequestModel alloc]init];
+    taxiRequestManager = [[TaxiRequestManager alloc]init];
     player = [[AVAudioPlayer alloc]init];
     recorder = [[VoiceRecorderBase alloc]init];
     recorder.vrbDelegate = self;
@@ -27,6 +33,10 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
     longPrees.delegate = self;
     [_audioRecordBtn addGestureRecognizer:longPrees];
     [longPrees release];
+    
+    [taxiRequestManager setTaxiRequestModel:model];
+    [model addObserver:self forKeyPath:@"request" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,6 +49,7 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
     [_locationDisplay release];
     [_audioRecordBtn release];
     [_audioPlayBtn release];
+    [_sendRequestProcess release];
     [super dealloc];
 }
 
@@ -63,6 +74,7 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
         player.volume = 1.0;
         [player play];
     }
+    [self.sendRequestProcess startAnimating];
 }
 
 #pragma mark - 长按录音
@@ -89,6 +101,13 @@ NSString* recordFileName = @"taxiRequestAudioRecord";
 - (void)VoiceRecorderBaseRecordFinish:(NSString *)_filePath fileName:(NSString*)_fileName{
     NSLog(@"录音完成，文件路径:%@",_filePath);
     self.audioPlayBtn.hidden = FALSE;
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"driverInfo"])
+    {
+    }
 }
 
 

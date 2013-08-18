@@ -10,4 +10,12 @@
 
 @implementation TaxiRequestModel
 
+- (bool) getStatus {
+    return status;
+}
+- (void) setStatus : (bool) newStatus {
+    status = newStatus;
+}
+
+
 @end

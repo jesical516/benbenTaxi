@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TaxiRequestModel : NSObject
+@interface TaxiRequestModel : NSObject {
+    bool status;
+    NSString* request;
+}
+
+- (bool) getStatus;
+- (void) setStatus : (bool) newStatus;
 
 @end

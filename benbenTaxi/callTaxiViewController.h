@@ -20,5 +20,6 @@
 @property (copy, nonatomic)     NSString                *convertAmr;        //转换后的amr文件名
 @property (copy, nonatomic)     NSString                *convertWav;        //amr转wav的文件名
 
+@property (retain, nonatomic) IBOutlet UIActivityIndicatorView *sendRequestProcess;
 
 @end
