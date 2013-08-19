@@ -109,8 +109,6 @@
     self.recorder.meteringEnabled = YES;
     [self.recorder prepareToRecord];
     
-    NSLog(@"beginRecordByFileName");
-    
     //还原计数
     curCount = 0;
     //还原发送
@@ -128,31 +126,25 @@
 
 #pragma mark - AVAudioRecorder Delegate Methods
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
-    NSLog(@"录音停止");
-    
     [self stopTimer];
     curCount = 0;
 }
 - (void)audioRecorderBeginInterruption:(AVAudioRecorder *)recorder{
-    NSLog(@"录音开始");
     [self stopTimer];
     curCount = 0;
 }
 - (void)audioRecorderEndInterruption:(AVAudioRecorder *)recorder withOptions:(NSUInteger)flags{
-    NSLog(@"录音中断");
     [self stopTimer];
     curCount = 0;
 }
 #pragma mark - 启动定时器
 - (void)startTimer{
     timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateMeters) userInfo:nil repeats:YES];
-    NSLog(@"startTimer");
 }
 
 #pragma mark - 添加触摸观察者
 - (void)addScreenTouchObserver{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreenTouch:) name:@"nScreenTouch" object:nil];
-    NSLog(@"addScreenTouchObserver");
 }
 
 #pragma mark - 停止定时器
@@ -195,18 +187,15 @@
 #pragma mark - 触摸开始
 - (void)touchBegan:(CGPoint)_point{
     curTouchPoint = _point;
-    NSLog(@"touchBegan");
 }
 #pragma mark - 触摸移动
 - (void)touchMoved:(CGPoint)_point{
     curTouchPoint = _point;
-    NSLog(@"touchMoved");
 }
 #pragma mark - 触摸结束
 - (void)touchEnded:(CGPoint)_point{
     //停止计时器
-    NSLog(@"touchEnded");
-
+    
     [self stopTimer];
     
     curTouchPoint = CGPointZero;
@@ -225,7 +214,6 @@
 }
 
 -(void)onScreenTouch:(NSNotification *)notification {
-    NSLog(@"onScreenTouch");
     UIEvent *event=[notification.userInfo objectForKey:@"data"];
     NSSet *allTouches = event.allTouches;
     

@@ -34,7 +34,6 @@
         [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"nScreenTouch" object:nil userInfo:[NSDictionary dictionaryWithObject:event forKey:@"data"]]];
     }
     [super sendEvent:event];
-    NSLog(@"event is send");
 }
 
 @end

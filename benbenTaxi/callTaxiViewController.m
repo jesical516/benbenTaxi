@@ -69,17 +69,31 @@ TaxiRequestManager* taxiRequestManager;
         [VoiceConverter amrToWav:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"] wavSavePath:[VoiceRecorderBase getPathByFileName:convertWav ofType:@"wav"]];
     }
     
+    /*
     if (convertAmr.length > 0) {
         player = [player initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:convertWav ofType:@"wav"]] error:nil];
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error: nil];
         player.volume = 1.0;
         [player play];
-    }
+    }*/
+    
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSData* audioData = [[NSData alloc] initWithContentsOfFile:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"]];
     
-    NSData* audioData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:convertWav]]];
-    NSLog(@"here fuck %@", audioData);
+    Byte* inputData = (Byte*)[audioData bytes];
+    
+    size_t inputDataSize = (size_t)[audioData length];
+    size_t outputDataSize = EstimateBas64EncodedDataSize(inputDataSize);
+    char outputData[outputDataSize];
+    
+    Base64EncodeData(inputData, inputDataSize, outputData, &outputDataSize, FALSE);
+    
+    //NSData *theData = [[NSData alloc] initWithBytes:outputData length:outputDataSize];
+    //NSLog(@"base64 data is %@", theData);
+    NSString* audioStr = [[NSString alloc] initWithCString:outputData];
+    
+    
     NSString* phoneNum = [prefs valueForKey:@"phone"];
     NSString* latitude = [prefs valueForKey:@"latitude"];
     NSString* longitude = [prefs valueForKey:@"longitude"];
@@ -92,6 +106,7 @@ TaxiRequestManager* taxiRequestManager;
     [userInfoJobj setObject : latitude forKey:@"passenger_lat"];
     [userInfoJobj setObject : @"30" forKey:@"waiting_time_range"];
     [userInfoJobj setObject : @"amr" forKey:@"passenger_voice_format"];
+    [userInfoJobj setObject : audioStr forKey:@"passenger_voice"];
     
     [postInfoJobj setObject : userInfoJobj forKey:@"taxi_request"];
     NSString *strPostInfo = [postInfoJobj JSONString];
