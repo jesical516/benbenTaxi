@@ -146,6 +146,8 @@ TaxiRequestManager* taxiRequestManager;
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     if (sendRequestStatus || requestCancelStatus) {
+        NSString* requestID = @"";
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"requestID" object:requestID];
         return TRUE;
     } else {
         return FALSE;

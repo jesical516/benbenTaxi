@@ -27,8 +27,6 @@ bool firstOpen = true;
     self.window = [[[CustomWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     self.window.rootViewController = [storyBoard instantiateInitialViewController];
-    //self.rootView = [[benbenTaxiLogin alloc] initWithNibName:@"login" bundle:nil];
-    //self.window.rootViewController = self.rootView;
     [self.window makeKeyAndVisible];
     if([self.window isKindOfClass:[CustomWindow class]]) {
         NSLog(@"Fuck here");
