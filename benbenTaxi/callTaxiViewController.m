@@ -135,6 +135,9 @@ TaxiRequestManager* taxiRequestManager;
     {
         if([taxiRequestmodel getTaxiRequestStatus]) {
             sendRequestStatus = TRUE;
+            NSString* requestID = [taxiRequestmodel valueForKey:@"request"];
+            NSLog(@"request id is %@", requestID);
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"requestID" object:requestID];
             [self performSegueWithIdentifier:@"TaxiRequestTrigger" sender:self];
         } else {
             sendRequestStatus = FALSE;
@@ -144,15 +147,6 @@ TaxiRequestManager* taxiRequestManager;
     }
 }
 
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    if (sendRequestStatus || requestCancelStatus) {
-        NSString* requestID = @"";
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"requestID" object:requestID];
-        return TRUE;
-    } else {
-        return FALSE;
-    }
-}
 - (IBAction)requestCancelPressed:(id)sender {
     requestCancelStatus = true;
     [self performSegueWithIdentifier:@"TaxiRequestTrigger" sender:self];

@@ -47,8 +47,23 @@ NSString* TAXI_REQUEST_API = @"http://42.121.55.211:8081/api/v1/taxi_requests";
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    [taxiRequestModel setTaxiRequestStatus:TRUE];
-    [taxiRequestModel setValue: @"OK" forKey:@"request"];
+    NSData *responseData = [request responseData];
+    NSDictionary *taxiIDResultDict = [responseData objectFromJSONData];
+    NSDictionary *errorDict = [taxiIDResultDict objectForKey:@"errors"];
+    if(nil != errorDict) {
+        NSArray* keysArray = [errorDict allKeys];
+        NSString* firstKey = [keysArray objectAtIndex:0];
+        NSArray *baseArray = [errorDict objectForKey:firstKey];
+        NSLog(@"base array is %@", baseArray.JSONString);
+        NSString* baseError = (NSString*)[baseArray objectAtIndex:0];
+        [taxiRequestModel setTaxiRequestStatus:FALSE];
+        [taxiRequestModel setValue:baseError forKey:@"request"];
+    } else {
+        [taxiRequestModel setTaxiRequestStatus:TRUE];
+        NSString *requestID = [taxiIDResultDict objectForKey:@"id"];
+        [taxiRequestModel setValue:requestID forKey:@"request"];
+    }
+
 }
 
 - (void) requestFailed : (ASIHTTPRequest *)request

@@ -19,8 +19,11 @@
 #import "benbenTaxiAppDelegate.h"
 #import "AdvertisingModel.h"
 #import "AdvertisingManager.h"
+#import "callTaxiViewController.h"
 
 @implementation benbenTaxiViewController
+
+NSString* TaxiProcessState;
 
 NearByDriverModel* nearByDriverModel;
 NearByDriversManager* nearByDriversManager;
@@ -48,6 +51,8 @@ NSTimer* advertisingTimer;
     [nearByDriverModel addObserver:self forKeyPath:@"driverInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     driverArray = nil;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestTaxiState:) name:@"requestID" object:nil];
+    
     passengerAnnotation = nil;
     
     advertisingModel = [[AdvertisingModel alloc]init];
@@ -222,6 +227,14 @@ NSTimer* advertisingTimer;
     }
 }
 
+
+-(void) requestTaxiState:(NSNotification*)notifi {
+    NSString* taxiID = (NSString*) [notifi object];
+    NSLog(@"Taxi id is %@", taxiID);
+    TaxiProcessState = @"Waiting_Driver_Response";
+}
+
+
 - (void)dealloc {
     [_sendRequestBtn release];
     [advertisingLabel release];
@@ -253,5 +266,7 @@ NSTimer* advertisingTimer;
 - (IBAction)audioRecordPressed:(id)sender {
     
 }
+
+
 
 @end

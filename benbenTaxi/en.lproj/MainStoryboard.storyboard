@@ -228,7 +228,6 @@
                                 <connections>
                                     <action selector="loginPressed:" destination="Ov7-SI-Bda" eventType="touchUpInside" id="4eb-Ed-hME"/>
                                     <action selector="sendTaxiRequest:" destination="hCT-Xg-xvv" eventType="touchUpInside" id="X4o-ph-kY5"/>
-                                    <segue destination="2" kind="modal" id="iDe-70-eVf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="位置：北京市朝阳区红庙西里" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="43Y-pI-SCc">
@@ -295,46 +294,6 @@
         <image name="录音图标.png" width="512" height="512"/>
         <image name="打车按钮.png" width="189" height="37"/>
     </resources>
-    <classes>
-        <class className="BMKMapView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BMKMapView.h"/>
-        </class>
-        <class className="benbenTaxiLogin" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiLogin.h"/>
-            <relationships>
-                <relationship kind="action" name="backgroundTap:"/>
-                <relationship kind="action" name="textFieldDoneEditing:"/>
-                <relationship kind="outlet" name="login" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="loginDisplay" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="loginStatusView" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="newAcount" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordConfirm" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="benbenTaxiViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="textFieldDoneEditing:"/>
-                <relationship kind="outlet" name="advertisingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
-                <relationship kind="outlet" name="sendRequestBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="titleDisplay" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="callTaxiViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/callTaxiViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="requestCancelPressed:"/>
-                <relationship kind="action" name="sendTaxiRequest:"/>
-                <relationship kind="outlet" name="audioPlayBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="audioRecordBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="locationDisplay" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="sendRequestProcess" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
