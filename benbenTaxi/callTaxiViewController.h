@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "VoiceRecorderBase.h"
 
-@interface callTaxiViewController : UIViewController <VoiceRecorderBaseDelegate,UIGestureRecognizerDelegate>
+@interface callTaxiViewController : UIViewController <VoiceRecorderBaseDelegate,UIGestureRecognizerDelegate> {
+    bool sendRequestStatus;
+    bool requestCancelStatus;
+}
 
 @property (retain, nonatomic) IBOutlet UILabel *locationDisplay;
 @property (retain, nonatomic) IBOutlet UIButton *audioRecordBtn;

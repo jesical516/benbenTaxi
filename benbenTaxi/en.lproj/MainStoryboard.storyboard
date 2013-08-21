@@ -210,6 +210,7 @@
                                 </state>
                                 <connections>
                                     <action selector="newAcountPressed:" destination="Ov7-SI-Bda" eventType="touchUpInside" id="jfk-PK-sAm"/>
+                                    <action selector="requestCancelPressed:" destination="hCT-Xg-xvv" eventType="touchUpInside" id="Zfl-7C-3n0"/>
                                     <segue destination="2" kind="modal" identifier="TaxiRequestTrigger" modalTransitionStyle="crossDissolve" id="6Fz-IK-pOS"/>
                                 </connections>
                             </button>
@@ -244,7 +245,7 @@
                                 <color key="textColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ETS-3R-s6W">
+                            <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="ETS-3R-s6W">
                                 <rect key="frame" x="99" y="51" width="133" height="118"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -294,6 +295,46 @@
         <image name="录音图标.png" width="512" height="512"/>
         <image name="打车按钮.png" width="189" height="37"/>
     </resources>
+    <classes>
+        <class className="BMKMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BMKMapView.h"/>
+        </class>
+        <class className="benbenTaxiLogin" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiLogin.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTap:"/>
+                <relationship kind="action" name="textFieldDoneEditing:"/>
+                <relationship kind="outlet" name="login" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="loginStatusView" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="newAcount" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordConfirm" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="benbenTaxiViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="textFieldDoneEditing:"/>
+                <relationship kind="outlet" name="advertisingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
+                <relationship kind="outlet" name="sendRequestBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleDisplay" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="callTaxiViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/callTaxiViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="requestCancelPressed:"/>
+                <relationship kind="action" name="sendTaxiRequest:"/>
+                <relationship kind="outlet" name="audioPlayBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="audioRecordBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="locationDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sendRequestProcess" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -55,6 +55,13 @@ NSTimer* advertisingTimer;
     [advertisingManager setAdvertisingModel:advertisingModel];
     [advertisingModel addObserver:self forKeyPath:@"advertisingInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     
+    NSString* lastAdvertisingLabelText = [prefs valueForKey:@"advertisingLabelText"];
+    
+    if(![lastAdvertisingLabelText isEqualToString:@""]) {
+        advertisingLabel.text = lastAdvertisingLabelText;
+    }
+    [self setAdvertisingAction];
+    
     [advertisingManager updateAdvertisingInfo];
     if( nil == advertisingTimer ) {
         advertisingTimer=[NSTimer scheduledTimerWithTimeInterval: 900
@@ -195,6 +202,8 @@ NSTimer* advertisingTimer;
         if( [advertisingModel getStatus]) {
             NSString* advertisingInfo = [advertisingModel valueForKey:@"advertisingInfo"];
             advertisingLabel.text = [@"=====欢迎使用奔奔打车=====" stringByAppendingString : advertisingInfo];
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            [prefs setValue: advertisingLabel.text forKey : @"advertisingLabelText"];
             [self setAdvertisingAction];
         }
     }

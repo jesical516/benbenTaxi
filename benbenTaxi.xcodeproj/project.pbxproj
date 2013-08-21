@@ -24,8 +24,6 @@
 		3A5EC11F179252720006B847 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5EC11E179252720006B847 /* start.png */; };
 		3A5EC121179252ED0006B847 /* benbenIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5EC120179252ED0006B847 /* benbenIcon.png */; };
 		3A5EC123179253030006B847 /* steering.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5EC122179253030006B847 /* steering.png */; };
-		3A5EC12617925B920006B847 /* benbenConn.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A5EC12417925B920006B847 /* benbenConn.h */; };
-		3A5EC12717925B920006B847 /* benbenConn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5EC12517925B920006B847 /* benbenConn.m */; };
 		3A64A97F17709A9300FE64C8 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B27E9176E1796002D72C0 /* JSONKit.m */; };
 		3A707C4317BBEA52009C3E60 /* amrFileCodec.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A707C3417BBEA52009C3E60 /* amrFileCodec.h */; };
 		3A707C4417BBEA52009C3E60 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3A707C3517BBEA52009C3E60 /* amrFileCodec.mm */; };
@@ -85,6 +83,7 @@
 		3AF6EAFA176D90210086F0E6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B80175B45780079772E /* CoreLocation.framework */; };
 		3AF6EAFB176D90310086F0E6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B82175B45850079772E /* QuartzCore.framework */; };
 		3AF6EAFC176D90490086F0E6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB3A79A176D869900987413 /* CoreTelephony.framework */; };
+		3AFA3CE817C5120B00F025B0 /* start-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA3CE717C5120B00F025B0 /* start-568h@2x.png */; };
 		3AFA3F6417AE87FF00EDAD7B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFA3F6317AE87FF00EDAD7B /* AVFoundation.framework */; };
 		3AFA3F6617AE880D00EDAD7B /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFA3F6517AE880D00EDAD7B /* CoreAudio.framework */; };
 		3AFA3F6817AE8C3500EDAD7B /* audioRecord.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA3F6717AE8C3500EDAD7B /* audioRecord.xib */; };
@@ -146,8 +145,6 @@
 		3A5EC11E179252720006B847 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = SOURCE_ROOT; };
 		3A5EC120179252ED0006B847 /* benbenIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = benbenIcon.png; path = ../benbenIcon.png; sourceTree = "<group>"; };
 		3A5EC122179253030006B847 /* steering.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = steering.png; path = ../steering.png; sourceTree = "<group>"; };
-		3A5EC12417925B920006B847 /* benbenConn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenConn.h; sourceTree = "<group>"; };
-		3A5EC12517925B920006B847 /* benbenConn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = benbenConn.m; sourceTree = "<group>"; };
 		3A707C3417BBEA52009C3E60 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
 		3A707C3517BBEA52009C3E60 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
 		3A707C3617BBEA52009C3E60 /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
@@ -241,6 +238,7 @@
 		3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiLogin.h; sourceTree = "<group>"; };
 		3AE233B117721B8900C21BA2 /* benbenTaxiLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = benbenTaxiLogin.m; sourceTree = "<group>"; };
 		3AF6EAF7176D8FFD0086F0E6 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		3AFA3CE717C5120B00F025B0 /* start-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-568h@2x.png"; sourceTree = "<group>"; };
 		3AFA3F6317AE87FF00EDAD7B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3AFA3F6517AE880D00EDAD7B /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		3AFA3F6717AE8C3500EDAD7B /* audioRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = audioRecord.xib; path = ../audioRecord.xib; sourceTree = "<group>"; };
@@ -348,15 +346,6 @@
 			name = location;
 			sourceTree = "<group>";
 		};
-		3A5FB0C11797D03C00D9933C /* server */ = {
-			isa = PBXGroup;
-			children = (
-				3A5EC12417925B920006B847 /* benbenConn.h */,
-				3A5EC12517925B920006B847 /* benbenConn.m */,
-			);
-			name = server;
-			sourceTree = "<group>";
-		};
 		3A5FB0C21797D06200D9933C /* annoation */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +435,7 @@
 		3AB50AFE175B2F880079772E = {
 			isa = PBXGroup;
 			children = (
+				3AFA3CE717C5120B00F025B0 /* start-568h@2x.png */,
 				3A3773C717C148FB00BD4953 /* Base64 */,
 				3A707C3217BBEA52009C3E60 /* voiceConvert */,
 				3A797FC3179C29B300A6BEA0 /* ASIRequest */,
@@ -501,7 +491,6 @@
 				3AD5E50C17AE3D2B00640990 /* advertising */,
 				3AC1C50F17A4B90100689796 /* user */,
 				3A5FB0C21797D06200D9933C /* annoation */,
-				3A5FB0C11797D03C00D9933C /* server */,
 				3A5FB0C01797D01900D9933C /* location */,
 				3A5FB0BF1797CFF300D9933C /* login */,
 				3AB50B1C175B2F880079772E /* benbenTaxiAppDelegate.h */,
@@ -626,7 +615,6 @@
 				3A4B27E7176E1588002D72C0 /* JSONKit.h in Headers */,
 				3AE233B217721B8900C21BA2 /* benbenTaxiLogin.h in Headers */,
 				3AE1CD1C178B233E00D25E70 /* MyMapAnnotation.h in Headers */,
-				3A5EC12617925B920006B847 /* benbenConn.h in Headers */,
 				3A4AB624179308BA007CA445 /* MyBMKPointAnnotation.h in Headers */,
 				3A811551179BD43C00449764 /* LocationModel.h in Headers */,
 				3A811557179BF1D300449764 /* LoginModel.h in Headers */,
@@ -732,6 +720,7 @@
 				3A811554179BEF0300449764 /* icon_center_point.png in Resources */,
 				3AFA3F6817AE8C3500EDAD7B /* audioRecord.xib in Resources */,
 				3AFA3F7117AE954500EDAD7B /* 录音图标.png in Resources */,
+				3AFA3CE817C5120B00F025B0 /* start-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,7 +737,6 @@
 				3AB50B2A175B2F880079772E /* benbenTaxiViewController.mm in Sources */,
 				3AE233B317721B8900C21BA2 /* benbenTaxiLogin.m in Sources */,
 				3AE1CD1D178B233E00D25E70 /* MyMapAnnotation.m in Sources */,
-				3A5EC12717925B920006B847 /* benbenConn.m in Sources */,
 				3A4AB625179308BA007CA445 /* MyBMKPointAnnotation.m in Sources */,
 				3A811552179BD43C00449764 /* LocationModel.m in Sources */,
 				3A811558179BF1D300449764 /* LoginModel.m in Sources */,

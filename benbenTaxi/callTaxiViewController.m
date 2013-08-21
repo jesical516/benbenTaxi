@@ -39,7 +39,8 @@ TaxiRequestManager* taxiRequestManager;
     
     [taxiRequestManager setTaxiRequestModel:taxiRequestmodel];
     [taxiRequestmodel addObserver:self forKeyPath:@"request" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
-    
+    sendRequestStatus = false;
+    requestCancelStatus = false;
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,15 +70,6 @@ TaxiRequestManager* taxiRequestManager;
         [VoiceConverter amrToWav:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"] wavSavePath:[VoiceRecorderBase getPathByFileName:convertWav ofType:@"wav"]];
     }
     
-    /*
-    if (convertAmr.length > 0) {
-        player = [player initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:convertWav ofType:@"wav"]] error:nil];
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error: nil];
-        player.volume = 1.0;
-        [player play];
-    }*/
-    
-    
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSData* audioData = [[NSData alloc] initWithContentsOfFile:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"]];
     
@@ -88,12 +80,7 @@ TaxiRequestManager* taxiRequestManager;
     char outputData[outputDataSize];
     
     Base64EncodeData(inputData, inputDataSize, outputData, &outputDataSize, FALSE);
-    
-    //NSData *theData = [[NSData alloc] initWithBytes:outputData length:outputDataSize];
-    //NSLog(@"base64 data is %@", theData);
     NSString* audioStr = [[NSString alloc] initWithCString:outputData];
-    
-    
     NSString* phoneNum = [prefs valueForKey:@"phone"];
     NSString* latitude = [prefs valueForKey:@"latitude"];
     NSString* longitude = [prefs valueForKey:@"longitude"];
@@ -112,10 +99,6 @@ TaxiRequestManager* taxiRequestManager;
     NSString *strPostInfo = [postInfoJobj JSONString];
     [taxiRequestManager sendTaxiRequest : strPostInfo];
     [self.sendRequestProcess startAnimating];
-    NSFileManager * filemanager = [[[NSFileManager alloc]init] autorelease];
-    if([filemanager fileExistsAtPath:[VoiceRecorderBase getPathByFileName:convertAmr]]){
-        NSLog(@"Found here");
-    }
 }
 
 #pragma mark - 长按录音
@@ -123,11 +106,13 @@ TaxiRequestManager* taxiRequestManager;
     //长按开始
     if(longPressedRecognizer.state == UIGestureRecognizerStateBegan) {
         _audioRecordBtn.highlighted = TRUE;
+        _audioRecordBtn.showsTouchWhenHighlighted = TRUE;
         NSLog(@"long pressed start");
         [recorder beginRecordByFileName:recordFileName];
     }//长按结束
     else if(longPressedRecognizer.state == UIGestureRecognizerStateEnded || longPressedRecognizer.state == UIGestureRecognizerStateCancelled){
-        NSLog(@"record done");
+        _audioRecordBtn.showsTouchWhenHighlighted = FALSE;
+        NSLog(@"long pressed end");
     }
 }
 - (IBAction)audioPlay:(id)sender {
@@ -149,10 +134,26 @@ TaxiRequestManager* taxiRequestManager;
     if([keyPath isEqualToString:@"request"])
     {
         if([taxiRequestmodel getTaxiRequestStatus]) {
+            sendRequestStatus = TRUE;
             [self performSegueWithIdentifier:@"TaxiRequestTrigger" sender:self];
+        } else {
+            sendRequestStatus = FALSE;
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"失败" message:@"网络不给力，请稍后再试..." delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
         }
     }
 }
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if (sendRequestStatus || requestCancelStatus) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+- (IBAction)requestCancelPressed:(id)sender {
+    requestCancelStatus = true;
+    [self performSegueWithIdentifier:@"TaxiRequestTrigger" sender:self];
+}
 
 @end
