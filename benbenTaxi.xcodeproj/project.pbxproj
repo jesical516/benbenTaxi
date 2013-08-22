@@ -41,6 +41,10 @@
 		3A797F1A179C248D00A6BEA0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797F19179C248D00A6BEA0 /* MobileCoreServices.framework */; };
 		3A797F1F179C24AD00A6BEA0 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797F1C179C24AD00A6BEA0 /* libz.1.2.5.dylib */; };
 		3A797F22179C25EE00A6BEA0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A797F21179C25EE00A6BEA0 /* libxml2.2.dylib */; };
+		3A7A6CE017C6750C006014CA /* DriverResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A7A6CDE17C6750C006014CA /* DriverResponseModel.h */; };
+		3A7A6CE117C6750C006014CA /* DriverResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7A6CDF17C6750C006014CA /* DriverResponseModel.m */; };
+		3A7A6CE417C67524006014CA /* DriverResponseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A7A6CE217C67524006014CA /* DriverResponseManager.h */; };
+		3A7A6CE517C67524006014CA /* DriverResponseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7A6CE317C67524006014CA /* DriverResponseManager.m */; };
 		3A811551179BD43C00449764 /* LocationModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A81154F179BD43C00449764 /* LocationModel.h */; };
 		3A811552179BD43C00449764 /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A811550179BD43C00449764 /* LocationModel.m */; };
 		3A811554179BEF0300449764 /* icon_center_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A811553179BEF0300449764 /* icon_center_point.png */; };
@@ -161,6 +165,10 @@
 		3A797F19179C248D00A6BEA0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3A797F1C179C24AD00A6BEA0 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		3A797F21179C25EE00A6BEA0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		3A7A6CDE17C6750C006014CA /* DriverResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverResponseModel.h; sourceTree = "<group>"; };
+		3A7A6CDF17C6750C006014CA /* DriverResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverResponseModel.m; sourceTree = "<group>"; };
+		3A7A6CE217C67524006014CA /* DriverResponseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverResponseManager.h; sourceTree = "<group>"; };
+		3A7A6CE317C67524006014CA /* DriverResponseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverResponseManager.m; sourceTree = "<group>"; };
 		3A81154F179BD43C00449764 /* LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModel.h; sourceTree = "<group>"; };
 		3A811550179BD43C00449764 /* LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModel.m; sourceTree = "<group>"; };
 		3A811553179BEF0300449764 /* icon_center_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_center_point.png; path = ../icon_center_point.png; sourceTree = "<group>"; };
@@ -432,6 +440,17 @@
 			name = ASIRequest;
 			sourceTree = "<group>";
 		};
+		3A7A6CDD17C674DE006014CA /* DriverResponse */ = {
+			isa = PBXGroup;
+			children = (
+				3A7A6CDE17C6750C006014CA /* DriverResponseModel.h */,
+				3A7A6CDF17C6750C006014CA /* DriverResponseModel.m */,
+				3A7A6CE217C67524006014CA /* DriverResponseManager.h */,
+				3A7A6CE317C67524006014CA /* DriverResponseManager.m */,
+			);
+			name = DriverResponse;
+			sourceTree = "<group>";
+		};
 		3AB50AFE175B2F880079772E = {
 			isa = PBXGroup;
 			children = (
@@ -485,6 +504,7 @@
 		3AB50B13175B2F880079772E /* benbenTaxi */ = {
 			isa = PBXGroup;
 			children = (
+				3A7A6CDD17C674DE006014CA /* DriverResponse */,
 				3AFA711B17B77D8200C890A0 /* window */,
 				3A45A4CF17AFFE7300016AA7 /* audio */,
 				3AFA3F6917AE8F6F00EDAD7B /* Taxi */,
@@ -649,6 +669,8 @@
 				3A82B79917C0AE3600FCBB14 /* TaxiRequestModel.h in Headers */,
 				3A82B79D17C0AE4B00FCBB14 /* TaxiRequestManager.h in Headers */,
 				3A3773CA17C1490F00BD4953 /* base64.h in Headers */,
+				3A7A6CE017C6750C006014CA /* DriverResponseModel.h in Headers */,
+				3A7A6CE417C67524006014CA /* DriverResponseManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,6 +785,8 @@
 				3A82B79A17C0AE3600FCBB14 /* TaxiRequestModel.m in Sources */,
 				3A82B79E17C0AE4B00FCBB14 /* TaxiRequestManager.m in Sources */,
 				3A3773CB17C1490F00BD4953 /* base64.m in Sources */,
+				3A7A6CE117C6750C006014CA /* DriverResponseModel.m in Sources */,
+				3A7A6CE517C67524006014CA /* DriverResponseManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

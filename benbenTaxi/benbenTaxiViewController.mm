@@ -24,6 +24,7 @@
 @implementation benbenTaxiViewController
 
 NSString* TaxiProcessState;
+NSString* taxiRequestID;
 
 NearByDriverModel* nearByDriverModel;
 NearByDriversManager* nearByDriversManager;
@@ -231,7 +232,9 @@ NSTimer* advertisingTimer;
 -(void) requestTaxiState:(NSNotification*)notifi {
     NSString* taxiID = (NSString*) [notifi object];
     NSLog(@"Taxi id is %@", taxiID);
-    TaxiProcessState = @"Waiting_Driver_Response";
+
+    taxiRequestID = taxiID;
+    
 }
 
 
