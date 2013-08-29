@@ -18,4 +18,12 @@
     driverResponseStatus = newResponseStatus;
 }
 
+- (bool) getConfirmStatus {
+    return confirmStatus;
+}
+- (void) setConfirmStatus : (bool) newConfirmStatus {
+    confirmStatus = newConfirmStatus;
+}
+
+
 @end

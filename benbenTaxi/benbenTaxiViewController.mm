@@ -20,6 +20,9 @@
 #import "AdvertisingModel.h"
 #import "AdvertisingManager.h"
 #import "callTaxiViewController.h"
+#import "DriverResponseManager.h"
+#import "DriverResponseModel.h"
+#import "ResponseHandler.h"
 
 @implementation benbenTaxiViewController
 
@@ -32,7 +35,14 @@ NSArray *driverArray;
 MyBMKPointAnnotation* passengerAnnotation;
 AdvertisingModel* advertisingModel;
 AdvertisingManager* advertisingManager;
+
 NSTimer* advertisingTimer;
+NSTimer* getDriverResponseTimer;
+
+DriverResponseManager* driverResponseManager;
+DriverResponseModel* driverResponseModel;
+ResponseHandler* responseHandler;
+
 
 - (void)viewDidLoad
 { 
@@ -55,6 +65,17 @@ NSTimer* advertisingTimer;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestTaxiState:) name:@"requestID" object:nil];
     
     passengerAnnotation = nil;
+    
+    driverResponseManager = [[DriverResponseManager alloc]init];
+    responseHandler = [[ResponseHandler alloc]init];
+    driverResponseModel = [[DriverResponseModel alloc]init];
+    
+    [driverResponseManager setDriverResponseModel:driverResponseModel];
+    [responseHandler setDriverResponseModel:driverResponseModel];
+    
+    [driverResponseModel addObserver:self forKeyPath:@"driverResponseDetail" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    [driverResponseModel addObserver:self forKeyPath:@"confirmResponse" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    
     
     advertisingModel = [[AdvertisingModel alloc]init];
     advertisingManager = [[AdvertisingManager alloc]init];
@@ -84,6 +105,7 @@ NSTimer* advertisingTimer;
     longPressGR.minimumPressDuration = 0.2;
     [self.sendRequestBtn addGestureRecognizer:longPressGR];
     [longPressGR release];
+    getDriverResponseTimer = nil;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -212,6 +234,27 @@ NSTimer* advertisingTimer;
             [prefs setValue: advertisingLabel.text forKey : @"advertisingLabelText"];
             [self setAdvertisingAction];
         }
+    } else if([keyPath isEqualToString:@"driverResponseDetail"]) {
+        NSLog(@"driver returns %@", [driverResponseModel valueForKey:@"requestStatus"]);
+        if([driverResponseModel getDriverResponseStatus]) {
+            if([[driverResponseModel valueForKey:@"requestStatus"] isEqualToString:@"Waiting_Passenger_Confirm"]) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"有司机确认，距离您约0.2公里" delegate:self cancelButtonTitle:@"重新打车" otherButtonTitles:@"确认", nil];
+                [alert show];
+            } else {
+                NSLog(@"Here B");
+                
+                [driverResponseManager getDriverResponse:taxiRequestID];
+            }
+        
+        } else {
+            if([[driverResponseModel valueForKey:@"requestStatus"] isEqualToString:@"fail"]) {
+                [driverResponseManager getDriverResponse:taxiRequestID];
+            }
+        }
+    } else if ([keyPath isEqualToString:@"confirmResponse"]) {
+        NSString *escapedPhoneNumber = @"18511585218";
+        NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", escapedPhoneNumber]];
+        [[UIApplication sharedApplication] openURL:telURL];
     }
 }
 
@@ -232,9 +275,9 @@ NSTimer* advertisingTimer;
 -(void) requestTaxiState:(NSNotification*)notifi {
     NSString* taxiID = (NSString*) [notifi object];
     NSLog(@"Taxi id is %@", taxiID);
-
     taxiRequestID = taxiID;
-    
+    [driverResponseModel setValue:@"waiting_passenger_send_request" forKey:@"requestStatus"];
+    [driverResponseManager getDriverResponse:taxiRequestID];
 }
 
 
@@ -270,6 +313,13 @@ NSTimer* advertisingTimer;
     
 }
 
-
+- (void) alertView:(UIAlertView *)alertview clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        NSLog(@"0 %@",alertview.title);
+        [responseHandler confirmRequest:taxiRequestID];
+    } else {
+        NSLog(@"1 %@",alertview.title);
+    }
+}
 
 @end

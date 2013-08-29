@@ -48,6 +48,10 @@ NSString* TAXI_REQUEST_API = @"http://42.121.55.211:8081/api/v1/taxi_requests";
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     NSData *responseData = [request responseData];
+    NSString *advertisingResult = [[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"result is %@", advertisingResult);
+    
     NSDictionary *taxiIDResultDict = [responseData objectFromJSONData];
     NSDictionary *errorDict = [taxiIDResultDict objectForKey:@"errors"];
     if(nil != errorDict) {

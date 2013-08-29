@@ -1,29 +1,30 @@
 //
-//  DriverResponseManager.m
+//  ResponseHandler.m
 //  benbenTaxi
 //
-//  Created by 晨松 on 13-8-23.
+//  Created by 晨松 on 13-8-30.
 //  Copyright (c) 2013年 晨松. All rights reserved.
 //
 
-#import "DriverResponseManager.h"
+#import "ResponseHandler.h"
 #import "ASIHTTPRequest.h"
 #import "JSONKit.h"
 
-@implementation DriverResponseManager
+@implementation ResponseHandler
+DriverResponseModel* responseHandlerModel;
 
-DriverResponseModel* driverResponseModel;
 
--(void) setDriverResponseModel : (DriverResponseModel*) newDriverResponseModel {
-    driverResponseModel = newDriverResponseModel;
+-(void) setDriverResponseModel : (DriverResponseModel*) handlerModel {
+    responseHandlerModel = handlerModel;
 }
 
--(void) getDriverResponse : (NSString*) requestID {
+-(void) confirmRequest : (NSString*) requestID {
     NSLog(@"request start");
     NSString* urlPrefix = @"http://42.121.55.211:8081/api/v1/taxi_requests/";
     NSLog(@"Request id is %@", requestID);
-    NSString* requestSuffix = [NSString stringWithFormat:@"%@",requestID]; 
+    NSString* requestSuffix = [NSString stringWithFormat:@"%@",requestID];
     NSString* urlAddress = [urlPrefix stringByAppendingString:requestSuffix];
+    urlAddress = [urlAddress stringByAppendingString:@"/confirm"];
     NSLog(@"URL is %@", urlAddress);
     NSURL *url = [NSURL URLWithString:urlAddress];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL : url];
@@ -36,7 +37,7 @@ DriverResponseModel* driverResponseModel;
     NSString* cookiesTemp = [cookieKey stringByAppendingString:@"="];
     cookiesTemp = [cookiesTemp stringByAppendingString:cookieValue];
     NSMutableDictionary * headerDict = [[NSMutableDictionary alloc]init];
-    [request setRequestMethod:@"GET"];
+    [request setRequestMethod:@"post"];
     [headerDict setValue:cookiesTemp forKey:@"Cookie"];
     [request setRequestHeaders : headerDict];
     
@@ -58,28 +59,27 @@ DriverResponseModel* driverResponseModel;
         NSArray *baseArray = [errorDict objectForKey:firstKey];
         NSLog(@"base array is %@", baseArray.JSONString);
         NSString* baseError = (NSString*)[baseArray objectAtIndex:0];
-        [driverResponseModel setDriverResponseStatus : FALSE];
-        [driverResponseModel setValue:@"false" forKey:@"requestStatus"];
-        [driverResponseModel setValue:baseError forKey:@"driverResponseDetail"];
+        [responseHandlerModel setConfirmStatus : FALSE];
+        [responseHandlerModel setValue:@"false" forKey:@"confirmState"];
+        [responseHandlerModel setValue:baseError forKey:@"confirmResponse"];
+
     } else {
         NSString* state = [driverResponseDict objectForKey:@"state"];
         NSLog(@"state is %@", state);
-        [driverResponseModel setDriverResponseStatus : TRUE];
-        [driverResponseModel setValue:state forKey:@"requestStatus"];
-        NSLog(@"here state is %@", [driverResponseModel valueForKey:@"requestStatus"]);
+        [responseHandlerModel setConfirmStatus : TRUE];
+        [responseHandlerModel setValue:state forKey:@"confirmState"];
         NSString *responseDetail = [[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
-        [driverResponseModel setValue:responseDetail forKey:@"driverResponseDetail"];
+        NSLog(@"response is %@", responseDetail);
+        [responseHandlerModel setValue:responseDetail forKey:@"confirmResponse"];
         
     }
 }
 
 - (void) requestFailed : (ASIHTTPRequest *)request
 {
-    [driverResponseModel setDriverResponseStatus : FALSE];
-    [driverResponseModel setValue:@"fail" forKey:@"requestStatus"];
-    [driverResponseModel setValue:@"" forKey:@"driverResponseDetail"];
-    
+    [responseHandlerModel setConfirmStatus : FALSE];
+    [responseHandlerModel setValue:@"fail" forKey:@"confirmState"];
+    [responseHandlerModel setValue:@"" forKey:@"confirmResponse"];
 }
-
 
 @end

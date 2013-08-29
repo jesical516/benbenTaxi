@@ -10,10 +10,18 @@
 
 @interface DriverResponseModel : NSObject {
     NSString* driverResponseDetail;
+    NSString* requestStatus;
     bool driverResponseStatus;
+    bool confirmStatus;
+    NSString* confirmResponse;
+    NSString* confirmState;
 }
 
 - (bool) getDriverResponseStatus;
 - (void) setDriverResponseStatus : (bool) newResponseStatus;
+
+- (bool) getConfirmStatus;
+- (void) setConfirmStatus : (bool) newConfirmStatus;
+
 
 @end
