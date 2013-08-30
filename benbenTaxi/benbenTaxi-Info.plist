@@ -14,6 +14,7 @@
 	<array>
 		<string>benbenIcon.png</string>
 		<string>录音图标.png</string>
+		<string>mic.png</string>
 	</array>
 	<key>UILaunchImageFile~iphone</key>
 	<string>start.png</string>

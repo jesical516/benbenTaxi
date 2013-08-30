@@ -117,6 +117,35 @@
             </objects>
             <point key="canvasLocation" x="373" y="-8"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="QqV-6s-rw7">
+            <objects>
+                <tableViewController id="WVr-xs-cLI" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1fr-Vm-RG9">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="w8s-Ii-3DV">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WVr-xs-cLI" id="YTs-S2-Yyd"/>
+                            <outlet property="delegate" destination="WVr-xs-cLI" id="seK-EP-P05"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V7H-Al-JgK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="805" y="-8"/>
+        </scene>
         <!--Benben Taxi View Controller-->
         <scene sceneID="5">
             <objects>
@@ -245,7 +274,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="ETS-3R-s6W">
-                                <rect key="frame" x="99" y="51" width="133" height="118"/>
+                                <rect key="frame" x="92" y="59" width="137" height="118"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="录音图标.png">
@@ -289,11 +318,64 @@
             </objects>
             <point key="canvasLocation" x="805" y="647"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="RxF-ho-Skt">
+            <objects>
+                <viewController id="Gi3-L7-xz0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dt2-bC-zmZ">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2B-a5-Aac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1340" y="643"/>
+        </scene>
     </scenes>
     <resources>
         <image name="录音图标.png" width="512" height="512"/>
         <image name="打车按钮.png" width="189" height="37"/>
     </resources>
+    <classes>
+        <class className="BMKMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BMKMapView.h"/>
+        </class>
+        <class className="benbenTaxiLogin" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiLogin.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTap:"/>
+                <relationship kind="action" name="textFieldDoneEditing:"/>
+                <relationship kind="outlet" name="login" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="loginStatusView" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="newAcount" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordConfirm" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="benbenTaxiViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="audioRecordPressed:"/>
+                <relationship kind="action" name="textFieldDoneEditing:"/>
+                <relationship kind="outlet" name="advertisingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
+                <relationship kind="outlet" name="sendRequestBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleDisplay" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="callTaxiViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/callTaxiViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="audioPlayBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="audioRecordBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="locationDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sendRequestProcess" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
