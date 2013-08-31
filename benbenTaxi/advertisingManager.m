@@ -74,5 +74,4 @@ NSString* api = @"http://42.121.55.211:8081/api/v1/advertisements";
     [model setValue: @"" forKey:@"advertisingInfo"];
 }
 
-
 @end

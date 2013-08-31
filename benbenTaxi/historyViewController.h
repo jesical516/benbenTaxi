@@ -10,9 +10,11 @@
 #import "historyRequestModel.h"
 #import "historyRequestManager.h"
 
-@interface historyViewController : UIViewController
+@interface historyViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 
-@property (copy, nonatomic) historyRequestModel* model;
-@property (copy, nonatomic) historyRequestManager* manager;        //amr转wav的文件名
+}
+@property (retain, nonatomic) IBOutlet UILabel *titleLable;
+
+@property (retain, nonatomic) IBOutlet UITableView *requestTable;
 
 @end
