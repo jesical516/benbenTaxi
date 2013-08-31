@@ -237,12 +237,11 @@ ResponseHandler* responseHandler;
     } else if([keyPath isEqualToString:@"driverResponseDetail"]) {
         NSLog(@"driver returns %@", [driverResponseModel valueForKey:@"requestStatus"]);
         if([driverResponseModel getDriverResponseStatus]) {
-            if([[driverResponseModel valueForKey:@"requestStatus"] isEqualToString:@"Waiting_Passenger_Confirm"]) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"有司机确认，距离您约0.2公里" delegate:self cancelButtonTitle:@"重新打车" otherButtonTitles:@"确认", nil];
+            if([[driverResponseModel valueForKey:@"requestStatus"] isEqualToString:@"Success"]) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"有司机确认，距离您约0.2公里" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:@"", nil];
                 [alert show];
             } else {
                 NSLog(@"Here B");
-                
                 [driverResponseManager getDriverResponse:taxiRequestID];
             }
         
@@ -314,12 +313,6 @@ ResponseHandler* responseHandler;
 }
 
 - (void) alertView:(UIAlertView *)alertview clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 0) {
-        NSLog(@"0 %@",alertview.title);
-        [responseHandler confirmRequest:taxiRequestID];
-    } else {
-        NSLog(@"1 %@",alertview.title);
-    }
 }
 
 @end

@@ -56,6 +56,12 @@
 		3A82B79D17C0AE4B00FCBB14 /* TaxiRequestManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A82B79B17C0AE4B00FCBB14 /* TaxiRequestManager.h */; };
 		3A82B79E17C0AE4B00FCBB14 /* TaxiRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A82B79C17C0AE4B00FCBB14 /* TaxiRequestManager.m */; };
 		3A92383C175CF58600025B71 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3A92383B175CF58600025B71 /* mapapi.bundle */; };
+		3A9CE78817D1EDAA006C4235 /* historyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9CE78617D1EDAA006C4235 /* historyViewController.h */; };
+		3A9CE78917D1EDAA006C4235 /* historyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9CE78717D1EDAA006C4235 /* historyViewController.m */; };
+		3A9CE78C17D1EDD6006C4235 /* historyRequestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9CE78A17D1EDD6006C4235 /* historyRequestModel.h */; };
+		3A9CE78D17D1EDD6006C4235 /* historyRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9CE78B17D1EDD6006C4235 /* historyRequestModel.m */; };
+		3A9CE79017D1EE2E006C4235 /* historyRequestManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9CE78E17D1EE2D006C4235 /* historyRequestManager.h */; };
+		3A9CE79117D1EE2E006C4235 /* historyRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9CE78F17D1EE2D006C4235 /* historyRequestManager.m */; };
 		3A9F36E117CFB62200B38BC8 /* ResponseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9F36DF17CFB62200B38BC8 /* ResponseHandler.h */; };
 		3A9F36E217CFB62200B38BC8 /* ResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F36E017CFB62200B38BC8 /* ResponseHandler.m */; };
 		3AB50B18175B2F880079772E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AB50B16175B2F880079772E /* InfoPlist.strings */; };
@@ -183,6 +189,12 @@
 		3A82B79B17C0AE4B00FCBB14 /* TaxiRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiRequestManager.h; sourceTree = "<group>"; };
 		3A82B79C17C0AE4B00FCBB14 /* TaxiRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiRequestManager.m; sourceTree = "<group>"; };
 		3A92383B175CF58600025B71 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = ../mapapi.bundle; sourceTree = "<group>"; };
+		3A9CE78617D1EDAA006C4235 /* historyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = historyViewController.h; sourceTree = "<group>"; };
+		3A9CE78717D1EDAA006C4235 /* historyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = historyViewController.m; sourceTree = "<group>"; };
+		3A9CE78A17D1EDD6006C4235 /* historyRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = historyRequestModel.h; sourceTree = "<group>"; };
+		3A9CE78B17D1EDD6006C4235 /* historyRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = historyRequestModel.m; sourceTree = "<group>"; };
+		3A9CE78E17D1EE2D006C4235 /* historyRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = historyRequestManager.h; sourceTree = "<group>"; };
+		3A9CE78F17D1EE2D006C4235 /* historyRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = historyRequestManager.m; sourceTree = "<group>"; };
 		3A9F36DF17CFB62200B38BC8 /* ResponseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseHandler.h; sourceTree = "<group>"; };
 		3A9F36E017CFB62200B38BC8 /* ResponseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseHandler.m; sourceTree = "<group>"; };
 		3AB3A79A176D869900987413 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -459,6 +471,19 @@
 			name = DriverResponse;
 			sourceTree = "<group>";
 		};
+		3A9CE78117D1ECB2006C4235 /* history */ = {
+			isa = PBXGroup;
+			children = (
+				3A9CE78617D1EDAA006C4235 /* historyViewController.h */,
+				3A9CE78717D1EDAA006C4235 /* historyViewController.m */,
+				3A9CE78A17D1EDD6006C4235 /* historyRequestModel.h */,
+				3A9CE78B17D1EDD6006C4235 /* historyRequestModel.m */,
+				3A9CE78E17D1EE2D006C4235 /* historyRequestManager.h */,
+				3A9CE78F17D1EE2D006C4235 /* historyRequestManager.m */,
+			);
+			name = history;
+			sourceTree = "<group>";
+		};
 		3AB50AFE175B2F880079772E = {
 			isa = PBXGroup;
 			children = (
@@ -512,6 +537,7 @@
 		3AB50B13175B2F880079772E /* benbenTaxi */ = {
 			isa = PBXGroup;
 			children = (
+				3A9CE78117D1ECB2006C4235 /* history */,
 				3A7A6CDD17C674DE006014CA /* DriverResponse */,
 				3AFA711B17B77D8200C890A0 /* window */,
 				3A45A4CF17AFFE7300016AA7 /* audio */,
@@ -681,6 +707,9 @@
 				3A7A6CE017C6750C006014CA /* DriverResponseModel.h in Headers */,
 				3A7A6CE417C67524006014CA /* DriverResponseManager.h in Headers */,
 				3A9F36E117CFB62200B38BC8 /* ResponseHandler.h in Headers */,
+				3A9CE78817D1EDAA006C4235 /* historyViewController.h in Headers */,
+				3A9CE78C17D1EDD6006C4235 /* historyRequestModel.h in Headers */,
+				3A9CE79017D1EE2E006C4235 /* historyRequestManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,6 +828,9 @@
 				3A7A6CE117C6750C006014CA /* DriverResponseModel.m in Sources */,
 				3A7A6CE517C67524006014CA /* DriverResponseManager.m in Sources */,
 				3A9F36E217CFB62200B38BC8 /* ResponseHandler.m in Sources */,
+				3A9CE78917D1EDAA006C4235 /* historyViewController.m in Sources */,
+				3A9CE78D17D1EDD6006C4235 /* historyRequestModel.m in Sources */,
+				3A9CE79117D1EE2E006C4235 /* historyRequestManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
