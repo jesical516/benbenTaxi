@@ -41,6 +41,11 @@ TaxiRequestManager* taxiRequestManager;
     [taxiRequestmodel addObserver:self forKeyPath:@"request" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     sendRequestStatus = false;
     requestCancelStatus = false;
+    
+    NSString* armFileName = [VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"];
+    if([VoiceRecorderBase fileExistsAtPath : armFileName]) {
+        [VoiceRecorderBase deleteFileAtPath: armFileName];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,47 +63,45 @@ TaxiRequestManager* taxiRequestManager;
 }
 
 - (IBAction)sendTaxiRequest:(id)sender {
-    if (recordFileName.length > 0){
-        convertAmr = [recordFileName stringByAppendingString:@"wavToAmr"];
-        [VoiceConverter wavToAmr:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"] amrSavePath:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"]];
+    NSString* filename = [VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"];
+    
+    if(![VoiceRecorderBase fileExistsAtPath : filename]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请先录音" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alert show];
+    } else {
+        if (recordFileName.length > 0){
+            convertAmr = [recordFileName stringByAppendingString:@"wavToAmr"];
+            [VoiceConverter wavToAmr:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"] amrSavePath:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"]];
+        }
+       
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        NSData* audioData = [[NSData alloc] initWithContentsOfFile:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"]];
+        Byte* inputData = (Byte*)[audioData bytes];
+        size_t inputDataSize = (size_t)[audioData length];
+        size_t outputDataSize = EstimateBas64EncodedDataSize(inputDataSize);
+        char outputData[outputDataSize];
+    
+        Base64EncodeData(inputData, inputDataSize, outputData, &outputDataSize, FALSE);
+        NSString* audioStr = [[NSString alloc] initWithCString:outputData];
+        NSString* phoneNum = [prefs valueForKey:@"phone"];
+        NSString* latitude = [prefs valueForKey:@"latitude"];
+        NSString* longitude = [prefs valueForKey:@"longitude"];
+    
+        NSMutableDictionary *postInfoJobj = [NSMutableDictionary dictionary];
+        NSMutableDictionary *userInfoJobj = [NSMutableDictionary dictionary];
+    
+        [userInfoJobj setObject : phoneNum forKey:@"passenger_mobile"];
+        [userInfoJobj setObject : longitude forKey:@"passenger_lng"];
+        [userInfoJobj setObject : latitude forKey:@"passenger_lat"];
+        [userInfoJobj setObject : @"5" forKey:@"waiting_time_range"];
+        [userInfoJobj setObject : @"amr" forKey:@"passenger_voice_format"];
+        [userInfoJobj setObject : audioStr forKey:@"passenger_voice"];
+    
+        [postInfoJobj setObject : userInfoJobj forKey:@"taxi_request"];
+        NSString *strPostInfo = [postInfoJobj JSONString];
+        [taxiRequestManager sendTaxiRequest : strPostInfo];
+        [self.sendRequestProcess startAnimating];
     }
-    
-    if (convertAmr.length > 0){
-        self.convertWav = [recordFileName stringByAppendingString:@"amrToWav"];
-        
-        //转格式
-        [VoiceConverter amrToWav:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"] wavSavePath:[VoiceRecorderBase getPathByFileName:convertWav ofType:@"wav"]];
-    }
-    
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSData* audioData = [[NSData alloc] initWithContentsOfFile:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"]];
-    
-    Byte* inputData = (Byte*)[audioData bytes];
-    
-    size_t inputDataSize = (size_t)[audioData length];
-    size_t outputDataSize = EstimateBas64EncodedDataSize(inputDataSize);
-    char outputData[outputDataSize];
-    
-    Base64EncodeData(inputData, inputDataSize, outputData, &outputDataSize, FALSE);
-    NSString* audioStr = [[NSString alloc] initWithCString:outputData];
-    NSString* phoneNum = [prefs valueForKey:@"phone"];
-    NSString* latitude = [prefs valueForKey:@"latitude"];
-    NSString* longitude = [prefs valueForKey:@"longitude"];
-    
-    NSMutableDictionary *postInfoJobj = [NSMutableDictionary dictionary];
-    NSMutableDictionary *userInfoJobj = [NSMutableDictionary dictionary];
-    
-    [userInfoJobj setObject : phoneNum forKey:@"passenger_mobile"];
-    [userInfoJobj setObject : longitude forKey:@"passenger_lng"];
-    [userInfoJobj setObject : latitude forKey:@"passenger_lat"];
-    [userInfoJobj setObject : @"30" forKey:@"waiting_time_range"];
-    [userInfoJobj setObject : @"amr" forKey:@"passenger_voice_format"];
-    [userInfoJobj setObject : audioStr forKey:@"passenger_voice"];
-    
-    [postInfoJobj setObject : userInfoJobj forKey:@"taxi_request"];
-    NSString *strPostInfo = [postInfoJobj JSONString];
-    [taxiRequestManager sendTaxiRequest : strPostInfo];
-    [self.sendRequestProcess startAnimating];
 }
 
 #pragma mark - 长按录音

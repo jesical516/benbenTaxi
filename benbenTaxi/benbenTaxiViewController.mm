@@ -49,18 +49,11 @@ ResponseHandler* responseHandler;
     NSLog(@"view did load");
     [super viewDidLoad];
     myMap.zoomLevel = 15;
-    myMap.showsUserLocation = YES;
-  
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    phoneNum = [prefs valueForKey:@"phone"];
-    nearByDriversManager = [[NearByDriversManager alloc]init];
-    nearByDriverModel = [[NearByDriverModel alloc]init];
-    [nearByDriverModel setNearByDriverInfo:@""];
-    [nearByDriverModel setStatus:false];
-    [nearByDriversManager setNearByDriverModel:nearByDriverModel];
     
-    [nearByDriverModel addObserver:self forKeyPath:@"driverInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
-    driverArray = nil;
+    [self advertisingProcess];
+    myMap.showsUserLocation = YES;
+    [self nearbyDriverProcess];
+  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestTaxiState:) name:@"requestID" object:nil];
     
@@ -69,13 +62,25 @@ ResponseHandler* responseHandler;
     driverResponseManager = [[DriverResponseManager alloc]init];
     responseHandler = [[ResponseHandler alloc]init];
     driverResponseModel = [[DriverResponseModel alloc]init];
-    
     [driverResponseManager setDriverResponseModel:driverResponseModel];
     [responseHandler setDriverResponseModel:driverResponseModel];
     
     [driverResponseModel addObserver:self forKeyPath:@"driverResponseDetail" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     [driverResponseModel addObserver:self forKeyPath:@"confirmResponse" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     
+    if( nil == advertisingTimer ) {
+        advertisingTimer=[NSTimer scheduledTimerWithTimeInterval: 900
+                                               target: self
+                                             selector: @selector(handleTimer:)
+                                             userInfo: nil
+                                              repeats: YES];
+    }
+    
+    getDriverResponseTimer = nil;
+}
+
+-(void) advertisingProcess {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     advertisingModel = [[AdvertisingModel alloc]init];
     advertisingManager = [[AdvertisingManager alloc]init];
@@ -88,25 +93,23 @@ ResponseHandler* responseHandler;
         advertisingLabel.text = lastAdvertisingLabelText;
     }
     [self setAdvertisingAction];
-    
     [advertisingManager updateAdvertisingInfo];
-    if( nil == advertisingTimer ) {
-        advertisingTimer=[NSTimer scheduledTimerWithTimeInterval: 900
-                                               target: self
-                                             selector: @selector(handleTimer:)
-                                             userInfo: nil
-                                              repeats: YES];
-    }
-    
-    UILongPressGestureRecognizer *longPressGR =
-    [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(audioRecordPressed:)];
-    
-    longPressGR.allowableMovement=NO;
-    longPressGR.minimumPressDuration = 0.2;
-    [self.sendRequestBtn addGestureRecognizer:longPressGR];
-    [longPressGR release];
-    getDriverResponseTimer = nil;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
 }
+
+-(void) nearbyDriverProcess {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    phoneNum = [prefs valueForKey:@"phone"];
+    nearByDriversManager = [[NearByDriversManager alloc]init];
+    nearByDriverModel = [[NearByDriverModel alloc]init];
+    [nearByDriverModel setNearByDriverInfo:@""];
+    [nearByDriverModel setStatus:false];
+    [nearByDriversManager setNearByDriverModel:nearByDriverModel];
+    
+    [nearByDriverModel addObserver:self forKeyPath:@"driverInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    driverArray = nil;
+}
+
 
 -(void)viewWillAppear:(BOOL)animated {
     [myMap viewWillAppear];
@@ -237,18 +240,16 @@ ResponseHandler* responseHandler;
     } else if([keyPath isEqualToString:@"driverResponseDetail"]) {
         NSLog(@"driver returns %@", [driverResponseModel valueForKey:@"requestStatus"]);
         if([driverResponseModel getDriverResponseStatus]) {
-            if([[driverResponseModel valueForKey:@"requestStatus"] isEqualToString:@"Success"]) {
+            [getDriverResponseTimer invalidate];
+            NSString* currentStatus = [driverResponseModel valueForKey:@"requestStatus"];
+            if([currentStatus isEqualToString:@"Success"]) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"有司机确认，距离您约0.2公里" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:@"", nil];
                 [alert show];
-            } else {
-                NSLog(@"Here B");
-                [driverResponseManager getDriverResponse:taxiRequestID];
+                TaxiProcessState = @"finish";
+            } else if([currentStatus isEqualToString:@"TimeOut"]){
+                TaxiProcessState = @"finish";
             }
         
-        } else {
-            if([[driverResponseModel valueForKey:@"requestStatus"] isEqualToString:@"fail"]) {
-                [driverResponseManager getDriverResponse:taxiRequestID];
-            }
         }
     } else if ([keyPath isEqualToString:@"confirmResponse"]) {
         NSString *escapedPhoneNumber = @"18511585218";
@@ -276,7 +277,16 @@ ResponseHandler* responseHandler;
     NSLog(@"Taxi id is %@", taxiID);
     taxiRequestID = taxiID;
     [driverResponseModel setValue:@"waiting_passenger_send_request" forKey:@"requestStatus"];
-    [driverResponseManager getDriverResponse:taxiRequestID];
+    
+    NSLog(@"requestTaxiState");
+    
+    if( nil == getDriverResponseTimer ) {
+        getDriverResponseTimer = [NSTimer scheduledTimerWithTimeInterval: 6
+                                                          target: self
+                                                        selector: @selector(sendRequestHandler:)
+                                                        userInfo: nil
+                                                         repeats: YES];
+    }
 }
 
 
@@ -306,6 +316,16 @@ ResponseHandler* responseHandler;
 
 - (void) handleTimer : (id) sender {
     [advertisingManager updateAdvertisingInfo];
+}
+
+- (void) sendRequestHandler : (id) sender {
+    if([TaxiProcessState isEqualToString:@"finish"]) {
+        NSLog(@"go into stop");
+        NSTimer* theTimer = (NSTimer*) sender;
+        [theTimer invalidate];
+    } else {
+        [driverResponseManager getDriverResponse:taxiRequestID];
+    }
 }
 
 - (IBAction)audioRecordPressed:(id)sender {

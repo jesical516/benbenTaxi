@@ -44,8 +44,8 @@ DriverResponseModel* driverResponseModel;
     
     [request setDelegate:self];
     [request startAsynchronous];
-    NSLog(@"request is send")
-    ;}
+    [request setTimeOutSeconds:5];
+}
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
