@@ -86,6 +86,7 @@ LoginModel* model;
         NSString* responseStr = @"";
         [model setLoginStatus:true];
         [model setErrorInfo:responseStr];
+        [model setSessionInfo : str1];
     }
 }
 

@@ -30,6 +30,7 @@ NSString * const KEY_USERNAME_PASSWORD = @"benben.taxi.usernamepassword";
 NSString * const KEY_USERNAME = @"benben.taxi.app.username";
 NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
 
+@synthesize companyLable, loginBarImage, themeLable;
 
 -(void) loadUserCookie
 {
@@ -51,7 +52,6 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
     loginModel = [[LoginModel alloc]init];
     [loginModel setErrorInfo:@""];
     [loginModel setLoginStatus:false];
-    NSLog(@"benbenTaxi login here");
     [loginManager setLoginModel:loginModel];
     [loginModel addObserver:self forKeyPath:@"errorInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -63,7 +63,6 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
             self.password.text = [usernamepasswordKVPairs objectForKey:KEY_PASSWORD];
         }
     }
-    NSLog(@"benbenTaxi login end");
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -164,6 +163,9 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
     [_newAcount release];
     [_loginStatusView release];
     [loginModel removeObserver:self forKeyPath:@"errorInfo"];
+    [companyLable release];
+    [loginBarImage release];
+    [themeLable release];
     [super dealloc];
 }
 
@@ -204,6 +206,9 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
     {
         [self.loginStatusView stopAnimating];
         if([loginModel getLoginStatus]) {
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            [prefs setValue:[loginModel getSessionInfo] forKey:@"cookie"];
+            NSLog(@"now cookie is %@", [prefs valueForKey:@"cookie"]);
             newAcountState = false;
             loginState = true;
             [self performSegueWithIdentifier:@"loginTrigger" sender:self];

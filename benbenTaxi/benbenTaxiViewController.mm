@@ -50,22 +50,27 @@ NSString  *detailAddress;
     NSLog(@"view did load");
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
+    
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
     NSString* lat = [prefs valueForKey : @"latitude"];
     NSString* lng = [prefs valueForKey : @"longitude"];
     
     CLLocationCoordinate2D prePt;
     prePt.latitude = [lat floatValue];
     prePt.longitude = [lng floatValue];
-    NSLog(@"%f, %f", prePt.latitude, prePt.longitude);
     
-    myMap.centerCoordinate = prePt;
+    if(prePt.latitude > 0) {
+        NSLog(@"%f, %f", prePt.latitude, prePt.longitude);
+        myMap.centerCoordinate = prePt;
     
-    passengerAnnotation = [[MyBMKPointAnnotation alloc]init];
-    passengerAnnotation.coordinate = prePt;
-    passengerAnnotation.title = detailAddress;
+        passengerAnnotation = [[MyBMKPointAnnotation alloc]init];
+        passengerAnnotation.coordinate = prePt;
+        passengerAnnotation.title = detailAddress;
     
-    [myMap addAnnotation:passengerAnnotation];
+        [myMap addAnnotation:passengerAnnotation];
+    }
     
     [self advertisingProcess];
     myMap.zoomLevel = 15;
@@ -112,7 +117,6 @@ NSString  *detailAddress;
     }
     [self setAdvertisingAction];
     [advertisingManager updateAdvertisingInfo];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
 }
 
 -(void) nearbyDriverProcess {
@@ -208,7 +212,7 @@ NSString  *detailAddress;
                 cityName = placemark.administrativeArea;
             }
             if(cityName != NULL) {
-                detailAddress = cityName;
+                detailAddress = @"";
                 if(placemark.subLocality != NULL) {
                     detailAddress = [[detailAddress stringByAppendingString:placemark.subLocality]retain];
                 }
@@ -310,7 +314,7 @@ NSString  *detailAddress;
 }
 
 -(void)updateStatus:(NSNotification*)notifi {
-    [self advertisingProcess];
+    [self setAdvertisingAction];
     myMap.showsUserLocation = true;
 }
 

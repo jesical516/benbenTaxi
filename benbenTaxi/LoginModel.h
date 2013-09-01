@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface LoginModel : NSObject
-
 - (void) setLoginStatus : (bool) status;
 - (void) setErrorInfo : (NSString*) info;
 - (bool) getLoginStatus;
 - (NSString*) getErrorInfo;
+
+- (NSString*) getSessionInfo;
+- (void) setSessionInfo : (NSString*) newSessionInfo;
+
 @end

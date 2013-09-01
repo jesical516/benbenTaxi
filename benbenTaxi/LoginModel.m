@@ -11,6 +11,7 @@
 @implementation LoginModel
     bool loginStatus;
     NSString* errorInfo;
+    NSString* sessionInfo;
 
 - (void) setLoginStatus : (bool) status
 {
@@ -28,5 +29,14 @@
 - (NSString*) getErrorInfo {
     return errorInfo;
 }
+
+- (NSString*) getSessionInfo {
+    return sessionInfo;
+}
+
+- (void) setSessionInfo : (NSString*) newSessionInfo {
+    sessionInfo = newSessionInfo;
+}
+
 
 @end

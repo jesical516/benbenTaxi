@@ -12,12 +12,12 @@
 	<string></string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>benbenIcon.png</string>
+		<string>benben.png</string>
 		<string>录音图标.png</string>
 		<string>mic.png</string>
+		<string>login_bar.png</string>
+		<string></string>
 	</array>
-	<key>UILaunchImageFile~iphone</key>
-	<string>start.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>chensong.zjd.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -38,6 +38,8 @@
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string></string>
+	<key>UILaunchImageFile~iphone</key>
+	<string>start.png</string>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>
 	<key>UIRequiredDeviceCapabilities</key>

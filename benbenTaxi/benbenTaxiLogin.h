@@ -21,5 +21,8 @@
 - (IBAction)textFieldDoneEditing:(id)sender;
 
 - (IBAction)backgroundTap:(id)sender;
+@property (retain, nonatomic) IBOutlet UILabel *companyLable;
+@property (retain, nonatomic) IBOutlet UIImageView *loginBarImage;
+@property (retain, nonatomic) IBOutlet UILabel *themeLable;
 
 @end

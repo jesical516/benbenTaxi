@@ -27,6 +27,7 @@ NSString* api = @"http://42.121.55.211:8081/api/v1/advertisements";
     //需要设置cookies
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *cookieStr = [prefs valueForKey:@"cookie"];
+    NSLog(@"cookie is %@", cookieStr);
     NSData* jsonData = [cookieStr dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *cookieDict = [jsonData objectFromJSONData];
     NSString *cookieKey = [cookieDict objectForKey:@"token_key"];
