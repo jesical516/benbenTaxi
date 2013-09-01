@@ -48,9 +48,8 @@ ResponseHandler* responseHandler;
 { 
     NSLog(@"view did load");
     [super viewDidLoad];
-    myMap.zoomLevel = 15;
-    
     [self advertisingProcess];
+    myMap.zoomLevel = 15;
     myMap.showsUserLocation = YES;
     [self nearbyDriverProcess];
   
@@ -80,13 +79,11 @@ ResponseHandler* responseHandler;
 }
 
 -(void) advertisingProcess {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    
     advertisingModel = [[AdvertisingModel alloc]init];
     advertisingManager = [[AdvertisingManager alloc]init];
     [advertisingManager setAdvertisingModel:advertisingModel];
     [advertisingModel addObserver:self forKeyPath:@"advertisingInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
-    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString* lastAdvertisingLabelText = [prefs valueForKey:@"advertisingLabelText"];
     
     if(![lastAdvertisingLabelText isEqualToString:@""]) {
@@ -259,16 +256,8 @@ ResponseHandler* responseHandler;
 }
 
 -(void)updateStatus:(NSNotification*)notifi {
+    [self advertisingProcess];
     myMap.showsUserLocation = true;
-    advertisingLabel.text = @"=====欢迎使用奔奔打车=====";
-    [advertisingManager updateAdvertisingInfo];
-    if( nil == advertisingTimer ) {
-        advertisingTimer=[NSTimer scheduledTimerWithTimeInterval: 900
-                                                          target: self
-                                                        selector: @selector(handleTimer:)
-                                                        userInfo: nil
-                                                         repeats: YES];
-    }
 }
 
 
