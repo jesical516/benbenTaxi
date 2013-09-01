@@ -49,6 +49,24 @@ NSString  *detailAddress;
 { 
     NSLog(@"view did load");
     [super viewDidLoad];
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString* lat = [prefs valueForKey : @"latitude"];
+    NSString* lng = [prefs valueForKey : @"longitude"];
+    
+    CLLocationCoordinate2D prePt;
+    prePt.latitude = [lat floatValue];
+    prePt.longitude = [lng floatValue];
+    NSLog(@"%f, %f", prePt.latitude, prePt.longitude);
+    
+    myMap.centerCoordinate = prePt;
+    
+    passengerAnnotation = [[MyBMKPointAnnotation alloc]init];
+    passengerAnnotation.coordinate = prePt;
+    passengerAnnotation.title = detailAddress;
+    
+    [myMap addAnnotation:passengerAnnotation];
+    
     [self advertisingProcess];
     myMap.zoomLevel = 15;
     myMap.showsUserLocation = YES;
@@ -56,8 +74,6 @@ NSString  *detailAddress;
   
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestTaxiState:) name:@"requestID" object:nil];
-    
-    passengerAnnotation = nil;
     
     driverResponseManager = [[DriverResponseManager alloc]init];
     responseHandler = [[ResponseHandler alloc]init];
@@ -79,6 +95,8 @@ NSString  *detailAddress;
     getDriverResponseTimer = nil;
     locationStatus = false;
     detailAddress = @"";
+    
+    myMap.showsUserLocation = YES;
 }
 
 -(void) advertisingProcess {
@@ -222,7 +240,7 @@ NSString  *detailAddress;
     if ([annotation isKindOfClass:[MyBMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
         //newAnnotation.image = [UIImage imageNamed:@"icon_center_point.png"];
-        newAnnotation.animatesDrop = YES;
+        //newAnnotation.animatesDrop = YES;
         return newAnnotation;
 	} else if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
