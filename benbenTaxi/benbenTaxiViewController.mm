@@ -298,7 +298,7 @@ NSString  *detailAddress;
             [getDriverResponseTimer invalidate];
             NSString* currentStatus = [driverResponseModel valueForKey:@"requestStatus"];
             if([currentStatus isEqualToString:@"Success"]) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"有司机确认，距离您约0.2公里" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:@"", nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"有司机确认，距离您约0.2公里" delegate:self cancelButtonTitle:@"直接等待司机" otherButtonTitles:@"电话司机", nil];
                 [alert show];
                 TaxiProcessState = @"finish";
             } else if([currentStatus isEqualToString:@"TimeOut"]){
