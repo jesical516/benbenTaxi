@@ -46,6 +46,9 @@ TaxiRequestManager* taxiRequestManager;
     if([VoiceRecorderBase fileExistsAtPath : armFileName]) {
         [VoiceRecorderBase deleteFileAtPath: armFileName];
     }
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString* detailAddress = [prefs valueForKey:@"detailAddress"];
+    self.locationDisplay.text = [@"位置:" stringByAppendingString : detailAddress];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,6 +78,7 @@ TaxiRequestManager* taxiRequestManager;
         }
        
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        NSString* detailsAddress = [prefs valueForKey:@"detailAddress"];
         NSData* audioData = [[NSData alloc] initWithContentsOfFile:[VoiceRecorderBase getPathByFileName:convertAmr ofType:@"amr"]];
         Byte* inputData = (Byte*)[audioData bytes];
         size_t inputDataSize = (size_t)[audioData length];
@@ -96,6 +100,8 @@ TaxiRequestManager* taxiRequestManager;
         [userInfoJobj setObject : @"5" forKey:@"waiting_time_range"];
         [userInfoJobj setObject : @"amr" forKey:@"passenger_voice_format"];
         [userInfoJobj setObject : audioStr forKey:@"passenger_voice"];
+        [userInfoJobj setObject : detailsAddress forKey:@"source"];
+        
     
         [postInfoJobj setObject : userInfoJobj forKey:@"taxi_request"];
         NSString *strPostInfo = [postInfoJobj JSONString];
