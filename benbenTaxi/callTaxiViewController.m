@@ -116,11 +116,14 @@ TaxiRequestManager* taxiRequestManager;
     if(longPressedRecognizer.state == UIGestureRecognizerStateBegan) {
         _audioRecordBtn.highlighted = TRUE;
         _audioRecordBtn.showsTouchWhenHighlighted = TRUE;
+        _audioRecordBtn.backgroundColor = [UIColor redColor];
         NSLog(@"long pressed start");
         [recorder beginRecordByFileName:recordFileName];
     }//长按结束
     else if(longPressedRecognizer.state == UIGestureRecognizerStateEnded || longPressedRecognizer.state == UIGestureRecognizerStateCancelled){
         _audioRecordBtn.showsTouchWhenHighlighted = FALSE;
+        _audioRecordBtn.backgroundColor = [UIColor clearColor];
+        
         NSLog(@"long pressed end");
     }
 }
