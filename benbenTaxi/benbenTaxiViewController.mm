@@ -43,6 +43,7 @@ DriverResponseManager* driverResponseManager;
 DriverResponseModel* driverResponseModel;
 ResponseHandler* responseHandler;
 bool locationStatus;
+NSString  *detailAddress;
 
 - (void)viewDidLoad
 { 
@@ -77,6 +78,7 @@ bool locationStatus;
     
     getDriverResponseTimer = nil;
     locationStatus = false;
+    detailAddress = @"";
 }
 
 -(void) advertisingProcess {
@@ -128,12 +130,18 @@ bool locationStatus;
 
 - (void)mapViewDidStopLocatingUser:(BMKMapView *)mapView
 {
+    NSLog(@"%@", detailAddress);
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setValue: detailAddress forKey:@"detailAddress"];
+    
+   
     if(nil != passengerAnnotation) {
         [myMap removeAnnotation:passengerAnnotation];
     }
     passengerAnnotation = [[MyBMKPointAnnotation alloc]init];
     passengerAnnotation.coordinate = startPt;
-    passengerAnnotation.title = @"我在";
+    passengerAnnotation.title = detailAddress;
+    
     [myMap addAnnotation:passengerAnnotation];
     [nearByDriversManager getNearbyDrivers:startPt];
 }
@@ -149,6 +157,19 @@ bool locationStatus;
     startPt.latitude = userLocation.coordinate.latitude;
     startPt.longitude = userLocation.coordinate.longitude;
     
+    [self location];
+    
+    if(locationStatus) {
+        NSLog(@"locationSucess");
+        myMap.centerCoordinate = startPt;
+        myMap.showsUserLocation = NO;
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setValue: [NSString stringWithFormat:@"%f",startPt.latitude] forKey:@"latitude"];
+        [prefs setValue: [NSString stringWithFormat:@"%f", startPt.longitude] forKey:@"longitude"];
+    }
+}
+
+- (void) location {
     float localLatitude=startPt.latitude;
     float localLongitude=startPt.longitude;
     
@@ -160,23 +181,34 @@ bool locationStatus;
         }
         
         for (CLPlacemark *placemark in place) {
+            NSString* cityName = @"";
+            NSString* thoroughfare = @"";
+            thoroughfare = placemark.thoroughfare;
+            cityName=placemark.locality;
             
-            break;
+            if(cityName == NULL) {
+                cityName = placemark.administrativeArea;
+            }
+            if(cityName != NULL) {
+                detailAddress = cityName;
+                if(placemark.subLocality != NULL) {
+                    detailAddress = [[detailAddress stringByAppendingString:placemark.subLocality]retain];
+                }
+                if(placemark.thoroughfare != NULL) {
+                    detailAddress = [[detailAddress stringByAppendingString:placemark.thoroughfare]retain];
+                }
+                if(placemark.subThoroughfare != NULL) {
+                    detailAddress = [[detailAddress stringByAppendingString:placemark.subThoroughfare]retain];
+                }
+                
+                NSLog(@"detail address is %@", detailAddress);
+                break;
+            }
         }
     };
     
     CLLocation *loc = [[CLLocation alloc] initWithLatitude: localLatitude longitude:localLongitude];
     [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
-    NSLog(@"status is %@", detailAddress);
-    
-    if(locationStatus) {
-        NSLog(@"locationSucess");
-        myMap.centerCoordinate = startPt;
-        myMap.showsUserLocation = NO;
-        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        [prefs setValue: [NSString stringWithFormat:@"%f",startPt.latitude] forKey:@"latitude"];
-        [prefs setValue: [NSString stringWithFormat:@"%f", startPt.longitude] forKey:@"longitude"];
-    }
 }
 
 - (IBAction)textFieldDoneEditing:(id)sender
