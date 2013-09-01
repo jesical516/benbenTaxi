@@ -42,7 +42,7 @@ NSTimer* getDriverResponseTimer;
 DriverResponseManager* driverResponseManager;
 DriverResponseModel* driverResponseModel;
 ResponseHandler* responseHandler;
-
+bool locationStatus;
 
 - (void)viewDidLoad
 { 
@@ -76,6 +76,7 @@ ResponseHandler* responseHandler;
     }
     
     getDriverResponseTimer = nil;
+    locationStatus = false;
 }
 
 -(void) advertisingProcess {
@@ -151,28 +152,31 @@ ResponseHandler* responseHandler;
     float localLatitude=startPt.latitude;
     float localLongitude=startPt.longitude;
     
-    NSLog(@"%g", startPt.latitude);
-    NSLog(@"%g", startPt.longitude);
-    
     CLGeocoder *Geocoder=[[CLGeocoder alloc]init];
     CLGeocodeCompletionHandler handler = ^(NSArray *place, NSError *error) {
+        NSString* errorInfo = [error localizedDescription];
+        if(errorInfo == NULL || [errorInfo isEqualToString:@""]) {
+            locationStatus = true;
+        }
+        
         for (CLPlacemark *placemark in place) {
-            cityName=placemark.locality;
-            if(cityName == NULL) {
-                cityName = placemark.administrativeArea;
-            } 
+            
             break;
         }
     };
     
     CLLocation *loc = [[CLLocation alloc] initWithLatitude: localLatitude longitude:localLongitude];
     [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
-    myMap.centerCoordinate = startPt;
-    myMap.showsUserLocation = NO;
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSLog(@"status is %@", detailAddress);
     
-    [prefs setValue: [NSString stringWithFormat:@"%f",startPt.latitude] forKey:@"latitude"];
-    [prefs setValue: [NSString stringWithFormat:@"%f", startPt.longitude] forKey:@"longitude"];
+    if(locationStatus) {
+        NSLog(@"locationSucess");
+        myMap.centerCoordinate = startPt;
+        myMap.showsUserLocation = NO;
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setValue: [NSString stringWithFormat:@"%f",startPt.latitude] forKey:@"latitude"];
+        [prefs setValue: [NSString stringWithFormat:@"%f", startPt.longitude] forKey:@"longitude"];
+    }
 }
 
 - (IBAction)textFieldDoneEditing:(id)sender
