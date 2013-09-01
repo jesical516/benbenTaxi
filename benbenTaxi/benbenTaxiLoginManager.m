@@ -85,8 +85,9 @@ LoginModel* model;
     } else {
         NSString* responseStr = @"";
         [model setLoginStatus:true];
-        [model setErrorInfo:responseStr];
         [model setSessionInfo : str1];
+        NSLog(@"session is %@", [model getSessionInfo]);
+        [model setErrorInfo:responseStr];
     }
 }
 

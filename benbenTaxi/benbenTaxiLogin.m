@@ -208,6 +208,7 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
         if([loginModel getLoginStatus]) {
             NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
             [prefs setValue:[loginModel getSessionInfo] forKey:@"cookie"];
+            [prefs setValue : self.username.text forKey : @"phone"];
             NSLog(@"now cookie is %@", [prefs valueForKey:@"cookie"]);
             newAcountState = false;
             loginState = true;

@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A0E1A4817D07CA800ADF2B6 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A0E1A4717D07CA800ADF2B6 /* mic.png */; };
 		3A1B67E317D3617C0033DCE1 /* login_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A1B67E217D3617C0033DCE1 /* login_bar.png */; };
-		3A1B67E517D387770033DCE1 /* benben.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A1B67E417D387770033DCE1 /* benben.png */; };
+		3A1B67E517D387770033DCE1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A1B67E417D387770033DCE1 /* Icon.png */; };
 		3A3773CA17C1490F00BD4953 /* base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A3773C817C1490F00BD4953 /* base64.h */; };
 		3A3773CB17C1490F00BD4953 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3773C917C1490F00BD4953 /* base64.m */; };
 		3A3E8699179D929A00FEAAC7 /* benbenTaxiLoginManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A3E8697179D929A00FEAAC7 /* benbenTaxiLoginManager.h */; };
@@ -25,7 +24,6 @@
 		3A4B27E8176E1771002D72C0 /* JSONKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A4B27E6176E1588002D72C0 /* JSONKit.h */; };
 		3A4B27EA176E1796002D72C0 /* JSONKit.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A4B27E9176E1796002D72C0 /* JSONKit.m */; };
 		3A5EC11F179252720006B847 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5EC11E179252720006B847 /* start.png */; };
-		3A5EC121179252ED0006B847 /* benbenIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5EC120179252ED0006B847 /* benbenIcon.png */; };
 		3A5EC123179253030006B847 /* steering.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5EC122179253030006B847 /* steering.png */; };
 		3A64A97F17709A9300FE64C8 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4B27E9176E1796002D72C0 /* JSONKit.m */; };
 		3A707C4317BBEA52009C3E60 /* amrFileCodec.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A707C3417BBEA52009C3E60 /* amrFileCodec.h */; };
@@ -89,6 +87,7 @@
 		3AE1CD1D178B233E00D25E70 /* MyMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */; };
 		3AE233B217721B8900C21BA2 /* benbenTaxiLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */; };
 		3AE233B317721B8900C21BA2 /* benbenTaxiLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE233B117721B8900C21BA2 /* benbenTaxiLogin.m */; };
+		3AEC4EE717D3907C0030FA97 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AEC4EE617D3907C0030FA97 /* mic.png */; };
 		3AF6EAE8176D8EFF0086F0E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B0D175B2F880079772E /* UIKit.framework */; };
 		3AF6EAE9176D8F230086F0E6 /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B7E175B41160079772E /* libbaidumapapi.a */; };
 		3AF6EAEE176D8F560086F0E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB50B0F175B2F880079772E /* Foundation.framework */; };
@@ -102,7 +101,6 @@
 		3AFA3F6417AE87FF00EDAD7B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFA3F6317AE87FF00EDAD7B /* AVFoundation.framework */; };
 		3AFA3F6617AE880D00EDAD7B /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFA3F6517AE880D00EDAD7B /* CoreAudio.framework */; };
 		3AFA3F6817AE8C3500EDAD7B /* audioRecord.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA3F6717AE8C3500EDAD7B /* audioRecord.xib */; };
-		3AFA3F7117AE954500EDAD7B /* 录音图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA3F7017AE954400EDAD7B /* 录音图标.png */; };
 		3AFA3F7A17AEA28600EDAD7B /* callTaxiViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AFA3F7817AEA28600EDAD7B /* callTaxiViewController.h */; };
 		3AFA3F7B17AEA28600EDAD7B /* callTaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA3F7917AEA28600EDAD7B /* callTaxiViewController.m */; };
 		3AFA711E17B77DBD00C890A0 /* CustomWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AFA711C17B77DBD00C890A0 /* CustomWindow.h */; };
@@ -144,9 +142,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3A0E1A4717D07CA800ADF2B6 /* mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic.png; sourceTree = SOURCE_ROOT; };
 		3A1B67E217D3617C0033DCE1 /* login_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_bar.png; sourceTree = SOURCE_ROOT; };
-		3A1B67E417D387770033DCE1 /* benben.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = benben.png; path = icons/benben.png; sourceTree = SOURCE_ROOT; };
+		3A1B67E417D387770033DCE1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = icons/Icon.png; sourceTree = SOURCE_ROOT; };
 		3A3773C817C1490F00BD4953 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
 		3A3773C917C1490F00BD4953 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
 		3A3E8697179D929A00FEAAC7 /* benbenTaxiLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiLoginManager.h; sourceTree = "<group>"; };
@@ -161,7 +158,6 @@
 		3A4B27E6176E1588002D72C0 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../json/JSONKit/JSONKit.h; sourceTree = "<group>"; };
 		3A4B27E9176E1796002D72C0 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = ../json/JSONKit/JSONKit.m; sourceTree = "<group>"; };
 		3A5EC11E179252720006B847 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = SOURCE_ROOT; };
-		3A5EC120179252ED0006B847 /* benbenIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = benbenIcon.png; path = ../benbenIcon.png; sourceTree = "<group>"; };
 		3A5EC122179253030006B847 /* steering.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = steering.png; path = ../steering.png; sourceTree = "<group>"; };
 		3A707C3417BBEA52009C3E60 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
 		3A707C3517BBEA52009C3E60 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
@@ -267,12 +263,12 @@
 		3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMapAnnotation.m; sourceTree = "<group>"; };
 		3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiLogin.h; sourceTree = "<group>"; };
 		3AE233B117721B8900C21BA2 /* benbenTaxiLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = benbenTaxiLogin.m; sourceTree = "<group>"; };
+		3AEC4EE617D3907C0030FA97 /* mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic.png; sourceTree = SOURCE_ROOT; };
 		3AF6EAF7176D8FFD0086F0E6 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		3AFA3CE717C5120B00F025B0 /* start-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-568h@2x.png"; sourceTree = "<group>"; };
 		3AFA3F6317AE87FF00EDAD7B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3AFA3F6517AE880D00EDAD7B /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		3AFA3F6717AE8C3500EDAD7B /* audioRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = audioRecord.xib; path = ../audioRecord.xib; sourceTree = "<group>"; };
-		3AFA3F7017AE954400EDAD7B /* 录音图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "录音图标.png"; sourceTree = SOURCE_ROOT; };
 		3AFA3F7817AEA28600EDAD7B /* callTaxiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = callTaxiViewController.h; sourceTree = "<group>"; };
 		3AFA3F7917AEA28600EDAD7B /* callTaxiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = callTaxiViewController.m; sourceTree = "<group>"; };
 		3AFA711C17B77DBD00C890A0 /* CustomWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWindow.h; sourceTree = "<group>"; };
@@ -564,16 +560,14 @@
 		3AB50B14175B2F880079772E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3A1B67E417D387770033DCE1 /* benben.png */,
+				3A1B67E417D387770033DCE1 /* Icon.png */,
+				3AEC4EE617D3907C0030FA97 /* mic.png */,
 				3A1B67E217D3617C0033DCE1 /* login_bar.png */,
-				3A0E1A4717D07CA800ADF2B6 /* mic.png */,
-				3AFA3F7017AE954400EDAD7B /* 录音图标.png */,
 				3AFA3F6717AE8C3500EDAD7B /* audioRecord.xib */,
 				3A92383B175CF58600025B71 /* mapapi.bundle */,
 				3A811553179BEF0300449764 /* icon_center_point.png */,
 				3A4AB61A1792E499007CA445 /* 打车按钮.png */,
 				3A5EC122179253030006B847 /* steering.png */,
-				3A5EC120179252ED0006B847 /* benbenIcon.png */,
 				3A5EC11E179252720006B847 /* start.png */,
 				3AB50B15175B2F880079772E /* benbenTaxi-Info.plist */,
 				3AB50B16175B2F880079772E /* InfoPlist.strings */,
@@ -781,16 +775,14 @@
 				3AB50B27175B2F880079772E /* MainStoryboard.storyboard in Resources */,
 				3A92383C175CF58600025B71 /* mapapi.bundle in Resources */,
 				3A5EC11F179252720006B847 /* start.png in Resources */,
-				3A5EC121179252ED0006B847 /* benbenIcon.png in Resources */,
 				3A5EC123179253030006B847 /* steering.png in Resources */,
 				3A4AB61B1792E49A007CA445 /* 打车按钮.png in Resources */,
 				3A811554179BEF0300449764 /* icon_center_point.png in Resources */,
 				3AFA3F6817AE8C3500EDAD7B /* audioRecord.xib in Resources */,
-				3AFA3F7117AE954500EDAD7B /* 录音图标.png in Resources */,
 				3AFA3CE817C5120B00F025B0 /* start-568h@2x.png in Resources */,
-				3A0E1A4817D07CA800ADF2B6 /* mic.png in Resources */,
 				3A1B67E317D3617C0033DCE1 /* login_bar.png in Resources */,
-				3A1B67E517D387770033DCE1 /* benben.png in Resources */,
+				3A1B67E517D387770033DCE1 /* Icon.png in Resources */,
+				3AEC4EE717D3907C0030FA97 /* mic.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
