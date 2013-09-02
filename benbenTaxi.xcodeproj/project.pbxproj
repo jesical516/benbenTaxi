@@ -86,6 +86,9 @@
 		3AB8CA6A17D4D345000ED356 /* phone_13.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB8CA6517D4D345000ED356 /* phone_13.png */; };
 		3AB8CA6B17D4D345000ED356 /* distance.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB8CA6617D4D345000ED356 /* distance.png */; };
 		3AB8CA6D17D4D3AD000ED356 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB8CA6C17D4D3AD000ED356 /* flag.png */; };
+		3AB8CA7117D4E716000ED356 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AB8CA7017D4E716000ED356 /* ListCell.xib */; };
+		3AB8CA7417D4E7E3000ED356 /* ListCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AB8CA7217D4E7E3000ED356 /* ListCell.h */; };
+		3AB8CA7517D4E7E3000ED356 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8CA7317D4E7E3000ED356 /* ListCell.m */; };
 		3ABAE5B517771CA500B86F15 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABAE5B417771CA500B86F15 /* Security.framework */; };
 		3AC1C51617A4B9F400689796 /* PasswordInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC1C51417A4B9F400689796 /* PasswordInfo.h */; };
 		3AC1C51717A4B9F400689796 /* PasswordInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1C51517A4B9F400689796 /* PasswordInfo.m */; };
@@ -276,6 +279,9 @@
 		3AB8CA6517D4D345000ED356 /* phone_13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phone_13.png; path = icons/phone_13.png; sourceTree = SOURCE_ROOT; };
 		3AB8CA6617D4D345000ED356 /* distance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = distance.png; path = icons/distance.png; sourceTree = SOURCE_ROOT; };
 		3AB8CA6C17D4D3AD000ED356 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flag.png; path = icons/flag.png; sourceTree = SOURCE_ROOT; };
+		3AB8CA7017D4E716000ED356 /* ListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
+		3AB8CA7217D4E7E3000ED356 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
+		3AB8CA7317D4E7E3000ED356 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		3ABAE5B417771CA500B86F15 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3AC1C51417A4B9F400689796 /* PasswordInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordInfo.h; sourceTree = "<group>"; };
 		3AC1C51517A4B9F400689796 /* PasswordInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordInfo.m; sourceTree = "<group>"; };
@@ -672,6 +678,9 @@
 				3AB8CA5C17D4926D000ED356 /* customCell.xib */,
 				3AB8CA5E17D4C52A000ED356 /* benbenTaxiCell.h */,
 				3AB8CA5F17D4C52A000ED356 /* benbenTaxiCell.m */,
+				3AB8CA7017D4E716000ED356 /* ListCell.xib */,
+				3AB8CA7217D4E7E3000ED356 /* ListCell.h */,
+				3AB8CA7317D4E7E3000ED356 /* ListCell.m */,
 			);
 			name = taxiDetails;
 			sourceTree = "<group>";
@@ -771,6 +780,7 @@
 				3AB8CA5017D44FA9000ED356 /* Util.h in Headers */,
 				3AB8CA5617D47695000ED356 /* TaxiDetailsViewController.h in Headers */,
 				3AB8CA6017D4C52A000ED356 /* benbenTaxiCell.h in Headers */,
+				3AB8CA7417D4E7E3000ED356 /* ListCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -852,6 +862,7 @@
 				3AB8CA6A17D4D345000ED356 /* phone_13.png in Resources */,
 				3AB8CA6B17D4D345000ED356 /* distance.png in Resources */,
 				3AB8CA6D17D4D3AD000ED356 /* flag.png in Resources */,
+				3AB8CA7117D4E716000ED356 /* ListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,6 +914,7 @@
 				3AB8CA5117D44FA9000ED356 /* Util.m in Sources */,
 				3AB8CA5717D47695000ED356 /* TaxiDetailsViewController.m in Sources */,
 				3AB8CA6117D4C52A000ED356 /* benbenTaxiCell.m in Sources */,
+				3AB8CA7517D4E7E3000ED356 /* ListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

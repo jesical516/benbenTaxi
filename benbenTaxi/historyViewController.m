@@ -9,6 +9,7 @@
 #import "historyViewController.h"
 #import "historyRequestManager.h"
 #import "historyRequestModel.h"
+#import "ListCell.h"
 
 @implementation historyViewController {
     NSArray *recipes;
