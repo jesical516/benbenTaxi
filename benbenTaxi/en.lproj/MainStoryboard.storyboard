@@ -206,7 +206,22 @@
                                 </state>
                                 <connections>
                                     <action selector="audioRecordPressed:" destination="2" eventType="touchUpInside" id="9SJ-g6-6xA"/>
-                                    <segue destination="hCT-Xg-xvv" kind="modal" id="Imc-gH-EKa"/>
+                                    <segue destination="hCT-Xg-xvv" kind="modal" id="7PB-wT-GgM"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0hQ-DK-Z0Y">
+                                <rect key="frame" x="118" y="458" width="73" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bl0-nE-I6n" kind="modal" identifier="taxiDetails" id="NfW-5R-woq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -344,7 +359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8g5-za-OY4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1103" y="119"/>
+            <point key="canvasLocation" x="1125" y="-174"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="9CT-2l-i3s">
@@ -434,7 +449,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2d-x9-NEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1103" y="849"/>
+            <point key="canvasLocation" x="2215" y="541"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cYw-uh-rQ1">
@@ -444,7 +459,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="打车详情" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mFf-w2-uTj">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="详细信息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mFf-w2-uTj">
                                 <rect key="frame" x="42" y="0.0" width="278" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -464,11 +479,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="newAcountBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Utq-i6-0yB">
-                                <rect key="frame" x="187" y="418" width="113" height="44"/>
+                                <rect key="frame" x="187" y="420" width="113" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.74424041969999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="取消">
+                                <state key="normal" title="直接等待">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -477,15 +492,16 @@
                                 <connections>
                                     <action selector="newAcountPressed:" destination="Ov7-SI-Bda" eventType="touchUpInside" id="rCX-5t-YjI"/>
                                     <action selector="requestCancelPressed:" destination="hCT-Xg-xvv" eventType="touchUpInside" id="cyb-qo-60i"/>
+                                    <segue destination="2" kind="modal" id="nMj-lL-OqN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="loginBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qtr-2h-71X">
-                                <rect key="frame" x="29" y="418" width="113" height="44"/>
+                                <rect key="frame" x="29" y="420" width="113" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.74424041969999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.094117656349999995" green="0.094117656349999995" blue="0.62745100259999997" alpha="1" colorSpace="deviceRGB"/>
-                                <state key="normal" title="发送">
+                                <state key="normal" title="电话司机">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -497,13 +513,18 @@
                                     <action selector="sendTaxiRequest:" destination="hCT-Xg-xvv" eventType="touchUpInside" id="4Qe-Ld-rix"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="npX-hv-jtI">
+                                <rect key="frame" x="0.0" y="43" width="320" height="336"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6zp-Lg-vgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1515" y="849"/>
+            <point key="canvasLocation" x="1151" y="783"/>
         </scene>
     </scenes>
     <resources>
@@ -511,12 +532,63 @@
         <image name="login_bar.png" width="708" height="10"/>
         <image name="mic.png" width="166" height="256"/>
     </resources>
+    <classes>
+        <class className="BMKMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BMKMapView.h"/>
+        </class>
+        <class className="benbenTaxiLogin" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiLogin.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTap:"/>
+                <relationship kind="action" name="textFieldDoneEditing:"/>
+                <relationship kind="outlet" name="companyLable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="login" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginBarImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="loginDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="loginStatusView" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="newAcount" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordConfirm" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="themeLable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="benbenTaxiViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="textFieldDoneEditing:"/>
+                <relationship kind="outlet" name="advertisingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
+                <relationship kind="outlet" name="sendRequestBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleDisplay" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="callTaxiViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/callTaxiViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="audioPlayBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="audioRecordBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="locationDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="recordHelpLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="recordHelpSubLable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sendRequestProcess" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="historyViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/historyViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="requestTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="titleLable" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6Fz-IK-pOS"/>
+        <segue reference="nMj-lL-OqN"/>
+        <segue reference="Mx7-MR-4ug"/>
     </inferredMetricsTieBreakers>
 </document>

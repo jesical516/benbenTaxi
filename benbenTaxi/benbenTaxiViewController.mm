@@ -395,10 +395,15 @@ NSString  *detailAddress;
 }
 
 - (IBAction)audioRecordPressed:(id)sender {
-    
+    if([TaxiProcessState isEqualToString: @"finish"]) {
+        
+    }
 }
 
 - (void) alertView:(UIAlertView *)alertview clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 1) {
+        [self performSegueWithIdentifier:@"taxiDetails" sender:self];
+    }
 }
 
 @end
