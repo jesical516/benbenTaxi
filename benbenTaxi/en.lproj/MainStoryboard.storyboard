@@ -372,7 +372,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cpp-FI-l5E">
                                 <rect key="frame" x="0.0" y="40" width="320" height="517"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="He0-pG-jxr" id="Vfz-Zx-G1B"/>
                                     <outlet property="delegate" destination="He0-pG-jxr" id="1da-SP-eUH"/>
@@ -493,7 +493,7 @@
                                     <outlet property="delegate" destination="bl0-nE-I6n" id="gGZ-W8-75W"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YlO-4L-G7g">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YlO-4L-G7g">
                                 <rect key="frame" x="80" y="415" width="161" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.74424041969999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -544,7 +544,12 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiLogin.h"/>
             <relationships>
                 <relationship kind="action" name="backgroundTap:"/>
+                <relationship kind="action" name="loginPressed:"/>
+                <relationship kind="action" name="newAcountPressed:"/>
+                <relationship kind="action" name="passwordConfirmPressed:"/>
+                <relationship kind="action" name="passwordReceived:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
+                <relationship kind="action" name="usernameReceived:"/>
                 <relationship kind="outlet" name="companyLable" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="login" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginBarImage" candidateClass="UIImageView"/>

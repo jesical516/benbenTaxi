@@ -44,25 +44,9 @@ historyRequestModel* historyModel;
 {
     NSData *responseData = [request responseData];
     NSString *historyRequestResult = [[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSData *data = [historyRequestResult dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *arr = (NSArray *)[data mutableObjectFromJSONData];
-    NSString* advertisingInfo = @"";
-    for(int i=0;i<arr.count;i++)
-    {
-        NSDictionary *advertisingItem = [arr objectAtIndex:i];
-        NSString *adInfo = [advertisingItem objectForKey:@"content"];
-        if ([advertisingInfo isEqualToString:@""]) {
-            advertisingInfo = adInfo;
-        } else {
-            advertisingInfo = [ advertisingInfo stringByAppendingString: @" "];
-            advertisingInfo = [ advertisingInfo stringByAppendingString: adInfo];
-            
-        }
-    }
-    
     NSLog(@"%@",historyRequestResult);
     [historyModel setStatus:TRUE];
-    [historyModel setValue: advertisingInfo forKey:@"historyRequestDetails"];
+    [historyModel setValue: historyRequestResult forKey:@"historyRequestDetails"];
 }
 
 - (void) requestFailed : (ASIHTTPRequest *)request

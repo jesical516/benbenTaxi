@@ -18,4 +18,12 @@
     status = newStatus;
 }
 
+- (bool) getCompleted {
+    return completed;
+}
+- (void) setCompleted : (bool) isCompleted {
+    completed = isCompleted;
+}
+
+
 @end

@@ -9,13 +9,14 @@
 #import "historyViewController.h"
 #import "historyRequestManager.h"
 #import "historyRequestModel.h"
-#import "ListCell.h"
+#import "TaxiListCell.h"
+#import "JSONKit.h"
 
 @implementation historyViewController {
-    NSArray *recipes;
 }
 historyRequestModel* historyModel;
 historyRequestManager* historyManager;
+bool historyStatus;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,15 +29,24 @@ historyRequestManager* historyManager;
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    [historyRequestModel addObserver:self forKeyPath:@"historyRequestDetails" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     historyModel = [[historyRequestModel alloc]init];
     historyManager = [[historyRequestManager alloc]init];
     [historyManager setModel : historyModel];
-    [historyManager getHistoryRequest];
+    [historyModel addObserver:self forKeyPath:@"historyRequestDetails" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     
-    recipes = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
-    //NSLog(@"recipes is %d", [recipes count]);
+    if([historyModel getCompleted]) {
+        NSLog(@"here getCompleted");
+        historyStatus = true;
+        [_requestTable setHidden:FALSE];
+        
+    } else {
+        NSLog(@"here init");
+        historyStatus = false;
+        [_requestTable setHidden:TRUE];
+        [historyManager getHistoryRequest];
+    }
+    
+    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,31 +59,75 @@ historyRequestManager* historyManager;
 {
     if([keyPath isEqualToString:@"historyRequestDetails"])
     {
+        if([historyModel getStatus]) {
+            [historyModel setCompleted:TRUE];
+            historyStatus = true;
+            [_requestTable setHidden:FALSE];
+            [_requestTable reloadData];
+    } else {
+            [historyManager getHistoryRequest];
+        }
         
+        NSLog(@"history get process done!");
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"recipes is here");
-    return 16;
-    //return [recipes count];
+    if(!historyStatus) {
+        return 0;
+    } else {
+        NSString* historyInfo = [historyModel valueForKey:@"historyRequestDetails"];
+        NSData *data = [historyInfo dataUsingEncoding:NSUTF8StringEncoding];
+        NSArray* historyArr = (NSArray *)[data mutableObjectFromJSONData];
+        return historyArr.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *simpleTableIdentifier = @"requestDetail";
+    NSString* historyInfo = [historyModel valueForKey:@"historyRequestDetails"];
+    NSData *data = [historyInfo dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray* historyArr = (NSArray *)[data mutableObjectFromJSONData];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    NSLog(@"indexPath %d", indexPath.row);
+    NSDictionary *taxiDict = [historyArr objectAtIndex:indexPath.row];;
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    NSString *identifier = @"ListIdentifier";
+    
+    TaxiListCell *cell = (TaxiListCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
     
-    //cell.textLabel.text = [recipes objectAtIndex:indexPath.row];
-    cell.textLabel.text = @"Test";
+    //NSString* createDate = [taxiDict valueForKey:@"created_at"];
+    
+    cell.dayLabel.text = @"1";
+    cell.monthLabel.text = @"2";
+    cell.positionLabel.text = [taxiDict valueForKey:@"source"];
+    NSString* requestState = [taxiDict valueForKey:@"state"];
+    if([requestState isEqualToString:@"Success"]) {
+        cell.statusLabel.text = @"交易状态:成功";
+    } else {
+        cell.statusLabel.text = @"交易状态:失败";
+    }
+    NSLog(@"here we go");
     return cell;
 }
+
+#pragma mark Table Delegate Methods
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 40;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView
+  willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
+
 
 - (void)dealloc {
     [_titleLable release];
