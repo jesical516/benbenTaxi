@@ -402,6 +402,8 @@ NSString  *detailAddress;
 
 - (void) alertView:(UIAlertView *)alertview clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 1) {
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setValue:[driverResponseModel valueForKey:@"driverResponseDetail"] forKey:@"currentTaxiRequestDetail"];
         [self performSegueWithIdentifier:@"taxiDetails" sender:self];
     }
 }
