@@ -51,12 +51,6 @@ NSString  *detailAddress;
 { 
     NSLog(@"view did load");
     [super viewDidLoad];
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-    if([deviceString isEqualToString:@"iPhone5,2"]) {
-    
-    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
     
@@ -251,8 +245,6 @@ NSString  *detailAddress;
 {
     if ([annotation isKindOfClass:[MyBMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
-        //newAnnotation.image = [UIImage imageNamed:@"icon_center_point.png"];
-        //newAnnotation.animatesDrop = YES;
         return newAnnotation;
 	} else if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
@@ -306,8 +298,10 @@ NSString  *detailAddress;
             [getDriverResponseTimer invalidate];
             NSString* currentStatus = [driverResponseModel valueForKey:@"requestStatus"];
             if([currentStatus isEqualToString:@"Success"]) {
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"有司机响应，距离您约0.2公里" delegate:self cancelButtonTitle:@"完成" otherButtonTitles:@"电话司机", nil];
+                NSString* responseDetail = [driverResponseModel valueForKey:@"driverResponseDetail"];
+                NSString* distance = [self getFormatDistanceInfo : responseDetail];
+                NSString* message = [[@"有司机响应，距离您约" stringByAppendingString : distance] stringByAppendingString : @"公里"];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:message delegate:self cancelButtonTitle:@"完成" otherButtonTitles:@"电话司机", nil];
                 [alert show];
                 TaxiProcessState = @"finish";
             } else if([currentStatus isEqualToString:@"TimeOut"]){
@@ -327,6 +321,22 @@ NSString  *detailAddress;
     myMap.showsUserLocation = true;
 }
 
+-(NSString*) getFormatDistanceInfo : (NSString*) responseInfo {
+    NSLog(@"response is %@", responseInfo);
+    NSData* responseData = [responseInfo dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *driverResponseDict = [responseData objectFromJSONData];
+    
+    NSString* driverLat = [driverResponseDict valueForKey:@"driver_lat"];
+    NSString* driverLng = [driverResponseDict valueForKey:@"driver_lng"];
+    
+    CLLocationCoordinate2D driverPt;
+    driverPt.latitude = [driverLat doubleValue];
+    driverPt.longitude = [driverLng doubleValue];
+    
+    double dis = [Util GetDistance : startPt : driverPt];
+    NSString* result = [NSString stringWithFormat:@"%.2f", dis];
+    return result;
+}
 
 -(void) requestTaxiState:(NSNotification*)notifi {
     NSString* taxiID = (NSString*) [notifi object];

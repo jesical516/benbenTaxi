@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BMapKit.h"
 
 @interface Util : NSObject
 
++ (double) GetDistance : (CLLocationCoordinate2D) pt1 : (CLLocationCoordinate2D) pt2;
 @end
