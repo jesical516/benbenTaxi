@@ -77,9 +77,9 @@
 		3AB8CA5117D44FA9000ED356 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8CA4F17D44FA9000ED356 /* Util.m */; };
 		3AB8CA5617D47695000ED356 /* TaxiDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AB8CA5417D47695000ED356 /* TaxiDetailsViewController.h */; };
 		3AB8CA5717D47695000ED356 /* TaxiDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8CA5517D47695000ED356 /* TaxiDetailsViewController.m */; };
-		3AB8CA5A17D4923D000ED356 /* customCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AB8CA5817D4923D000ED356 /* customCell.h */; };
-		3AB8CA5B17D4923D000ED356 /* customCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8CA5917D4923D000ED356 /* customCell.m */; };
 		3AB8CA5D17D4926D000ED356 /* customCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AB8CA5C17D4926D000ED356 /* customCell.xib */; };
+		3AB8CA6017D4C52A000ED356 /* benbenTaxiCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AB8CA5E17D4C52A000ED356 /* benbenTaxiCell.h */; };
+		3AB8CA6117D4C52A000ED356 /* benbenTaxiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8CA5F17D4C52A000ED356 /* benbenTaxiCell.m */; };
 		3ABAE5B517771CA500B86F15 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABAE5B417771CA500B86F15 /* Security.framework */; };
 		3AC1C51617A4B9F400689796 /* PasswordInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC1C51417A4B9F400689796 /* PasswordInfo.h */; };
 		3AC1C51717A4B9F400689796 /* PasswordInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1C51517A4B9F400689796 /* PasswordInfo.m */; };
@@ -261,9 +261,9 @@
 		3AB8CA4F17D44FA9000ED356 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		3AB8CA5417D47695000ED356 /* TaxiDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiDetailsViewController.h; sourceTree = "<group>"; };
 		3AB8CA5517D47695000ED356 /* TaxiDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiDetailsViewController.m; sourceTree = "<group>"; };
-		3AB8CA5817D4923D000ED356 /* customCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customCell.h; sourceTree = "<group>"; };
-		3AB8CA5917D4923D000ED356 /* customCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customCell.m; sourceTree = "<group>"; };
 		3AB8CA5C17D4926D000ED356 /* customCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customCell.xib; sourceTree = "<group>"; };
+		3AB8CA5E17D4C52A000ED356 /* benbenTaxiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiCell.h; sourceTree = "<group>"; };
+		3AB8CA5F17D4C52A000ED356 /* benbenTaxiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = benbenTaxiCell.m; sourceTree = "<group>"; };
 		3ABAE5B417771CA500B86F15 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3AC1C51417A4B9F400689796 /* PasswordInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordInfo.h; sourceTree = "<group>"; };
 		3AC1C51517A4B9F400689796 /* PasswordInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordInfo.m; sourceTree = "<group>"; };
@@ -651,9 +651,9 @@
 			children = (
 				3AB8CA5417D47695000ED356 /* TaxiDetailsViewController.h */,
 				3AB8CA5517D47695000ED356 /* TaxiDetailsViewController.m */,
-				3AB8CA5817D4923D000ED356 /* customCell.h */,
-				3AB8CA5917D4923D000ED356 /* customCell.m */,
 				3AB8CA5C17D4926D000ED356 /* customCell.xib */,
+				3AB8CA5E17D4C52A000ED356 /* benbenTaxiCell.h */,
+				3AB8CA5F17D4C52A000ED356 /* benbenTaxiCell.m */,
 			);
 			name = taxiDetails;
 			sourceTree = "<group>";
@@ -752,7 +752,7 @@
 				3A9CE79017D1EE2E006C4235 /* historyRequestManager.h in Headers */,
 				3AB8CA5017D44FA9000ED356 /* Util.h in Headers */,
 				3AB8CA5617D47695000ED356 /* TaxiDetailsViewController.h in Headers */,
-				3AB8CA5A17D4923D000ED356 /* customCell.h in Headers */,
+				3AB8CA6017D4C52A000ED356 /* benbenTaxiCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,7 +878,7 @@
 				3A9CE79117D1EE2E006C4235 /* historyRequestManager.m in Sources */,
 				3AB8CA5117D44FA9000ED356 /* Util.m in Sources */,
 				3AB8CA5717D47695000ED356 /* TaxiDetailsViewController.m in Sources */,
-				3AB8CA5B17D4923D000ED356 /* customCell.m in Sources */,
+				3AB8CA6117D4C52A000ED356 /* benbenTaxiCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

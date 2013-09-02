@@ -9,6 +9,7 @@
 #import "TaxiDetailsViewController.h"
 #import "JSONKit.h"
 #import "benbenTaxiViewController.h"
+#import "benbenTaxiCell.h"
 
 @interface TaxiDetailsViewController ()
 
@@ -50,48 +51,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString* requestDetail = [prefs valueForKey:@"currentTaxiRequestDetail"];
-    NSData* tempData = [requestDetail dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary* taxiDict = [tempData objectFromJSONData];
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"infoRecord"];
+    static NSString *simpleTableIdentifier = @"CustomCellIdentifier";
     
-    switch (indexPath.row) {
-        case 0: {
-            NSNumber* requestId = [taxiDict valueForKey:@"id"];
-            NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
-            NSString* taxiID = [numberFormatter stringFromNumber : requestId];
-            NSLog(@"taxiID is %@", taxiID);
-            if(NULL != taxiID) {
-                cell.textLabel.text = taxiID;
-            }
-            break;
-        }
-        case 1:
-            cell.textLabel.text = @"test";
-            break;
-        case 2:
-            cell.textLabel.text = @"test";
-            
-            break;
-        case 3:
-            cell.textLabel.text = @"test";
-            
-            break;
-        case 4:
-            cell.textLabel.text = @"test";
-            
-            break;
-        case 5:
-            cell.textLabel.text = @"test";
-            
-            break;
-        default:
-            cell.textLabel.text = @"test";
-            
-            break;
+     benbenTaxiCell *cell = (benbenTaxiCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"customCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
+    
+    cell.displayTitle.text = @"请求ID";
+    cell.displayContent.text = @"123";
+    cell.thumbnailImageView.image = [UIImage imageNamed: @"mic.png"];
     return cell;
+}
+
+#pragma mark Table Delegate Methods
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 55;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView
+  willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
 }
 
 @end

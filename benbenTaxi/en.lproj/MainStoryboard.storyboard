@@ -479,7 +479,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="newAcountBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Utq-i6-0yB">
-                                <rect key="frame" x="187" y="420" width="113" height="44"/>
+                                <rect key="frame" x="183" y="369" width="113" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.74424041969999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -496,7 +496,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="loginBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qtr-2h-71X">
-                                <rect key="frame" x="29" y="420" width="113" height="44"/>
+                                <rect key="frame" x="25" y="369" width="113" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.74424041969999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -513,21 +513,10 @@
                                     <action selector="sendTaxiRequest:" destination="hCT-Xg-xvv" eventType="touchUpInside" id="4Qe-Ld-rix"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="npX-hv-jtI">
-                                <rect key="frame" x="0.0" y="43" width="320" height="336"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="infoRecord" id="0UI-MZ-wkz">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="1" sectionFooterHeight="1" id="npX-hv-jtI">
+                                <rect key="frame" x="0.0" y="43" width="320" height="295"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="bl0-nE-I6n" id="5XN-hF-rj3"/>
                                     <outlet property="delegate" destination="bl0-nE-I6n" id="gGZ-W8-75W"/>
@@ -552,6 +541,64 @@
         <image name="login_bar.png" width="708" height="10"/>
         <image name="mic.png" width="166" height="256"/>
     </resources>
+    <classes>
+        <class className="BMKMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BMKMapView.h"/>
+        </class>
+        <class className="TaxiDetailsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaxiDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="callDriverBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="detailTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="finishBtn" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="benbenTaxiLogin" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiLogin.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTap:"/>
+                <relationship kind="action" name="textFieldDoneEditing:"/>
+                <relationship kind="outlet" name="companyLable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="login" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginBarImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="loginDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="loginStatusView" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="newAcount" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordConfirm" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="themeLable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="benbenTaxiViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="textFieldDoneEditing:"/>
+                <relationship kind="outlet" name="advertisingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
+                <relationship kind="outlet" name="sendRequestBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleDisplay" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="callTaxiViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/callTaxiViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="audioPlayBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="audioRecordBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="locationDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="recordHelpLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="recordHelpSubLable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sendRequestProcess" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="historyViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/historyViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="requestTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="titleLable" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
