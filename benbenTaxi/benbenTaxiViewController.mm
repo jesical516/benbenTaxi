@@ -23,6 +23,8 @@
 #import "DriverResponseManager.h"
 #import "DriverResponseModel.h"
 #import "ResponseHandler.h"
+#import "sys/utsname.h"
+#import "Util.h"
 
 @implementation benbenTaxiViewController
 
@@ -49,6 +51,12 @@ NSString  *detailAddress;
 { 
     NSLog(@"view did load");
     [super viewDidLoad];
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    if([deviceString isEqualToString:@"iPhone5,2"]) {
+    
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
     
@@ -298,7 +306,8 @@ NSString  *detailAddress;
             [getDriverResponseTimer invalidate];
             NSString* currentStatus = [driverResponseModel valueForKey:@"requestStatus"];
             if([currentStatus isEqualToString:@"Success"]) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"有司机确认，距离您约0.2公里" delegate:self cancelButtonTitle:@"直接等待司机" otherButtonTitles:@"电话司机", nil];
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"有司机响应，距离您约0.2公里" delegate:self cancelButtonTitle:@"完成" otherButtonTitles:@"电话司机", nil];
                 [alert show];
                 TaxiProcessState = @"finish";
             } else if([currentStatus isEqualToString:@"TimeOut"]){

@@ -18,6 +18,7 @@
 NSString* recordFileName = @"taxiRequestAudioRecord";
 TaxiRequestModel* taxiRequestmodel;
 TaxiRequestManager* taxiRequestManager;
+bool recordFinish;
 
 @synthesize recorder, player, convertAmr, convertWav;
 
@@ -48,7 +49,8 @@ TaxiRequestManager* taxiRequestManager;
     }
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString* detailAddress = [prefs valueForKey:@"detailAddress"];
-    self.locationDisplay.text = [@"位置:" stringByAppendingString : detailAddress];
+    self.locationDisplay.text = [@"位置：" stringByAppendingString : detailAddress];
+    recordFinish = false;
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,6 +64,8 @@ TaxiRequestManager* taxiRequestManager;
     [_audioRecordBtn release];
     [_audioPlayBtn release];
     [_sendRequestProcess release];
+    [_recordHelpLabel release];
+    [_recordHelpSubLable release];
     [super dealloc];
 }
 
@@ -114,9 +118,11 @@ TaxiRequestManager* taxiRequestManager;
 - (void)recordBtnLongPressed:(UILongPressGestureRecognizer*) longPressedRecognizer{
     //长按开始
     if(longPressedRecognizer.state == UIGestureRecognizerStateBegan) {
+        [_audioRecordBtn setImage:[UIImage imageNamed:@"mic.png"] forState:UIControlStateNormal];
         _audioRecordBtn.highlighted = TRUE;
         _audioRecordBtn.showsTouchWhenHighlighted = TRUE;
         _audioRecordBtn.backgroundColor = [UIColor redColor];
+        //[_audioRecordBtn setImage:[UIImage imageNamed:@"Icon.png"] forState:UIControlStateNormal];
         NSLog(@"long pressed start");
         [recorder beginRecordByFileName:recordFileName];
     }//长按结束
@@ -128,17 +134,22 @@ TaxiRequestManager* taxiRequestManager;
     }
 }
 - (IBAction)audioPlay:(id)sender {
-   if (recordFileName.length > 0) {
-       player = [player initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"]] error:nil];
-       [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error: nil];
-       player.volume = 1.0;
-       [player play];
+    if(recordFinish) {
+        if (recordFileName.length > 0) {
+            player = [player initWithContentsOfURL:[NSURL URLWithString:[VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"]] error:nil];
+            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error: nil];
+            player.volume = 1.0;
+            [player play];
+        }
     }
 }
 
 - (void)VoiceRecorderBaseRecordFinish:(NSString *)_filePath fileName:(NSString*)_fileName{
     NSLog(@"录音完成，文件路径:%@",_filePath);
-    self.audioPlayBtn.hidden = FALSE;
+    [_audioRecordBtn setImage:[UIImage imageNamed:@"播放.png"] forState:UIControlStateNormal];
+    _recordHelpLabel.text = @"点击图标试听";
+    _recordHelpSubLable.hidden = false;
+    recordFinish = true;
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

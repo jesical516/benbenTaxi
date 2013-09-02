@@ -24,5 +24,7 @@
 @property (copy, nonatomic)     NSString                *convertWav;        //amr转wav的文件名
 
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *sendRequestProcess;
+@property (retain, nonatomic) IBOutlet UILabel *recordHelpLabel;
+@property (retain, nonatomic) IBOutlet UILabel *recordHelpSubLable;
 
 @end
