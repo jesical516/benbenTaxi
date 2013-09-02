@@ -30,4 +30,17 @@
     return s;
 }
 
++ (double) CalculateDistance : (double) lat1 : (double) lng1 : (double) lat2 : (double) lng2
+{
+    double EARTH_RADIUS = 6378.137;
+    double radLat1 = (lat1 * M_PI) / 180.0;
+    double radLat2 = (lat2 * M_PI) / 180.0;
+    double a = radLat1 - radLat2;
+    double b = (lng1 * M_PI) / 180.0  - (lng2 * M_PI) / 180.0 ;
+    double s = 2 * sin(sqrt(pow(sin(a/2),2) + cos(radLat1)*cos(radLat2)*pow(sin(b/2),2)));
+    s = s * EARTH_RADIUS;
+    s = round(s * 10000) / 10000;
+    return s;
+}
+
 @end

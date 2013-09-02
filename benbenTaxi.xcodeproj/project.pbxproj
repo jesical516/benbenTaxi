@@ -80,6 +80,12 @@
 		3AB8CA5D17D4926D000ED356 /* customCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AB8CA5C17D4926D000ED356 /* customCell.xib */; };
 		3AB8CA6017D4C52A000ED356 /* benbenTaxiCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AB8CA5E17D4C52A000ED356 /* benbenTaxiCell.h */; };
 		3AB8CA6117D4C52A000ED356 /* benbenTaxiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8CA5F17D4C52A000ED356 /* benbenTaxiCell.m */; };
+		3AB8CA6717D4D345000ED356 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB8CA6217D4D345000ED356 /* location.png */; };
+		3AB8CA6817D4D345000ED356 /* plate_11.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB8CA6317D4D345000ED356 /* plate_11.png */; };
+		3AB8CA6917D4D345000ED356 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB8CA6417D4D345000ED356 /* user.png */; };
+		3AB8CA6A17D4D345000ED356 /* phone_13.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB8CA6517D4D345000ED356 /* phone_13.png */; };
+		3AB8CA6B17D4D345000ED356 /* distance.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB8CA6617D4D345000ED356 /* distance.png */; };
+		3AB8CA6D17D4D3AD000ED356 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB8CA6C17D4D3AD000ED356 /* flag.png */; };
 		3ABAE5B517771CA500B86F15 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABAE5B417771CA500B86F15 /* Security.framework */; };
 		3AC1C51617A4B9F400689796 /* PasswordInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC1C51417A4B9F400689796 /* PasswordInfo.h */; };
 		3AC1C51717A4B9F400689796 /* PasswordInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1C51517A4B9F400689796 /* PasswordInfo.m */; };
@@ -264,6 +270,12 @@
 		3AB8CA5C17D4926D000ED356 /* customCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customCell.xib; sourceTree = "<group>"; };
 		3AB8CA5E17D4C52A000ED356 /* benbenTaxiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiCell.h; sourceTree = "<group>"; };
 		3AB8CA5F17D4C52A000ED356 /* benbenTaxiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = benbenTaxiCell.m; sourceTree = "<group>"; };
+		3AB8CA6217D4D345000ED356 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = icons/location.png; sourceTree = SOURCE_ROOT; };
+		3AB8CA6317D4D345000ED356 /* plate_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plate_11.png; path = icons/plate_11.png; sourceTree = SOURCE_ROOT; };
+		3AB8CA6417D4D345000ED356 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user.png; path = icons/user.png; sourceTree = SOURCE_ROOT; };
+		3AB8CA6517D4D345000ED356 /* phone_13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phone_13.png; path = icons/phone_13.png; sourceTree = SOURCE_ROOT; };
+		3AB8CA6617D4D345000ED356 /* distance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = distance.png; path = icons/distance.png; sourceTree = SOURCE_ROOT; };
+		3AB8CA6C17D4D3AD000ED356 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flag.png; path = icons/flag.png; sourceTree = SOURCE_ROOT; };
 		3ABAE5B417771CA500B86F15 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3AC1C51417A4B9F400689796 /* PasswordInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordInfo.h; sourceTree = "<group>"; };
 		3AC1C51517A4B9F400689796 /* PasswordInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordInfo.m; sourceTree = "<group>"; };
@@ -578,6 +590,12 @@
 		3AB50B14175B2F880079772E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3AB8CA6C17D4D3AD000ED356 /* flag.png */,
+				3AB8CA6217D4D345000ED356 /* location.png */,
+				3AB8CA6317D4D345000ED356 /* plate_11.png */,
+				3AB8CA6417D4D345000ED356 /* user.png */,
+				3AB8CA6517D4D345000ED356 /* phone_13.png */,
+				3AB8CA6617D4D345000ED356 /* distance.png */,
 				3A50185517D4337F002BF48A /* 播放.png */,
 				3A1B67E417D387770033DCE1 /* Icon.png */,
 				3AEC4EE617D3907C0030FA97 /* mic.png */,
@@ -828,6 +846,12 @@
 				3AEC4EE717D3907C0030FA97 /* mic.png in Resources */,
 				3A50185617D4337F002BF48A /* 播放.png in Resources */,
 				3AB8CA5D17D4926D000ED356 /* customCell.xib in Resources */,
+				3AB8CA6717D4D345000ED356 /* location.png in Resources */,
+				3AB8CA6817D4D345000ED356 /* plate_11.png in Resources */,
+				3AB8CA6917D4D345000ED356 /* user.png in Resources */,
+				3AB8CA6A17D4D345000ED356 /* phone_13.png in Resources */,
+				3AB8CA6B17D4D345000ED356 /* distance.png in Resources */,
+				3AB8CA6D17D4D3AD000ED356 /* flag.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

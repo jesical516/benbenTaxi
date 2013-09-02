@@ -509,6 +509,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="callDriver:" destination="bl0-nE-I6n" eventType="touchUpInside" id="9Bc-Gg-8FY"/>
                                     <action selector="loginPressed:" destination="Ov7-SI-Bda" eventType="touchUpInside" id="zQl-Uw-v2T"/>
                                     <action selector="sendTaxiRequest:" destination="hCT-Xg-xvv" eventType="touchUpInside" id="4Qe-Ld-rix"/>
                                 </connections>
