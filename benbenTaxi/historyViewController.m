@@ -122,9 +122,9 @@ bool historyStatus;
     return 40;
 }
 
-- (NSIndexPath *)tableView:(UITableView *)tableView
-  willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"here");
+    [self performSegueWithIdentifier:@"ToRequestDetail" sender:self];
 }
 
 
