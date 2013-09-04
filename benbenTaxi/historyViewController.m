@@ -124,6 +124,15 @@ bool historyStatus;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"here");
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    NSString* historyInfo = [historyModel valueForKey:@"historyRequestDetails"];
+    NSData *data = [historyInfo dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray* historyArr = (NSArray *)[data mutableObjectFromJSONData];
+    NSDictionary *selectedRequestDict = [historyArr objectAtIndex:indexPath.row];
+    NSString *selectedRequestDictStr = [selectedRequestDict JSONString];
+    NSLog(@"request details is %@", selectedRequestDictStr);
+    [prefs setValue:selectedRequestDictStr forKey:@"currentTaxiRequestDetail"];
     [self performSegueWithIdentifier:@"ToRequestDetail" sender:self];
 }
 
