@@ -103,6 +103,10 @@ bool historyStatus;
         cell = [nib objectAtIndex:0];
     }
     
+    cell.dayLabel.text = @"null";
+    cell.monthLabel.text = @"null";
+    cell.positionLabel.text = @"null";
+    cell.statusLabel.text = @"null";
     NSString* createDate = [taxiDict valueForKey:@"created_at"];
     if(NULL != createDate) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -124,7 +128,10 @@ bool historyStatus;
         ;
     }
     
-    cell.positionLabel.text = [taxiDict valueForKey:@"source"];
+    NSString* source = [taxiDict valueForKey:@"source"];
+    if(![source isEqualToString:@""]) {
+        cell.positionLabel.text = [taxiDict valueForKey:@"source"];
+    }
     NSString* requestState = [taxiDict valueForKey:@"state"];
     if([requestState isEqualToString:@"Success"]) {
         cell.statusLabel.text = @"交易状态:成功";
