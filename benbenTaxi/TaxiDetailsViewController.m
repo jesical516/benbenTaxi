@@ -128,5 +128,27 @@
     NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", escapedPhoneNumber]];
     [[UIApplication sharedApplication] openURL:telURL];
 }
+- (IBAction)returnBtnPressed:(id)sender {
+    [self performSegueWithIdentifier:@"toHistory" sender:self];
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString* isFromHistory = [prefs valueForKey:@"IsFromHistory"];
+    
+    if ([identifier isEqualToString:@"isHistory"]) {
+        if([isFromHistory isEqualToString:@"YES"]) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    } else {
+        if(![isFromHistory isEqualToString:@"YES"]) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+}
 
 @end

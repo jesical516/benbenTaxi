@@ -54,8 +54,9 @@ NSString  *detailAddress;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
     
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString* lat = [prefs valueForKey : @"latitude"];
     NSString* lng = [prefs valueForKey : @"longitude"];
     
@@ -73,10 +74,12 @@ NSString  *detailAddress;
     
         [myMap addAnnotation:passengerAnnotation];
     }
+    myMap.zoomLevel = 15;
+    locationStatus = false;
+    myMap.showsUserLocation = YES;
+
     
     [self advertisingProcess];
-    myMap.zoomLevel = 15;
-    myMap.showsUserLocation = YES;
     [self nearbyDriverProcess];
   
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
@@ -100,10 +103,7 @@ NSString  *detailAddress;
     }
     
     getDriverResponseTimer = nil;
-    locationStatus = false;
     detailAddress = @"";
-    
-    myMap.showsUserLocation = YES;
 }
 
 -(void) advertisingProcess {
@@ -181,6 +181,7 @@ NSString  *detailAddress;
     startPt.latitude = userLocation.coordinate.latitude;
     startPt.longitude = userLocation.coordinate.longitude;
     
+    NSLog(@"title is %@", userLocation.title);
     [self location];
     
     if(locationStatus) {
@@ -203,6 +204,8 @@ NSString  *detailAddress;
         if(errorInfo == NULL || [errorInfo isEqualToString:@""]) {
             locationStatus = true;
         }
+        
+        NSLog(@"The location error is %@", errorInfo);
         
         for (CLPlacemark *placemark in place) {
             NSString* cityName = @"";
@@ -404,6 +407,7 @@ NSString  *detailAddress;
     if(buttonIndex == 1) {
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         [prefs setValue:[driverResponseModel valueForKey:@"driverResponseDetail"] forKey:@"currentTaxiRequestDetail"];
+        [prefs setValue:@"NO" forKey : @"IsFromHistory"];
         [self performSegueWithIdentifier:@"taxiDetails" sender:self];
     }
 }

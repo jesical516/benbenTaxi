@@ -80,6 +80,7 @@ bool historyStatus;
         NSString* historyInfo = [historyModel valueForKey:@"historyRequestDetails"];
         NSData *data = [historyInfo dataUsingEncoding:NSUTF8StringEncoding];
         NSArray* historyArr = (NSArray *)[data mutableObjectFromJSONData];
+        
         return historyArr.count;
     }
 }
@@ -133,6 +134,7 @@ bool historyStatus;
     NSString *selectedRequestDictStr = [selectedRequestDict JSONString];
     NSLog(@"request details is %@", selectedRequestDictStr);
     [prefs setValue:selectedRequestDictStr forKey:@"currentTaxiRequestDetail"];
+    [prefs setValue:@"YES" forKey : @"IsFromHistory"];
     [self performSegueWithIdentifier:@"ToRequestDetail" sender:self];
 }
 
