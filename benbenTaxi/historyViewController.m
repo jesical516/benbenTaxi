@@ -103,10 +103,27 @@ bool historyStatus;
         cell = [nib objectAtIndex:0];
     }
     
-    //NSString* createDate = [taxiDict valueForKey:@"created_at"];
+    NSString* createDate = [taxiDict valueForKey:@"created_at"];
+    if(NULL != createDate) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSArray *arrDatePos =[createDate componentsSeparatedByString:NSLocalizedString(@"T", nil)];
+        NSDate *date = [dateFormatter dateFromString:arrDatePos[0]];
+        
+        NSLog(@"created time is %@ date is %@", createDate, date);
+        [dateFormatter release];
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
+        
+        NSInteger day = [components day];
+        NSInteger month= [components month];
+        
+        cell.dayLabel.text = [[NSString stringWithFormat:@"%d", day] stringByAppendingString:@"日"];
+        cell.monthLabel.text = [[NSString stringWithFormat:@"%d", month] stringByAppendingString:@"月"];
+        ;
+    }
     
-    cell.dayLabel.text = @"1";
-    cell.monthLabel.text = @"2";
     cell.positionLabel.text = [taxiDict valueForKey:@"source"];
     NSString* requestState = [taxiDict valueForKey:@"state"];
     if([requestState isEqualToString:@"Success"]) {
