@@ -38,12 +38,19 @@ bool historyStatus;
         NSLog(@"here getCompleted");
         historyStatus = true;
         [_requestTable setHidden:FALSE];
-        
     } else {
-        NSLog(@"here init");
         historyStatus = false;
         [_requestTable setHidden:TRUE];
         [historyManager getHistoryRequest];
+        
+        if (activity==NULL) {
+            activity=[[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(145,165, 30, 100)];
+        }
+        activity.activityIndicatorViewStyle=UIActivityIndicatorViewStyleWhiteLarge;
+        activity.tag=600;
+        activity.hidesWhenStopped=YES;
+        [activity startAnimating];            //菊花开始转动
+        [self.view addSubview:activity];
     }
     
     [super viewDidLoad];
@@ -60,6 +67,11 @@ bool historyStatus;
     if([keyPath isEqualToString:@"historyRequestDetails"])
     {
         if([historyModel getStatus]) {
+            NSLog(@"菊花停止转动");
+            [activity stopAnimating];
+            UIView *view=(UIView *)[self.view viewWithTag:600];
+            [view removeFromSuperview];
+            
             [historyModel setCompleted:TRUE];
             historyStatus = true;
             [_requestTable setHidden:FALSE];
@@ -132,13 +144,18 @@ bool historyStatus;
     if(![source isEqualToString:@""]) {
         cell.positionLabel.text = [taxiDict valueForKey:@"source"];
     }
+    
     NSString* requestState = [taxiDict valueForKey:@"state"];
     if([requestState isEqualToString:@"Success"]) {
         cell.statusLabel.text = @"交易状态:成功";
     } else {
         cell.statusLabel.text = @"交易状态:失败";
     }
+    
     NSLog(@"here we go");
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(50.0f, 0.0f, 1.0f, 40.0f)];
+    [lineView setBackgroundColor:[UIColor lightGrayColor]];
+    [cell addSubview:lineView];
     return cell;
 }
 

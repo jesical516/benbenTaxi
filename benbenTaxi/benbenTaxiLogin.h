@@ -24,5 +24,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *companyLable;
 @property (retain, nonatomic) IBOutlet UIImageView *loginBarImage;
 @property (retain, nonatomic) IBOutlet UILabel *themeLable;
+@property (retain, nonatomic) IBOutlet UITextField *confirmFields;
+@property (retain, nonatomic) IBOutlet UIButton *getConfirmBtn;
 
 @end

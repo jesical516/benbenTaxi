@@ -49,12 +49,9 @@ NSString  *detailAddress;
 
 - (void)viewDidLoad
 { 
-    NSLog(@"view did load");
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
-    
-    
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString* lat = [prefs valueForKey : @"latitude"];
@@ -64,20 +61,17 @@ NSString  *detailAddress;
     prePt.latitude = [lat floatValue];
     prePt.longitude = [lng floatValue];
     
-    if(prePt.latitude > 0) {
-        NSLog(@"%f, %f", prePt.latitude, prePt.longitude);
-        myMap.centerCoordinate = prePt;
+    myMap.zoomLevel = 14;
     
+    if(prePt.latitude > 0 && prePt.longitude > 0) {
+        myMap.centerCoordinate = prePt;
         passengerAnnotation = [[MyBMKPointAnnotation alloc]init];
         passengerAnnotation.coordinate = prePt;
         passengerAnnotation.title = detailAddress;
-    
         [myMap addAnnotation:passengerAnnotation];
     }
-    myMap.zoomLevel = 15;
+    
     locationStatus = false;
-    myMap.showsUserLocation = YES;
-
     
     [self advertisingProcess];
     [self nearbyDriverProcess];
@@ -138,7 +132,7 @@ NSString  *detailAddress;
 -(void)viewWillAppear:(BOOL)animated {
     [myMap viewWillAppear];
     myMap.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
-    myMap.showsUserLocation = YES;
+    myMap.showsUserLocation = TRUE;
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -181,7 +175,6 @@ NSString  *detailAddress;
     startPt.latitude = userLocation.coordinate.latitude;
     startPt.longitude = userLocation.coordinate.longitude;
     
-    NSLog(@"title is %@", userLocation.title);
     [self location];
     
     if(locationStatus) {
@@ -191,6 +184,7 @@ NSString  *detailAddress;
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         [prefs setValue: [NSString stringWithFormat:@"%f",startPt.latitude] forKey:@"latitude"];
         [prefs setValue: [NSString stringWithFormat:@"%f", startPt.longitude] forKey:@"longitude"];
+        myMap.showsUserLocation = FALSE;
     }
 }
 
@@ -248,6 +242,7 @@ NSString  *detailAddress;
 {
     if ([annotation isKindOfClass:[MyBMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];
+        newAnnotation.userInteractionEnabled = FALSE;
         return newAnnotation;
 	} else if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotation = [[[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"] autorelease];

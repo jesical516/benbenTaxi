@@ -11,7 +11,7 @@
 #import "historyRequestManager.h"
 
 @interface historyViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-
+    UIActivityIndicatorView* activity;
 }
 @property (retain, nonatomic) IBOutlet UILabel *titleLable;
 

@@ -59,20 +59,27 @@
     
     static NSString *simpleTableIdentifier = @"CustomCellIdentifier";
     
-     benbenTaxiCell *cell = (benbenTaxiCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    benbenTaxiCell *cell = (benbenTaxiCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (cell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"customCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     
+    NSString* latStr = [taxiDict valueForKey:@"passenger_lat"];
+    if( latStr == NULL) {
+        NSLog(@"latitude is null");
+    }
     
-    double lat1 = [[taxiDict valueForKey:@"passenger_lat"] doubleValue];
-    double lng1 = [[taxiDict valueForKey:@"passenger_lng"] doubleValue];
-    double lat2 = [[taxiDict valueForKey:@"driver_lat"] doubleValue];
-    double lng2 = [[taxiDict valueForKey:@"driver_lng"] doubleValue];
+    NSString* requestState = [taxiDict valueForKey:@"state"];
     
-    double distance = [Util CalculateDistance:lat1 : lng1: lat2 :lng2];
+    bool status = false;
+    if([requestState isEqualToString:@"Success"]) {
+        status = true;
+    }
+    
+    cell.displayContent.text = @"null";
+    
     switch (indexPath.row) {
         case 0:
             cell.displayTitle.text = @"请求ID";
@@ -90,22 +97,40 @@
             break;
         case 2:
             cell.displayTitle.text = @"司机车牌";
-            cell.displayContent.text = [taxiDict valueForKey:@"plate"];
+            if(status) {
+                cell.displayContent.text = [taxiDict valueForKey:@"plate"];
+            }
             cell.thumbnailImageView.image = [UIImage imageNamed: @"plate_11.png"];
             break;
         case 3:
             cell.displayTitle.text = @"司机电话";
-            cell.displayContent.text = [taxiDict valueForKey:@"driver_mobile"];
+            if(status) {
+                cell.displayContent.text = [taxiDict valueForKey:@"driver_mobile"];
+            }
             cell.thumbnailImageView.image = [UIImage imageNamed: @"phone_13.png"];
             break;
         case 4:
             cell.displayTitle.text = @"距离";
-            cell.displayContent.text = [[NSString stringWithFormat:@"%.2f", distance] stringByAppendingString:@"公里"];
             cell.thumbnailImageView.image = [UIImage imageNamed: @"location.png"];
+            
+            if(status) {
+                double lat1 = [[taxiDict valueForKey:@"passenger_lat"] doubleValue];
+                double lng1 = [[taxiDict valueForKey:@"passenger_lng"] doubleValue];
+                double lat2 = [[taxiDict valueForKey:@"driver_lat"] doubleValue];
+                double lng2 = [[taxiDict valueForKey:@"driver_lng"] doubleValue];
+            
+                double distance = [Util CalculateDistance:lat1 : lng1: lat2 :lng2];
+                cell.displayContent.text = [[NSString stringWithFormat:@"%.2f", distance] stringByAppendingString:@"公里"];
+            }
             break;
         default:
             break;
     }
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(60.0f, 0.0f, 1.0f, 55.0f)];
+    
+    [lineView setBackgroundColor:[UIColor lightGrayColor]];
+    
+    [cell addSubview:lineView];
     return cell;
 }
 

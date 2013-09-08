@@ -166,6 +166,8 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
     [companyLable release];
     [loginBarImage release];
     [themeLable release];
+    [_confirmFields release];
+    [_getConfirmBtn release];
     [super dealloc];
 }
 
@@ -198,6 +200,11 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
     }
     
     return YES;
+}
+
+
+- (IBAction)getComfirmPressed:(id)sender {
+    
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

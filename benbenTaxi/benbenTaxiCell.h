@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface benbenTaxiCell : UITableViewCell
+@interface benbenTaxiCell : UITableViewCell {
+    NSMutableArray *columns;
+}
+
 @property (retain, nonatomic) IBOutlet UIImageView *thumbnailImageView;
 @property (retain, nonatomic) IBOutlet UILabel *displayTitle;
 @property (retain, nonatomic) IBOutlet UILabel *displayContent;
