@@ -124,16 +124,19 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
     //如果当前标题为返回
     if( [btn.currentTitle isEqualToString:@"返回"] ) {
         [sender setTitle:@"注册" forState:UIControlStateNormal];
+        [self.getConfirmBtn setTitle: @"获取验证码" forState:UIControlStateNormal];
         [self.passwordConfirm setHidden:true];
+        [_getConfirmBtn setHidden:true];
+        [_confirmFields setHidden:true];
         [self.login setTitle:@"登录" forState:UIControlStateNormal];
         [self.username setText:@""];
         [self.password setText:@""];
         [self.passwordConfirm setText:@""];
         CGRect position = self.login.frame;
-        CGRect r2 = CGRectOffset(position, 0, -50);
+        CGRect r2 = CGRectOffset(position, 0, -100);
         [self.login setFrame:r2];
         position = btn.frame;
-        r2 = CGRectOffset(position, 0, -50);
+        r2 = CGRectOffset(position, 0, -100);
         [btn setFrame:r2];
         [self.loginStatusView stopAnimating];
         newAcountState = NO;
@@ -143,12 +146,15 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
         [self.passwordConfirm setText:@""];
         [sender setTitle:@"返回" forState:UIControlStateNormal];
         [_passwordConfirm setHidden:false];
+        [_confirmFields setHidden:false];
+        [_getConfirmBtn setHidden:false];
         [self.login setTitle:@"注册" forState:UIControlStateNormal];
+        
         CGRect position = self.login.frame;
-        CGRect r2 = CGRectOffset(position, 0, 50);
+        CGRect r2 = CGRectOffset(position, 0, 100);
         [self.login setFrame:r2];
         position = btn.frame;
-        r2 = CGRectOffset(position, 0, 50);
+        r2 = CGRectOffset(position, 0, 100);
         [btn setFrame:r2];
         newAcountState = YES;
     }
@@ -204,6 +210,7 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
 
 
 - (IBAction)getComfirmPressed:(id)sender {
+    [sender setTitle:@"发送中" forState:UIControlStateNormal];
     
 }
 
