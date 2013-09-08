@@ -19,7 +19,7 @@ NearByDriverModel* nearByDriverModel;
 }
 
 - (void) getNearbyDrivers : (CLLocationCoordinate2D) passengerLocation {
-    NSString* requestStr = @"http://42.121.55.211:8081/api/v1/users/nearby_driver?lat=";
+    NSString* requestStr = @"http://yangquan.benbentaxi.com:80/api/v1/users/nearby_driver?lat=";
     NSString* latitudeStr = [NSString stringWithFormat:@"%f", passengerLocation.latitude];
     NSString* longitudeStr = [NSString stringWithFormat:@"%f", passengerLocation.longitude];
     

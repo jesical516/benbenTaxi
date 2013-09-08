@@ -15,7 +15,7 @@
 historyRequestModel* historyModel;
 
 - (void) getHistoryRequest {
-    NSString* urlAddress = @"http://42.121.55.211:8081/api/v1/taxi_requests";
+    NSString* urlAddress = @"http://yangquan.benbentaxi.com:80/api/v1/taxi_requests";
     NSURL *url = [NSURL URLWithString : urlAddress];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL : url];
     [request setRequestMethod:@"GET"];

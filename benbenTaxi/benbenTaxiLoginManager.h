@@ -12,7 +12,7 @@
 @interface benbenTaxiLoginManager : NSObject
 
 -(void) setLoginModel : (LoginModel*) model;
-- (void) newAcountProcess : (NSString*) phoneNum : (NSString*) password;
+- (void) newAcountProcess : (NSString*) phoneNum : (NSString*) password : (NSString*) verifyCode;
 - (void) loginProcess : (NSString*) phoneNum : (NSString*) password;
 
 @end

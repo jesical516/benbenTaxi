@@ -20,7 +20,7 @@ DriverResponseModel* driverResponseModel;
 
 -(void) getDriverResponse : (NSString*) requestID {
     NSLog(@"request start");
-    NSString* urlPrefix = @"http://42.121.55.211:8081/api/v1/taxi_requests/";
+    NSString* urlPrefix = @"http://yangquan.benbentaxi.com:80/api/v1/taxi_requests/";
     NSLog(@"Request id is %@", requestID);
     NSString* requestSuffix = [NSString stringWithFormat:@"%@",requestID]; 
     NSString* urlAddress = [urlPrefix stringByAppendingString:requestSuffix];

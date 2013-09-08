@@ -37,7 +37,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string></string>
 	<key>UILaunchImageFile~iphone</key>
-	<string>load.png</string>
+	<string>Icon.png</string>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>
 	<key>UIRequiredDeviceCapabilities</key>

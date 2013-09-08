@@ -14,7 +14,7 @@
 @implementation benbenTaxiLoginManager
 LoginModel* model;
 
-- (void) newAcountProcess : (NSString*) phoneNum : (NSString*) password
+- (void) newAcountProcess : (NSString*) phoneNum : (NSString*) password : (NSString*) verifyCode
 {
     NSLog(@"phone is %@", phoneNum);
     NSLog(@"password is %@", password);
@@ -24,13 +24,14 @@ LoginModel* model;
     [userInfoJobj setObject : phoneNum forKey:@"mobile"];
     [userInfoJobj setObject : password forKey:@"password"];
     [userInfoJobj setObject : password forKey:@"password_confirmation"];
+    [userInfoJobj setObject : verifyCode forKey:@"verify_code"];
     
     [postInfoJobj setObject : userInfoJobj forKey:@"user"];
     NSString *strPostInfo = [postInfoJobj JSONString];
     
     NSLog(@"post info is %@", strPostInfo);
     
-    NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/users/create_passenger"];
+    NSURL *url = [NSURL URLWithString:@"http://yangquan.benbentaxi.com:80/api/v1/users/create_passenger"];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL : url];
     [request setRequestMethod:@"POST"];
     [request appendPostData:[strPostInfo dataUsingEncoding:NSUTF8StringEncoding]];
@@ -52,7 +53,7 @@ LoginModel* model;
     [postInfoJobj setObject : userInfoJobj forKey:@"session"];
     NSString *strPostInfo = [postInfoJobj JSONString];
     
-    NSURL *url = [NSURL URLWithString:@"http://42.121.55.211:8081/api/v1/sessions/passenger_signin"];
+    NSURL *url = [NSURL URLWithString:@"http://yangquan.benbentaxi.com:80/api/v1/sessions/passenger_signin"];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL : url];
     [request setRequestMethod:@"POST"];
     [request appendPostData:[strPostInfo dataUsingEncoding:NSUTF8StringEncoding]];

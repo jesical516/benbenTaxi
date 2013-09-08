@@ -11,6 +11,8 @@
 #import "benbenTaxiLoginManager.h"
 #import "LoginModel.h"
 #import "PasswordInfo.h"
+#import "ComfirmCodeModel.h"
+#import "ComfirmCodeManager.h"
 
 @interface benbenTaxiLogin ()
 
@@ -22,9 +24,14 @@ bool isAutoLogin = false;
 bool newAcountState = false;
 bool loginState = false;
 int loginExpireTime = 30 * 86400;
+int currentCountDown = 90;
 
 benbenTaxiLoginManager* loginManager;
 LoginModel* loginModel;
+
+ComfirmCodeModel* comfirmCodeModel;
+ComfirmCodeManager* comfirmCodeManager;
+NSTimer* confirmTimer;
 
 NSString * const KEY_USERNAME_PASSWORD = @"benben.taxi.usernamepassword";
 NSString * const KEY_USERNAME = @"benben.taxi.app.username";
@@ -63,6 +70,7 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
             self.password.text = [usernamepasswordKVPairs objectForKey:KEY_PASSWORD];
         }
     }
+    confirmTimer = nil;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -109,8 +117,14 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
             [alert show];
             return;
         }
+        
+        if( [self.confirmFields.text isEqualToString:@""]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请先输入注册码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+            return;
+        }
         [self.loginStatusView startAnimating];
-        [loginManager newAcountProcess : self.username.text : self.password.text ];
+        [loginManager newAcountProcess : self.username.text : self.password.text : self.confirmFields.text];
     } else {
         [self.loginStatusView startAnimating];
         [loginManager loginProcess : self.username.text : self.password.text ];
@@ -210,6 +224,18 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
 
 
 - (IBAction)getComfirmPressed:(id)sender {
+    if([self.username.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请先输入手机号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    comfirmCodeManager = [[ComfirmCodeManager alloc]init];
+    comfirmCodeModel = [[ComfirmCodeModel alloc]init];
+    
+    [comfirmCodeManager setComfirmCodeModel : comfirmCodeModel];
+    [comfirmCodeModel addObserver:self forKeyPath:@"response" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    [comfirmCodeManager getConfirmCode : self.username.text];
+    
     [sender setTitle:@"发送中" forState:UIControlStateNormal];
     
 }
@@ -237,7 +263,24 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:errorInfo delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
         }
+    } else if([keyPath isEqualToString : @"response"]) {
+        currentCountDown = 90;
+        [self.getConfirmBtn setTitle: @"90秒" forState:UIControlStateNormal];
+        if( nil == confirmTimer ) {
+            confirmTimer=[NSTimer scheduledTimerWithTimeInterval: 1
+                                                              target: self
+                                                            selector: @selector(handleTimer:)
+                                                            userInfo: nil
+                                                             repeats: YES];
+        }
     }
+}
+
+-(void) handleTimer : (id) sender{
+    currentCountDown--;
+    NSString* currentTitle = [NSString stringWithFormat:@"%d", currentCountDown];
+    
+    [self.getConfirmBtn setTitle:[currentTitle stringByAppendingString:@"秒"] forState:UIControlStateNormal];
 }
 
 @end

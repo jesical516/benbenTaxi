@@ -14,7 +14,7 @@
 @implementation AdvertisingManager
 
 AdvertisingModel* model;
-NSString* api = @"http://42.121.55.211:8081/api/v1/advertisements";
+NSString* api = @"http://yangquan.benbentaxi.com:80/api/v1/advertisements";
 
 - (void) setAdvertisingModel : (AdvertisingModel*) newModel {
     model = newModel;

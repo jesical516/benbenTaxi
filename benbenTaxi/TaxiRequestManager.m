@@ -12,7 +12,7 @@
 
 @implementation TaxiRequestManager
 
-NSString* TAXI_REQUEST_API = @"http://42.121.55.211:8081/api/v1/taxi_requests";
+NSString* TAXI_REQUEST_API = @"http://yangquan.benbentaxi.com:80/api/v1/taxi_requests";
 -(void) setTaxiRequestModel : (TaxiRequestModel*) newTaxiRequestModel {
     taxiRequestModel = newTaxiRequestModel;
     
