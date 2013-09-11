@@ -61,6 +61,13 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
     [loginModel setLoginStatus:false];
     [loginManager setLoginModel:loginModel];
     [loginModel addObserver:self forKeyPath:@"errorInfo" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    
+    comfirmCodeManager = [[ComfirmCodeManager alloc]init];
+    comfirmCodeModel = [[ComfirmCodeModel alloc]init];
+    
+    [comfirmCodeManager setComfirmCodeModel : comfirmCodeModel];
+    [comfirmCodeModel addObserver:self forKeyPath:@"response" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString* phoneNum = [prefs valueForKey:@"phone"];
     if(![phoneNum isEqualToString:@""]) {
@@ -103,7 +110,7 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
     }
 }
 
-- (IBAction)loginPressed:(id)sender {
+- (IBAction)loginPressed:(id)sender {   
     if( [self.username.text isEqualToString:@""] )
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入手机号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
@@ -232,11 +239,6 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
         [alert show];
         return;
     }
-    comfirmCodeManager = [[ComfirmCodeManager alloc]init];
-    comfirmCodeModel = [[ComfirmCodeModel alloc]init];
-    
-    [comfirmCodeManager setComfirmCodeModel : comfirmCodeModel];
-    [comfirmCodeModel addObserver:self forKeyPath:@"response" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     [comfirmCodeManager getConfirmCode : self.username.text];
     
     [sender setTitle:@"发送中" forState:UIControlStateNormal];
@@ -263,6 +265,7 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
         } else {
             loginState = false;
             NSString* errorInfo = [loginModel getErrorInfo];
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:errorInfo delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
         }

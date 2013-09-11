@@ -12,7 +12,7 @@
 #import "ComfirmCodeModel.h"
 
 @implementation ComfirmCodeManager
-ComfirmCodeModel* model;
+ComfirmCodeModel* comfirmCodeModel;
 
 - (void) getConfirmCode : (NSString*) phoneNum
 {
@@ -50,23 +50,23 @@ ComfirmCodeModel* model;
         NSArray *baseArray = [errorDict objectForKey:firstKey];
         NSLog(@"base array is %@", baseArray.JSONString);
         NSString* baseError = (NSString*)[baseArray objectAtIndex:0];
-        [model setStatus:true];
-        [model setValue:baseError forKey:@"response"];
+        [comfirmCodeModel setStatus:true];
+        [comfirmCodeModel setValue:baseError forKey:@"response"];
     } else {
-        [model setStatus:true];
-        [model setValue:str1 forKey:@"response"];
+        [comfirmCodeModel setStatus:true];
+        [comfirmCodeModel setValue:str1 forKey:@"response"];
     }
 }
 
 - (void) requestFailed : (ASIHTTPRequest *)request
 {
     NSString* requestError = @"发送失败，请重试";
-    [model setStatus:false];
-    [model setValue:requestError forKey : @"response"];
+    [comfirmCodeModel setStatus:false];
+    [comfirmCodeModel setValue:requestError forKey : @"response"];
 }
 -(void) setComfirmCodeModel : (ComfirmCodeModel*) comfirmCodeModel
 {
-    model = comfirmCodeModel;
+    comfirmCodeModel = comfirmCodeModel;
 }
 
 @end

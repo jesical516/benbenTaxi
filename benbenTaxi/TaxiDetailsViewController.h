@@ -13,6 +13,7 @@
 
 @property (retain, nonatomic) IBOutlet UITableView *detailTable;
 @property (retain, nonatomic) IBOutlet UIButton *callDriverBtn;
+@property (retain, nonatomic) IBOutlet UIButton *canclBtn;
 
 @property (retain, nonatomic) IBOutlet UIView *finishBtn;
 @end

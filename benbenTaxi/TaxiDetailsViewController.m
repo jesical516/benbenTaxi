@@ -30,6 +30,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString* requestDetails = [prefs valueForKey:@"currentTaxiRequestDetail"];
+    NSData *data = [requestDetails dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *taxiDict = [data objectFromJSONData];
+    
+    NSString* requestState = [taxiDict valueForKey:@"state"];
+    if(![requestState isEqualToString:@"Success"]) {
+        self.callDriverBtn.hidden = true;
+        
+        CGRect position = self.canclBtn.frame;
+        CGRect r2 = CGRectOffset(position, -79, 0);
+        [self.canclBtn setFrame:r2];
+
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,6 +56,7 @@
     [_detailTable release];
     [_finishBtn release];
     [_callDriverBtn release];
+    [_canclBtn release];
     [super dealloc];
 }
 
@@ -132,6 +147,8 @@
     [lineView setBackgroundColor:[UIColor lightGrayColor]];
     
     [cell addSubview:lineView];
+    
+    
     return cell;
 }
 

@@ -120,7 +120,7 @@ bool historyStatus;
     
     cell.dayLabel.text = @"null";
     cell.monthLabel.text = @"null";
-    cell.positionLabel.text = @"null";
+    cell.positionLabel.text = @"打车位置:";
     cell.statusLabel.text = @"null";
     NSString* createDate = [taxiDict valueForKey:@"created_at"];
     if(NULL != createDate) {
@@ -152,16 +152,19 @@ bool historyStatus;
     
     NSString* source = [taxiDict valueForKey:@"source"];
     if(![source isEqualToString:@""]) {
-        cell.positionLabel.text = [taxiDict valueForKey:@"source"];
+        cell.positionLabel.text = [cell.positionLabel.text stringByAppendingString:[taxiDict valueForKey:@"source"]];
     }
     
     NSString* requestState = [taxiDict valueForKey:@"state"];
     if([requestState isEqualToString:@"Success"]) {
         cell.statusLabel.text = @"交易状态:成功";
+        cell.statusLabel.textColor = [UIColor greenColor];
     } else if([requestState isEqualToString:@"TimeOut"]){
         cell.statusLabel.text = @"交易状态:失败";
+        cell.statusLabel.textColor = [UIColor redColor];
     } else {
-        cell.statusLabel.text = @"交易状态:等待中"; 
+        cell.statusLabel.text = @"交易状态:等待";
+        cell.statusLabel.textColor = [UIColor redColor];
     }
     
     NSLog(@"here we go");

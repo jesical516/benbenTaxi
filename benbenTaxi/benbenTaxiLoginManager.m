@@ -79,10 +79,10 @@ LoginModel* model;
         NSArray* keysArray = [errorDict allKeys];
         NSString* firstKey = [keysArray objectAtIndex:0];
         NSArray *baseArray = [errorDict objectForKey:firstKey];
-        NSLog(@"base array is %@", baseArray.JSONString);
         NSString* baseError = (NSString*)[baseArray objectAtIndex:0];
+        NSLog(@"base array is %@", baseError);
         [model setLoginStatus:false];
-        [model setErrorInfo:baseError];
+        [model setErrorInfo: [[NSString alloc]initWithString:baseError]];
     } else {
         NSString* responseStr = @"";
         [model setLoginStatus:true];

@@ -299,18 +299,16 @@ NSString  *detailAddress;
                 NSString* responseDetail = [driverResponseModel valueForKey:@"driverResponseDetail"];
                 NSString* distance = [self getFormatDistanceInfo : responseDetail];
                 NSString* message = [[@"有司机响应，距离您约" stringByAppendingString : distance] stringByAppendingString : @"公里"];
+                
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:message delegate:self cancelButtonTitle:@"完成" otherButtonTitles:@"电话司机", nil];
                 [alert show];
+                
                 TaxiProcessState = @"finish";
             } else if([currentStatus isEqualToString:@"TimeOut"]){
                 TaxiProcessState = @"finish";
             }
         
         }
-    } else if ([keyPath isEqualToString:@"confirmResponse"]) {
-        NSString *escapedPhoneNumber = @"18511585218";
-        NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", escapedPhoneNumber]];
-        [[UIApplication sharedApplication] openURL:telURL];
     }
 }
 
@@ -387,6 +385,7 @@ NSString  *detailAddress;
         NSLog(@"go into stop");
         NSTimer* theTimer = (NSTimer*) sender;
         [theTimer invalidate];
+        TaxiProcessState = @"idle";
     } else {
         [driverResponseManager getDriverResponse:taxiRequestID];
     }
@@ -405,6 +404,14 @@ NSString  *detailAddress;
         [prefs setValue:@"NO" forKey : @"IsFromHistory"];
         [self performSegueWithIdentifier:@"taxiDetails" sender:self];
     }
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:@"toCurrentDetails"]) {
+        return FALSE;
+    }
+    
+    return true;
 }
 
 @end

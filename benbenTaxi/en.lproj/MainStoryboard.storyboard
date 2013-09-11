@@ -99,7 +99,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="uJr-LY-aTs">
-                                <rect key="frame" x="142" y="331" width="37" height="37"/>
+                                <rect key="frame" x="142" y="336" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="帷幄科技" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="278-Rv-wf8">
@@ -223,7 +223,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EmA-oG-4QC">
-                                <rect key="frame" x="5" y="405" width="310" height="45"/>
+                                <rect key="frame" x="5" y="406" width="310" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.74424041969999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -235,11 +235,11 @@
                                 </state>
                                 <connections>
                                     <action selector="audioRecordPressed:" destination="2" eventType="touchUpInside" id="9SJ-g6-6xA"/>
-                                    <segue destination="hCT-Xg-xvv" kind="modal" id="7PB-wT-GgM"/>
+                                    <segue destination="hCT-Xg-xvv" kind="modal" id="f1q-HJ-m9R"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0hQ-DK-Z0Y">
-                                <rect key="frame" x="118" y="458" width="73" height="44"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mue-hA-n1T">
+                                <rect key="frame" x="144" y="453" width="73" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -250,7 +250,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bl0-nE-I6n" kind="modal" identifier="taxiDetails" id="NfW-5R-woq"/>
+                                    <segue destination="bl0-nE-I6n" kind="modal" identifier="taxiDetails" id="aHl-1J-2yU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -388,7 +388,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8g5-za-OY4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="325" y="-18"/>
+            <point key="canvasLocation" x="1067" y="766"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="9CT-2l-i3s">
@@ -449,7 +449,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2d-x9-NEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="784" y="267"/>
+            <point key="canvasLocation" x="1283" y="-30"/>
         </scene>
         <!--Taxi Details View Controller-->
         <scene sceneID="cYw-uh-rQ1">
@@ -493,7 +493,7 @@
                                     <action selector="newAcountPressed:" destination="Ov7-SI-Bda" eventType="touchUpInside" id="rCX-5t-YjI"/>
                                     <action selector="requestCancelPressed:" destination="hCT-Xg-xvv" eventType="touchUpInside" id="cyb-qo-60i"/>
                                     <action selector="returnBtnPressed:" destination="bl0-nE-I6n" eventType="touchUpInside" id="GL6-v6-fwE"/>
-                                    <segue destination="2" kind="modal" id="nMj-lL-OqN"/>
+                                    <segue destination="2" kind="modal" identifier="toCurrentDetails" id="nMj-lL-OqN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="loginBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qtr-2h-71X">
@@ -542,6 +542,7 @@
                     </view>
                     <connections>
                         <outlet property="callDriverBtn" destination="Qtr-2h-71X" id="VEd-9Q-pQ7"/>
+                        <outlet property="canclBtn" destination="Utq-i6-0yB" id="2jm-Nz-CX9"/>
                         <outlet property="detailTable" destination="npX-hv-jtI" id="0Ya-Uz-CVe"/>
                         <outlet property="finishBtn" destination="PVo-ez-Udx" id="pT0-iW-QCj"/>
                         <segue destination="He0-pG-jxr" kind="modal" identifier="toHistory" id="TZb-rx-Wil"/>
@@ -549,7 +550,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6zp-Lg-vgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="801" y="937"/>
+            <point key="canvasLocation" x="780" y="1383"/>
         </scene>
     </scenes>
     <resources>
@@ -564,7 +565,10 @@
         <class className="TaxiDetailsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TaxiDetailsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="callDriver:"/>
+                <relationship kind="action" name="returnBtnPressed:"/>
                 <relationship kind="outlet" name="callDriverBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="canclBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="detailTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="finishBtn" candidateClass="UIView"/>
             </relationships>
@@ -591,6 +595,7 @@
         <class className="benbenTaxiViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiViewController.h"/>
             <relationships>
+                <relationship kind="action" name="audioRecordPressed:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
                 <relationship kind="outlet" name="advertisingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
@@ -623,8 +628,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="TZb-rx-Wil"/>
-        <segue reference="y10-5O-VHo"/>
-        <segue reference="tFk-Wr-HL2"/>
+        <segue reference="nMj-lL-OqN"/>
+        <segue reference="aHl-1J-2yU"/>
+        <segue reference="vtb-CD-n4V"/>
     </inferredMetricsTieBreakers>
 </document>
