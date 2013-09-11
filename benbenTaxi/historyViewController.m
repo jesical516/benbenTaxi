@@ -158,8 +158,10 @@ bool historyStatus;
     NSString* requestState = [taxiDict valueForKey:@"state"];
     if([requestState isEqualToString:@"Success"]) {
         cell.statusLabel.text = @"交易状态:成功";
-    } else {
+    } else if([requestState isEqualToString:@"TimeOut"]){
         cell.statusLabel.text = @"交易状态:失败";
+    } else {
+        cell.statusLabel.text = @"交易状态:等待中"; 
     }
     
     NSLog(@"here we go");
