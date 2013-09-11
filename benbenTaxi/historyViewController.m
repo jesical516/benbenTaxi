@@ -76,6 +76,7 @@ bool historyStatus;
             historyStatus = true;
             [_requestTable setHidden:FALSE];
             [_requestTable reloadData];
+            [self setExtraCellLineHidden : _requestTable];
     } else {
             [historyManager getHistoryRequest];
         }
@@ -87,8 +88,10 @@ bool historyStatus;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(!historyStatus) {
+        [_requestTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         return 0;
     } else {
+        [_requestTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
         NSString* historyInfo = [historyModel valueForKey:@"historyRequestDetails"];
         NSData *data = [historyInfo dataUsingEncoding:NSUTF8StringEncoding];
         NSArray* historyArr = (NSArray *)[data mutableObjectFromJSONData];
@@ -134,10 +137,17 @@ bool historyStatus;
         
         NSInteger day = [components day];
         NSInteger month= [components month];
+        if(day < 10) {
+            cell.dayLabel.text = [[NSString stringWithFormat:@"%@%d", @"0", day] stringByAppendingString:@"日"];
+        } else {
+            cell.dayLabel.text = [[NSString stringWithFormat:@"%d", day] stringByAppendingString:@"日"];
+        }
         
-        cell.dayLabel.text = [[NSString stringWithFormat:@"%d", day] stringByAppendingString:@"日"];
-        cell.monthLabel.text = [[NSString stringWithFormat:@"%d", month] stringByAppendingString:@"月"];
-        ;
+        if(month < 10) {
+            cell.monthLabel.text = [[NSString stringWithFormat:@"%@%d", @"0", month] stringByAppendingString:@"月"];
+        } else {
+            cell.monthLabel.text = [[NSString stringWithFormat:@"%d", month] stringByAppendingString:@"月"];
+        }
     }
     
     NSString* source = [taxiDict valueForKey:@"source"];
@@ -186,4 +196,17 @@ bool historyStatus;
     [_requestTable release];
     [super dealloc];
 }
+
+
+- (void)setExtraCellLineHidden: (UITableView *)tableView
+
+{
+    NSLog(@"called here");
+    UIView *view = [UIView new];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
+    [view release];
+    
+}
+
 @end

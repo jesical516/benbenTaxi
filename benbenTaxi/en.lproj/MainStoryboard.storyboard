@@ -573,13 +573,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/benbenTaxiLogin.h"/>
             <relationships>
                 <relationship kind="action" name="backgroundTap:"/>
-                <relationship kind="action" name="getComfirmPressed:"/>
-                <relationship kind="action" name="loginPressed:"/>
-                <relationship kind="action" name="newAcountPressed:"/>
-                <relationship kind="action" name="passwordConfirmPressed:"/>
-                <relationship kind="action" name="passwordReceived:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
-                <relationship kind="action" name="usernameReceived:"/>
                 <relationship kind="outlet" name="companyLable" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="confirmFields" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="getConfirmBtn" candidateClass="UIButton"/>
@@ -631,6 +625,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="TZb-rx-Wil"/>
         <segue reference="y10-5O-VHo"/>
-        <segue reference="1r2-j8-g9m"/>
+        <segue reference="tFk-Wr-HL2"/>
     </inferredMetricsTieBreakers>
 </document>

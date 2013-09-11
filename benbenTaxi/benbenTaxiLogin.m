@@ -224,6 +224,9 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
 
 
 - (IBAction)getComfirmPressed:(id)sender {
+    if( ![self.getConfirmBtn.currentTitle isEqualToString:@"获取验证码"] ) {
+	return;
+    }
     if([self.username.text isEqualToString:@""]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请先输入手机号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];

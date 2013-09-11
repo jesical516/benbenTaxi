@@ -66,6 +66,7 @@
         cell = [nib objectAtIndex:0];
     }
     
+    
     NSString* latStr = [taxiDict valueForKey:@"passenger_lat"];
     if( latStr == NULL) {
         NSLog(@"latitude is null");
