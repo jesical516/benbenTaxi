@@ -404,6 +404,7 @@ NSString  *detailAddress;
 }
 
 - (IBAction)audioRecordPressed:(id)sender {
+    NSLog(@"audioRecordPressed debug");
     if([TaxiProcessState isEqualToString:@"WaitingDriverResponse"]) {
         NSMutableDictionary *taxiJobj = [NSMutableDictionary dictionary];
         
