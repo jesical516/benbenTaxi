@@ -335,11 +335,12 @@ NSString  *detailAddress;
 }
 
 -(void) requestTaxiState:(NSNotification*)notifi {
+    TaxiProcessState = @"WaitingDriverResponse";
     NSString* taxiID = (NSString*) [notifi object];
     NSLog(@"Taxi id is %@", taxiID);
     taxiRequestID = taxiID;
-    [driverResponseModel setValue:@"waiting_passenger_send_request" forKey:@"requestStatus"];
     
+    [driverResponseModel setValue:@"waiting_passenger_send_request" forKey:@"requestStatus"];
     NSLog(@"requestTaxiState");
     
     if( nil == getDriverResponseTimer ) {
@@ -356,6 +357,7 @@ NSString  *detailAddress;
     [_sendRequestBtn release];
     [advertisingLabel release];
     [advertisingLabel release];
+    [_callTaxiBtn release];
     [super dealloc];
 }
 
@@ -392,8 +394,20 @@ NSString  *detailAddress;
 }
 
 - (IBAction)audioRecordPressed:(id)sender {
-    if([TaxiProcessState isEqualToString: @"finish"]) {
+    if([TaxiProcessState isEqualToString:@"WaitingDriverResponse"]) {
+        NSMutableDictionary *taxiJobj = [NSMutableDictionary dictionary];
         
+        [taxiJobj setObject : [NSNumber numberWithInteger:[taxiRequestID integerValue]] forKey:@"id"];
+        [taxiJobj setObject : @"WaitingDriverResponse" forKey:@"state"];
+        [taxiJobj setObject : detailAddress forKey:@"source"];
+        NSString* currentTaxiInfo = [taxiJobj JSONString];
+        
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setValue: currentTaxiInfo forKey:@"currentTaxiRequestDetail"];
+        [prefs setValue:@"NO" forKey : @"IsFromHistory"];
+        [self performSegueWithIdentifier:@"taxiDetails" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"toCallTaxiView" sender:self];
     }
 }
 
@@ -407,8 +421,17 @@ NSString  *detailAddress;
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    if ([identifier isEqualToString:@"toCurrentDetails"]) {
+    if ([identifier isEqualToString:@"taxiDetails"]) {
+        if([TaxiProcessState isEqualToString:@"WaitingDriverResponse"]) {
+            return true;
+        }
         return FALSE;
+    } else if( [identifier isEqualToString : @"toCallTaxiView"] ){
+        if([TaxiProcessState isEqualToString:@"WaitingDriverResponse"]) {
+            return false;
+        } else {
+            return true;
+        }
     }
     
     return true;

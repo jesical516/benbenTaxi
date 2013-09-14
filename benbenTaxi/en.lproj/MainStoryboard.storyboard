@@ -185,7 +185,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <view opaque="NO" contentMode="scaleToFill" restorationIdentifier="" id="Pbj-hf-Zdk" customClass="BMKMapView">
-                                <rect key="frame" x="0.0" y="58" width="320" height="340"/>
+                                <rect key="frame" x="0.0" y="58" width="320" height="446"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
@@ -222,9 +222,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EmA-oG-4QC">
+                            <button opaque="NO" contentMode="bottom" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EmA-oG-4QC">
                                 <rect key="frame" x="5" y="406" width="310" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.74424041969999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <state key="normal" title="一键打车">
@@ -235,7 +235,7 @@
                                 </state>
                                 <connections>
                                     <action selector="audioRecordPressed:" destination="2" eventType="touchUpInside" id="9SJ-g6-6xA"/>
-                                    <segue destination="hCT-Xg-xvv" kind="modal" id="f1q-HJ-m9R"/>
+                                    <segue destination="hCT-Xg-xvv" kind="modal" identifier="toCallTaxiView" id="f1q-HJ-m9R"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mue-hA-n1T">
@@ -261,6 +261,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="advertisingLabel" destination="tIt-pJ-DeP" id="923-2i-Nnm"/>
+                        <outlet property="callTaxiBtn" destination="EmA-oG-4QC" id="8tX-wh-WeY"/>
                         <outlet property="myMap" destination="Pbj-hf-Zdk" id="h99-yZ-SiZ"/>
                         <outlet property="titleDisplay" destination="tIt-pJ-DeP" id="m64-qH-Xyo"/>
                     </connections>
@@ -346,7 +347,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="CIw-XI-GJL">
-                                <rect key="frame" x="142" y="459" width="37" height="37"/>
+                                <rect key="frame" x="142" y="330" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Icon.png" id="hhN-3S-eFb">
@@ -388,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8g5-za-OY4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1067" y="766"/>
+            <point key="canvasLocation" x="1246" y="-132"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="9CT-2l-i3s">
@@ -449,7 +450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2d-x9-NEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1283" y="-30"/>
+            <point key="canvasLocation" x="136" y="-232"/>
         </scene>
         <!--Taxi Details View Controller-->
         <scene sceneID="cYw-uh-rQ1">
@@ -550,7 +551,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6zp-Lg-vgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="780" y="1383"/>
+            <point key="canvasLocation" x="1025" y="700"/>
         </scene>
     </scenes>
     <resources>
@@ -565,8 +566,6 @@
         <class className="TaxiDetailsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TaxiDetailsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="callDriver:"/>
-                <relationship kind="action" name="returnBtnPressed:"/>
                 <relationship kind="outlet" name="callDriverBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="canclBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="detailTable" candidateClass="UITableView"/>
@@ -598,6 +597,7 @@
                 <relationship kind="action" name="audioRecordPressed:"/>
                 <relationship kind="action" name="textFieldDoneEditing:"/>
                 <relationship kind="outlet" name="advertisingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="callTaxiBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="myMap" candidateClass="BMKMapView"/>
                 <relationship kind="outlet" name="sendRequestBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="titleDisplay" candidateClass="UILabel"/>
@@ -612,6 +612,7 @@
                 <relationship kind="outlet" name="recordHelpLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="recordHelpSubLable" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sendRequestProcess" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="sendTaxiRequestActivity" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>
         <class className="historyViewController" superclassName="UIViewController">
@@ -628,8 +629,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="vtb-CD-n4V"/>
         <segue reference="nMj-lL-OqN"/>
         <segue reference="aHl-1J-2yU"/>
-        <segue reference="vtb-CD-n4V"/>
     </inferredMetricsTieBreakers>
 </document>

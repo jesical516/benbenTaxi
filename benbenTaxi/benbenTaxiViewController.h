@@ -22,6 +22,7 @@
 
 @property(retain) benbenTaxiAppDelegate *appDelegate;
 
+@property (retain, nonatomic) IBOutlet UIButton *callTaxiBtn;
 -(void)updateStatus:(NSNotification*)notifi;
 - (IBAction)textFieldDoneEditing:(id)sender;
 @end

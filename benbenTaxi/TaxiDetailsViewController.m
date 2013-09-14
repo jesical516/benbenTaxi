@@ -82,11 +82,6 @@
     }
     
     
-    NSString* latStr = [taxiDict valueForKey:@"passenger_lat"];
-    if( latStr == NULL) {
-        NSLog(@"latitude is null");
-    }
-    
     NSString* requestState = [taxiDict valueForKey:@"state"];
     
     bool status = false;
@@ -143,9 +138,7 @@
             break;
     }
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(60.0f, 0.0f, 1.0f, 55.0f)];
-    
     [lineView setBackgroundColor:[UIColor lightGrayColor]];
-    
     [cell addSubview:lineView];
     
     
@@ -172,7 +165,14 @@
     [[UIApplication sharedApplication] openURL:telURL];
 }
 - (IBAction)returnBtnPressed:(id)sender {
-    [self performSegueWithIdentifier:@"toHistory" sender:self];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString* isFromHistory = [prefs valueForKey:@"IsFromHistory"];
+    if([isFromHistory isEqualToString:@"YES"]) {
+        [self performSegueWithIdentifier:@"toHistory" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"toCurrentDetails" sender:self];
+    }
+    
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {

@@ -110,7 +110,11 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
     }
 }
 
-- (IBAction)loginPressed:(id)sender {   
+- (IBAction)loginPressed:(id)sender {
+    if([self.loginStatusView isAnimating]) {
+        return;
+    }
+    
     if( [self.username.text isEqualToString:@""] )
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入手机号" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
@@ -139,7 +143,10 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
 }
 
 - (IBAction)newAcountPressed:(id)sender {
-    NSLog(@"Here %@", @"A");
+    if([self.loginStatusView isAnimating]) {
+        return;
+    }
+    
     UIButton* btn = (UIButton*)sender;
     NSLog(@"%@",  btn.currentTitle);
     //如果当前标题为返回
@@ -231,6 +238,9 @@ NSString * const KEY_PASSWORD = @"benben.taxi.app.password";
 
 
 - (IBAction)getComfirmPressed:(id)sender {
+    if([self.loginStatusView isAnimating]) {
+        return;
+    }
     if( ![self.getConfirmBtn.currentTitle isEqualToString:@"获取验证码"] ) {
 	return;
     }

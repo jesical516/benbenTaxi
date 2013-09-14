@@ -105,6 +105,7 @@
 		3AD5E51017AE3EE000640990 /* AdvertisingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD5E50E17AE3EE000640990 /* AdvertisingModel.m */; };
 		3AD5E51317AE3F2A00640990 /* AdvertisingManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AD5E51117AE3F2A00640990 /* AdvertisingManager.h */; };
 		3AD5E51417AE3F2A00640990 /* AdvertisingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD5E51217AE3F2A00640990 /* AdvertisingManager.m */; };
+		3AD899EC17E44D4E00D16D5D /* Icon-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD899EB17E44D4E00D16D5D /* Icon-568h@2x.png */; };
 		3AE1CD1C178B233E00D25E70 /* MyMapAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE1CD1A178B233E00D25E70 /* MyMapAnnotation.h */; };
 		3AE1CD1D178B233E00D25E70 /* MyMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */; };
 		3AE233B217721B8900C21BA2 /* benbenTaxiLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */; };
@@ -303,6 +304,7 @@
 		3AD5E50E17AE3EE000640990 /* AdvertisingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisingModel.m; sourceTree = "<group>"; };
 		3AD5E51117AE3F2A00640990 /* AdvertisingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisingManager.h; sourceTree = "<group>"; };
 		3AD5E51217AE3F2A00640990 /* AdvertisingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisingManager.m; sourceTree = "<group>"; };
+		3AD899EB17E44D4E00D16D5D /* Icon-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-568h@2x.png"; sourceTree = "<group>"; };
 		3AE1CD1A178B233E00D25E70 /* MyMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMapAnnotation.h; sourceTree = "<group>"; };
 		3AE1CD1B178B233E00D25E70 /* MyMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMapAnnotation.m; sourceTree = "<group>"; };
 		3AE233B017721B8900C21BA2 /* benbenTaxiLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = benbenTaxiLogin.h; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 		3AB50AFE175B2F880079772E = {
 			isa = PBXGroup;
 			children = (
+				3AD899EB17E44D4E00D16D5D /* Icon-568h@2x.png */,
 				3AFA3CE717C5120B00F025B0 /* start-568h@2x.png */,
 				3A3773C717C148FB00BD4953 /* Base64 */,
 				3A707C3217BBEA52009C3E60 /* voiceConvert */,
@@ -881,6 +884,7 @@
 				3AB8CA6D17D4D3AD000ED356 /* flag.png in Resources */,
 				3AB8CA7117D4E716000ED356 /* ListCell.xib in Resources */,
 				3AB8CA7B17D5702A000ED356 /* load.png in Resources */,
+				3AD899EC17E44D4E00D16D5D /* Icon-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

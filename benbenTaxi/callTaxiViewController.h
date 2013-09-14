@@ -26,5 +26,6 @@
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *sendRequestProcess;
 @property (retain, nonatomic) IBOutlet UILabel *recordHelpLabel;
 @property (retain, nonatomic) IBOutlet UILabel *recordHelpSubLable;
+@property (retain, nonatomic) IBOutlet UIActivityIndicatorView *sendTaxiRequestActivity;
 
 @end

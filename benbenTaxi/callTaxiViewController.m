@@ -66,10 +66,14 @@ bool recordFinish;
     [_sendRequestProcess release];
     [_recordHelpLabel release];
     [_recordHelpSubLable release];
+    [_sendTaxiRequestActivity release];
     [super dealloc];
 }
 
 - (IBAction)sendTaxiRequest:(id)sender {
+    if([self.sendRequestProcess isAnimating]) {
+        return;
+    }
     NSString* filename = [VoiceRecorderBase getPathByFileName:recordFileName ofType:@"wav"];
     
     if(![VoiceRecorderBase fileExistsAtPath : filename]) {
@@ -161,11 +165,13 @@ bool recordFinish;
             NSString* requestID = [taxiRequestmodel valueForKey:@"request"];
             NSLog(@"request id is %@", requestID);
             [[NSNotificationCenter defaultCenter] postNotificationName:@"requestID" object:requestID];
+            [self.sendRequestProcess stopAnimating];
             [self performSegueWithIdentifier:@"TaxiRequestTrigger" sender:self];
         } else {
             sendRequestStatus = FALSE;
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"失败" message:@"网络不给力，请稍后再试..." delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
+            [self.sendRequestProcess stopAnimating];
         }
     }
 }
