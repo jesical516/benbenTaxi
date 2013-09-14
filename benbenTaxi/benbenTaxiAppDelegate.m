@@ -25,6 +25,7 @@ bool firstOpen = true;
     }
     
     self.window = [[[CustomWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     self.window.rootViewController = [storyBoard instantiateInitialViewController];
     [self.window makeKeyAndVisible];

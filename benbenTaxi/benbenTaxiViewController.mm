@@ -50,6 +50,16 @@ NSString  *detailAddress;
 - (void)viewDidLoad
 { 
     [super viewDidLoad];
+    CGRect screedRect = [[UIScreen mainScreen] bounds];
+    int offSet = screedRect.size.height - 568;
+    
+    CGRect newBtnRect = CGRectOffset(_callTaxiBtn.frame, 0, offSet);
+    [_callTaxiBtn setFrame:newBtnRect];
+    
+    int mapHeight = screedRect.size.height - _callTaxiBtn.frame.size.height - 30 - 58;
+    
+    CGRect resizeMapRect = CGRectMake(0, 58, 320, mapHeight);
+    [myMap setFrame:resizeMapRect];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStatus:) name:@"updateStatus" object:nil];
     
@@ -367,7 +377,7 @@ NSString  *detailAddress;
     frame.origin.x = 0;      //设置起点
     [advertisingLabel setFrame:CGRectMake(frame.origin.x, frame.origin.y, dims.width, dims.height)];
     [UIView beginAnimations:@"testAnimation" context:NULL];
-    [UIView setAnimationDuration:30.8f];     //动画执行时间
+    [UIView setAnimationDuration:40.8f];     //动画执行时间
     [UIView setAnimationCurve:UIViewAnimationCurveLinear];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationRepeatAutoreverses:NO];
